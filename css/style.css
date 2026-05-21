@@ -449,18 +449,6 @@
     top: 0;
 }
 
-.hero-shape-2 {
-    background-color: var(--bs-dark);
-    width: 150px;
-    height: 50%;
-    position: absolute;
-    right: -43%;
-    bottom: 0;
-    transform: translateY(50%) skew(-25deg, 0deg);
-    position: relative;
-    z-index: 1;
-}
-
 .hero-shape-2::after {
     background-color: var(--bs-primary);
     content: "";
