@@ -355,32 +355,6 @@
         padding: 40px 50px 40px 0;
         z-index: 99;
     }
-    
-    .navbar-brand::before {
-        content: "";
-        position: absolute;
-        overflow: hidden;
-        width: 300px;
-        height: 600px;
-        top: -200px;
-        right: 18px;
-        background: var(--bs-dark);
-        transform: rotate(-18deg);
-        z-index: -1;
-    }
-    
-    .navbar-brand::after {
-        content: "";
-        position: absolute;
-        overflow: hidden;
-        width: 5px;
-        height: 600px;
-        top: -200px;
-        right: 18px;
-        background: var(--bs-primary);
-        transform: rotate(-18deg);
-        z-index: -1;
-    }
 }
 /*** Navbar End ***/
 
