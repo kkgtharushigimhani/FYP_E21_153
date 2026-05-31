@@ -1,777 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>IWMTAS — Intelligent Wound Monitoring & Therapy Adjustment System</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="wound monitoring, diabetic foot ulcer, thermal monitoring, smart bandage, TMP117, FYP" name="keywords">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="lib/animate/animate.min.css"/>
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0096c7;
-            --dark-blue: #03045e;
-            --mid-blue: #0077b6;
-            --light-blue: #caf0f8;
-            --accent: #00b4d8;
-        }
-        body { font-family: 'Inter', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Diabetic Wound Patch — Thermal Monitoring FYP</title>
+<meta name="description" content="Final Year Project: a 4-stage flexible smart wound patch using the TI TMP117 for high-precision thermal monitoring and early infection detection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0d12;
+    --bg-2:#0d1218;
+    --elev:#11161f;
+    --elev-2:#161d28;
+    --line:rgba(255,255,255,0.08);
+    --line-strong:rgba(255,255,255,0.14);
+    --text:#e9eef3;
+    --dim:#9bacba;
+    --faint:#62707d;
+    --teal:#2dd4bf;
+    --cyan:#38bdf8;
+    --amber:#fbbf24;
+    --orange:#fb923c;
+    --red:#ef4444;
+    --heat:linear-gradient(90deg,#1e3a8a 0%,#0ea5e9 22%,#22d3ee 40%,#a3e635 56%,#fde047 70%,#fb923c 85%,#ef4444 100%);
+    --maxw:1160px;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* grain overlay */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection{background:var(--teal);color:#04231f}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-        /* NEUTRALISE ELECTRA GHOST OVERLAY */
-        .header-top { height: auto !important; position: static !important; }
-        .header-top::before, .header-top::after { display: none !important; content: none !important; }
-        .navbar-brand-2::before, .navbar-brand-2::after { display: none !important; content: none !important; }
-        .header-carousel { display: none !important; }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
+  h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.02em}
 
-        /* NAV */
-        .topnav { background: var(--dark-blue); padding: 10px 0; }
-        .topnav span { color: #ade8f4; font-size: 0.82rem; }
-        .topnav span i { color: var(--accent); margin-right: 6px; }
-        .main-nav { background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 999; }
-        .main-nav .navbar-brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--dark-blue) !important; }
-        .main-nav .nav-link { font-weight: 500; color: #333; font-size: 0.9rem; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s; }
-        .main-nav .nav-link:hover, .main-nav .nav-link.active { background: var(--light-blue); color: var(--mid-blue); }
+  /* ============ NAV ============ */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(10,13,18,.72);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s,background .4s;
+  }
+  header.nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,13,18,.9)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:600}
+  .brand .pulse{width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(45,212,191,.5);animation:beat 2.4s infinite}
+  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(45,212,191,.45)}70%{box-shadow:0 0 0 9px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
+  .brand b{font-family:'Bricolage Grotesque';letter-spacing:-.01em}
+  .brand span{color:var(--faint);font-size:.72rem;font-family:'JetBrains Mono';letter-spacing:.04em}
+  nav.links{display:flex;gap:6px}
+  nav.links a{
+    font-size:.82rem;color:var(--dim);padding:8px 13px;border-radius:8px;transition:.25s;font-weight:500;
+  }
+  nav.links a:hover{color:var(--text);background:var(--elev)}
+  nav.links a.active{color:var(--teal)}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px 12px;font-family:'JetBrains Mono';font-size:.8rem;cursor:pointer}
+  @media(max-width:860px){nav.links{display:none}.nav-toggle{display:block}}
 
-        /* HERO */
-        .hero { background: linear-gradient(135deg, #03045e 0%, #0077b6 60%, #00b4d8 100%); min-height: 88vh; display: flex; align-items: center; }
-        .hero-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #ade8f4; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1.15; }
-        .hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 540px; }
-        .stat-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 22px; text-align: center; }
-        .stat-card .num { font-size: 2.2rem; font-weight: 800; color: #fff; }
-        .stat-card .label { font-size: 0.78rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
-        .btn-hero-primary { background: #fff; color: var(--mid-blue); font-weight: 700; padding: 13px 28px; border-radius: 10px; border: none; transition: all 0.3s; }
-        .btn-hero-primary:hover { background: var(--light-blue); }
-        .btn-hero-outline { border: 2px solid rgba(255,255,255,0.6); color: #fff; font-weight: 600; padding: 11px 26px; border-radius: 10px; background: transparent; transition: all 0.3s; }
-        .btn-hero-outline:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  /* ============ HERO ============ */
+  .hero{position:relative;padding:170px 0 90px;overflow:hidden}
+  .hero-grid{
+    position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(ellipse 80% 70% at 60% 0%,#000 35%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 0%,#000 35%,transparent 75%);
+  }
+  .hero-glow{position:absolute;z-index:0;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.22;background:radial-gradient(circle,var(--teal),transparent 65%);top:-160px;right:-120px}
+  .hero-glow.b{background:radial-gradient(circle,var(--orange),transparent 65%);opacity:.12;left:-160px;top:120px}
+  .hero-inner{position:relative;z-index:2}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);
+    border:1px solid var(--line-strong);padding:7px 14px;border-radius:100px;margin-bottom:28px;background:rgba(45,212,191,.05);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+  h1.title{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:800;max-width:15ch;margin-bottom:24px}
+  h1.title em{font-style:normal;background:var(--heat);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--dim);max-width:60ch;font-weight:300}
+  .hero-cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:.84rem;font-weight:500;
+    padding:13px 22px;border-radius:10px;border:1px solid var(--line-strong);transition:.3s var(--ease);cursor:pointer;
+  }
+  .btn.primary{background:var(--teal);color:#04231f;border-color:var(--teal);font-weight:700}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px -10px rgba(45,212,191,.6)}
+  .btn.ghost:hover{border-color:var(--teal);color:var(--teal);background:rgba(45,212,191,.05)}
+  .btn svg{width:15px;height:15px}
 
-        /* WEEK TABS */
-        .week-nav { background: #f8f9fa; border-bottom: 2px solid #e9ecef; }
-        .week-tab { display: inline-block; padding: 14px 24px; font-weight: 600; font-size: 0.88rem; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; color: #666; transition: all 0.3s; white-space: nowrap; }
-        .week-tab.active { border-bottom-color: var(--mid-blue); color: var(--mid-blue); }
-        .week-tab.disabled { color: #bbb; cursor: default; }
-        .week-tab:hover:not(.disabled) { color: var(--mid-blue); }
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:72px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .stat{background:var(--bg-2);padding:26px 22px}
+  .stat .num{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1;background:var(--heat);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .lab{color:var(--faint);font-size:.78rem;margin-top:9px;font-family:'JetBrains Mono';letter-spacing:.02em}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
 
-        /* SECTION HEADERS */
-        .sec-tag { display: inline-block; background: #e0f4ff; color: var(--mid-blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 10px; }
-        .sec-title { font-size: 2rem; font-weight: 800; color: var(--dark-blue); }
+  /* ============ SECTION SHELL ============ */
+  section{padding:96px 0;position:relative}
+  .sec-head{margin-bottom:54px;max-width:64ch}
+  .sec-tag{font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .sec-tag::before{content:"";width:30px;height:1px;background:var(--teal)}
+  h2.sec-title{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:700;margin-bottom:18px}
+  .sec-sub{color:var(--dim);font-size:1.08rem;font-weight:300}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
 
-        /* PAPER CARDS */
-        .paper-card { border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 40px; }
-        .paper-card-header { background: linear-gradient(135deg, var(--dark-blue), var(--mid-blue)); padding: 28px 32px; }
-        .paper-card-header .paper-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; color: #ade8f4; text-transform: uppercase; margin-bottom: 10px; }
-        .paper-card-header h3 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
-        .paper-card-header .authors { color: rgba(255,255,255,0.75); font-size: 0.82rem; }
-        .paper-card-body { padding: 32px; }
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
 
-        /* INFO BOXES */
-        .info-box { background: #f0f8ff; border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 18px; }
-        .info-box h6 { font-weight: 700; color: var(--dark-blue); margin-bottom: 6px; font-size: 0.88rem; }
-        .info-box p { font-size: 0.87rem; color: #444; margin: 0; line-height: 1.6; }
+  /* overview cards */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.grid-3{grid-template-columns:1fr}}
+  .card{
+    background:var(--elev);border:1px solid var(--line);border-radius:16px;padding:30px;transition:.4s var(--ease);position:relative;overflow:hidden;
+  }
+  .card:hover{border-color:var(--line-strong);transform:translateY(-4px);background:var(--elev-2)}
+  .card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:20px;background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.25)}
+  .card .ic svg{width:22px;height:22px;stroke:var(--teal)}
+  .card h3{font-size:1.18rem;margin-bottom:10px}
+  .card p{color:var(--dim);font-size:.95rem;font-weight:300}
 
-        /* IMAGE DISPLAY */
-        .fig-box { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #f9f9f9; }
-        .fig-box img { width: 100%; object-fit: cover; }
-        .fig-caption { padding: 10px 14px; font-size: 0.78rem; color: #666; background: #f9f9f9; border-top: 1px solid #eee; }
+  /* ============ PATCH CROSS-SECTION ============ */
+  .patch-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+  @media(max-width:900px){.patch-wrap{grid-template-columns:1fr;gap:36px}}
+  .stack{position:relative;border-radius:18px;border:1px solid var(--line);background:var(--bg-2);padding:30px 26px;overflow:hidden}
+  .stack .ambient{display:flex;justify-content:center;gap:30px;margin-bottom:14px}
+  .arrow-amb{display:flex;flex-direction:column;align-items:center;color:var(--cyan);font-size:.66rem;font-family:'JetBrains Mono';opacity:.8}
+  .arrow-amb .ln{width:2px;height:26px;background:linear-gradient(var(--cyan),transparent);position:relative}
+  .arrow-amb .ln::after{content:"✕";position:absolute;bottom:-4px;left:-4px;color:var(--cyan)}
+  .layer{
+    position:relative;border-radius:11px;padding:16px 18px;margin:7px 0;cursor:default;transition:.35s var(--ease);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .layer:hover{transform:translateX(6px);border-color:var(--line-strong)}
+  .layer .lnum{font-family:'JetBrains Mono';font-size:.7rem;color:var(--bg);background:var(--teal);width:24px;height:24px;border-radius:6px;display:grid;place-items:center;font-weight:700;flex-shrink:0}
+  .layer .lmeta b{display:block;font-family:'Bricolage Grotesque';font-size:.96rem;font-weight:600}
+  .layer .lmeta span{font-size:.76rem;color:var(--faint);font-family:'JetBrains Mono'}
+  .layer.s4{background:linear-gradient(90deg,rgba(56,189,248,.12),rgba(56,189,248,.03))}
+  .layer.s3{background:linear-gradient(90deg,rgba(163,230,53,.10),rgba(163,230,53,.02))}
+  .layer.s2{background:linear-gradient(90deg,rgba(251,191,36,.13),rgba(251,191,36,.03));border-color:rgba(251,191,36,.3)}
+  .layer.s1{background:linear-gradient(90deg,rgba(251,146,60,.14),rgba(251,146,60,.03))}
+  .chip{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono';font-size:.66rem;color:var(--amber);
+    border:1px solid rgba(251,191,36,.4);padding:5px 9px;border-radius:6px;background:rgba(251,191,36,.07);position:relative}
+  .chip .blink{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:beat 1.6s infinite}
+  .woundbed{margin-top:14px;border-radius:11px;padding:15px 18px;background:linear-gradient(90deg,rgba(239,68,68,.18),rgba(239,68,68,.05));border:1px dashed rgba(239,68,68,.4);text-align:center}
+  .woundbed .heat{display:flex;justify-content:center;gap:26px;margin-top:8px}
+  .heat .w{width:2px;height:24px;background:linear-gradient(transparent,var(--red));border-radius:2px;animation:rise 1.8s var(--ease) infinite}
+  .heat .w:nth-child(2){animation-delay:.3s}.heat .w:nth-child(3){animation-delay:.6s}.heat .w:nth-child(4){animation-delay:.9s}
+  @keyframes rise{0%{transform:translateY(8px);opacity:0}40%{opacity:1}100%{transform:translateY(-10px);opacity:0}}
+  .woundbed b{font-family:'Bricolage Grotesque';font-size:.92rem;color:#fca5a5}
+  .woundbed span{font-size:.74rem;color:var(--faint);font-family:'JetBrains Mono'}
+  .patch-copy h3{font-size:1.5rem;margin-bottom:16px}
+  .patch-copy p{color:var(--dim);margin-bottom:18px;font-weight:300}
+  .ruleslist{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .ruleslist li{display:flex;gap:13px;font-size:.92rem;color:var(--dim)}
+  .ruleslist li b{color:var(--text);font-weight:600}
+  .ruleslist .mk{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--elev-2);border:1px solid var(--line);display:grid;place-items:center;font-family:'JetBrains Mono';font-size:.72rem;color:var(--teal)}
 
-        /* DATA TABLE */
-        .data-table th { background: var(--mid-blue); color: #fff; font-size: 0.8rem; padding: 10px 12px; }
-        .data-table td { font-size: 0.82rem; padding: 9px 12px; vertical-align: middle; }
-        .badge-danger-sm { background: #fee2e2; color: #c53030; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; }
-        .badge-warn-sm { background: #fef3c7; color: #92400e; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; }
-        .badge-ok-sm { background: #d1fae5; color: #065f46; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; }
+  /* ============ THERMAL SCALE ============ */
+  .scale-card{background:var(--elev);border:1px solid var(--line);border-radius:18px;padding:40px 38px}
+  .scale-bar{height:22px;border-radius:100px;background:var(--heat);position:relative;margin:46px 0 60px}
+  .tick{position:absolute;top:-12px;transform:translateX(-50%);text-align:center}
+  .tick .pin{width:2px;height:46px;background:var(--text);margin:0 auto;opacity:.7}
+  .tick .lab{font-family:'JetBrains Mono';font-size:.7rem;color:var(--text);white-space:nowrap;margin-top:6px}
+  .tick .sub{font-size:.64rem;color:var(--faint);white-space:nowrap}
+  .tick.below .pin{margin-top:34px}
+  .tick.below{top:auto;bottom:-58px}
+  .legend{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  @media(max-width:760px){.legend{grid-template-columns:1fr}.scale-bar{margin:60px 0 70px}}
+  .leg{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:12px;background:var(--bg-2);border:1px solid var(--line)}
+  .leg .sw{width:10px;height:38px;border-radius:4px;flex-shrink:0}
+  .leg b{font-family:'Bricolage Grotesque';font-size:.95rem;display:block}
+  .leg p{font-size:.82rem;color:var(--faint);font-weight:300}
 
-        /* FINDING ROWS */
-        .finding { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
-        .finding:last-child { border-bottom: none; }
-        .finding-icon { width: 38px; height: 38px; min-width: 38px; border-radius: 10px; background: #e0f4ff; display: flex; align-items: center; justify-content: center; color: var(--mid-blue); font-size: 0.95rem; }
-        .finding-text strong { font-size: 0.9rem; color: #1a202c; }
-        .finding-text p { font-size: 0.84rem; color: #555; margin: 3px 0 0; line-height: 1.5; }
+  /* ============ ARCHITECTURE FLOW ============ */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}
+  @media(max-width:900px){.flow{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.flow{grid-template-columns:1fr}}
+  .node{background:var(--elev);border:1px solid var(--line);border-radius:14px;padding:22px 18px;position:relative;transition:.35s}
+  .node:hover{border-color:var(--teal);background:var(--elev-2)}
+  .node .step{font-family:'JetBrains Mono';font-size:.66rem;color:var(--teal);letter-spacing:.1em}
+  .node h4{font-size:1.02rem;margin:9px 0 7px}
+  .node p{font-size:.8rem;color:var(--faint);font-weight:300}
+  .node .ar{position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--faint);z-index:3}
+  @media(max-width:900px){.node .ar{display:none}}
 
-        /* RELEVANCE ALERT */
-        .relevance-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 12px; padding: 20px 24px; margin-top: 24px; }
-        .relevance-box strong { color: var(--dark-blue); }
-        .relevance-box p { font-size: 0.87rem; color: #1e3a5f; margin: 6px 0 0; line-height: 1.6; }
+  /* hardware chips */
+  .hw{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+  .hwchip{font-family:'JetBrains Mono';font-size:.78rem;padding:9px 15px;border-radius:100px;border:1px solid var(--line);color:var(--dim);background:var(--bg-2);transition:.3s}
+  .hwchip:hover{border-color:var(--line-strong);color:var(--text)}
+  .hwchip b{color:var(--teal)}
 
-        /* SENSOR COMPARE TABLE */
-        .sensor-table th { background: var(--dark-blue); color: #fff; font-size: 0.78rem; padding: 10px 14px; }
-        .sensor-table td { font-size: 0.82rem; padding: 10px 14px; }
-        .sensor-table tr:nth-child(even) { background: #f8faff; }
-        .sensor-table .highlight { font-weight: 700; color: var(--mid-blue); }
+  /* ============ WEEKS ============ */
+  .note-banner{display:flex;gap:13px;align-items:flex-start;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.22);border-radius:12px;padding:16px 20px;margin-bottom:34px;font-size:.88rem;color:var(--dim)}
+  .note-banner svg{flex-shrink:0;width:19px;height:19px;stroke:var(--amber);margin-top:2px}
+  .weeks{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:760px){.weeks{grid-template-columns:1fr}}
+  .week{
+    background:var(--elev);border:1px solid var(--line);border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:.4s var(--ease);
+  }
+  .week::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--heat);opacity:.55;transition:.4s}
+  .week:hover{transform:translateY(-4px);border-color:var(--line-strong);background:var(--elev-2)}
+  .week:hover::before{opacity:1;width:5px}
+  .week.feature{border-color:rgba(45,212,191,.35);background:linear-gradient(160deg,rgba(45,212,191,.06),var(--elev))}
+  .week .wk-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .week .wk-no{font-family:'JetBrains Mono';font-size:.74rem;color:var(--teal);letter-spacing:.08em}
+  .badge{font-family:'JetBrains Mono';font-size:.62rem;padding:4px 9px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase}
+  .badge.live{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.3)}
+  .badge.edit{background:var(--elev-2);color:var(--faint);border:1px solid var(--line)}
+  .week h3{font-size:1.28rem;margin-bottom:10px}
+  .week p{color:var(--dim);font-size:.92rem;font-weight:300;margin-bottom:18px}
+  .week ul{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:7px}
+  .week ul li{font-size:.85rem;color:var(--dim);padding-left:18px;position:relative}
+  .week ul li::before{content:"›";position:absolute;left:0;color:var(--teal);font-family:'JetBrains Mono'}
+  .wk-link{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:.78rem;color:var(--teal);border:1px solid rgba(45,212,191,.3);padding:9px 15px;border-radius:9px;transition:.3s}
+  .wk-link:hover{background:var(--teal);color:#04231f}
+  .wk-link svg{width:14px;height:14px}
 
-        /* RESULTS GRID */
-        .result-pill { text-align: center; background: #e0f4ff; border-radius: 14px; padding: 20px 12px; }
-        .result-pill .rnum { font-size: 2rem; font-weight: 800; color: var(--mid-blue); }
-        .result-pill .rlabel { font-size: 0.78rem; color: #555; margin-top: 4px; }
+  /* ============ RESOURCES ============ */
+  .res-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+  @media(max-width:860px){.res-grid{grid-template-columns:1fr}}
+  .res-main{background:linear-gradient(150deg,rgba(45,212,191,.08),var(--elev));border:1px solid rgba(45,212,191,.3);border-radius:18px;padding:36px}
+  .res-main h3{font-size:1.5rem;margin-bottom:10px}
+  .res-main p{color:var(--dim);font-weight:300;margin-bottom:24px}
+  .reslist{display:flex;flex-direction:column;gap:10px}
+  .reslink{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:11px;padding:15px 18px;transition:.3s}
+  .reslink:hover{border-color:var(--teal);transform:translateX(4px)}
+  .reslink .l{display:flex;align-items:center;gap:13px}
+  .reslink .ic{width:34px;height:34px;border-radius:8px;background:var(--elev-2);display:grid;place-items:center;flex-shrink:0}
+  .reslink .ic svg{width:17px;height:17px;stroke:var(--teal)}
+  .reslink b{font-size:.92rem;display:block}
+  .reslink span{font-size:.72rem;color:var(--faint);font-family:'JetBrains Mono'}
+  .reslink .go{color:var(--faint);transition:.3s}
+  .reslink:hover .go{color:var(--teal);transform:translate(3px,-3px)}
+  .res-side{background:var(--elev);border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:18px}
+  .res-side .vid{aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#1a2330,#0d1218);border:1px solid var(--line);display:grid;place-items:center;position:relative;overflow:hidden;transition:.4s}
+  .res-side .vid:hover{border-color:var(--red)}
+  .res-side .vid .play{width:54px;height:54px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 0 0 0 rgba(239,68,68,.5);animation:beat 2.6s infinite}
+  .res-side .vid .play svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+  .res-side h4{font-size:1.05rem}
+  .res-side p{font-size:.84rem;color:var(--faint);font-weight:300}
 
-        /* COMING SOON CARD */
-        .coming-card { background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 16px; padding: 40px; text-align: center; color: #999; }
-        .coming-card i { font-size: 2.5rem; margin-bottom: 16px; display: block; }
-
-        /* TIMELINE */
-        .timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--mid-blue); flex-shrink: 0; margin-top: 4px; }
-        .timeline-dot.gray { background: #ccc; }
-        .timeline-line { width: 2px; background: #e2e8f0; flex-grow: 1; min-height: 30px; margin-left: 6px; }
-
-        /* FOOTER */
-        .footer-main { background: var(--dark-blue); padding: 60px 0 30px; }
-        .footer-main h5 { color: #fff; margin-bottom: 20px; font-weight: 700; }
-        .footer-main a { color: rgba(255,255,255,0.65); font-size: 0.88rem; display: block; margin-bottom: 8px; text-decoration: none; transition: color 0.2s; }
-        .footer-main a:hover { color: var(--accent); }
-        .footer-main p { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
-        .footer-copy { background: #020b1a; padding: 18px 0; text-align: center; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
-    </style>
+  /* ============ FOOTER ============ */
+  footer{border-top:1px solid var(--line);padding:70px 0 50px;background:var(--bg-2)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:32px}}
+  .foot-brand b{font-family:'Bricolage Grotesque';font-size:1.3rem;font-weight:700}
+  .foot-brand p{color:var(--faint);font-size:.88rem;font-weight:300;margin-top:12px;max-width:42ch}
+  .team-card{background:var(--elev);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:20px;font-size:.85rem}
+  .team-card .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)}
+  .team-card .row:last-child{border-bottom:none}
+  .team-card .k{color:var(--faint);font-family:'JetBrains Mono';font-size:.74rem}
+  .team-card .v{color:var(--text);font-weight:500}
+  .foot-col h5{font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--dim);font-size:.9rem;padding:5px 0;transition:.2s}
+  .foot-col a:hover{color:var(--teal);padding-left:5px}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;border-top:1px solid var(--line);font-size:.78rem;color:var(--faint);font-family:'JetBrains Mono';flex-wrap:wrap}
+  .edit-flag{display:inline-block;font-family:'JetBrains Mono';font-size:.62rem;color:var(--amber);border:1px solid rgba(251,191,36,.3);background:rgba(251,191,36,.06);padding:2px 7px;border-radius:5px;vertical-align:middle;margin-left:8px}
+</style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topnav">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <span><i class="fas fa-university"></i>EE405 — Undergraduate Project I &nbsp;|&nbsp; <i class="fas fa-calendar-alt"></i> 2025–2026</span>
-        <span><i class="fas fa-tag"></i>Biomedical Engineering &amp; Smart Healthcare</span>
-    </div>
-</div>
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="pulse"></span>
+      <span><b>Smart Wound Patch</b><br><span>THERMAL&nbsp;MONITORING&nbsp;·&nbsp;FYP</span></span>
+    </a>
+    <nav class="links" id="navlinks">
+      <a href="#overview">Overview</a>
+      <a href="#science">The Science</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#week4">Week 4</a>
+      <a href="#weeks">Progress</a>
+      <a href="#resources">Resources</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle">MENU</button>
+  </div>
+</header>
 
-<!-- NAVBAR -->
-<div class="main-nav py-2">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg p-0">
-            <a class="navbar-brand me-4" href="index.html">
-                <i class="fas fa-heartbeat me-2" style="color:var(--mid-blue)"></i>IWMTAS
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMain">
-                <div class="navbar-nav ms-auto gap-1">
-                    <a href="index.html" class="nav-link active">Home</a>
-                    <a href="#week1" class="nav-link">Week 1</a>
-                    <a href="#week2" class="nav-link">Week 2</a>
-                    <a href="#week3" class="nav-link">Week 3</a>
-                    <a href="team.html" class="nav-link">Team</a>
-                </div>
-            </div>
-        </nav>
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow b"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow reveal in"><span class="dot"></span>Final Year Project · Biomedical Sensing</span>
+    <h1 class="title reveal in d1">The wound patch that feels infection<br><em>before you can see it.</em></h1>
+    <p class="lede reveal in d2">A four-stage flexible plaster built around the Texas Instruments <b class="mono">TMP117</b> clinical-grade temperature sensor — continuously mapping the thermal microenvironment of a diabetic wound to flag inflammation and infection days before visual symptoms appear.</p>
+    <div class="hero-cta reveal in d3">
+      <a href="#week4" class="btn primary">Explore Week 4
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#resources" class="btn ghost">Project Drive &amp; links
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg>
+      </a>
     </div>
-</div>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="container">
-        <div class="row align-items-center g-5 py-5">
-            <div class="col-lg-6">
-                <div class="hero-tag"><i class="fas fa-flask me-2"></i>Final Year Project — EE405</div>
-                <h1>Intelligent Wound Monitoring & Therapy Adjustment System</h1>
-                <p class="my-4">A smart, sensor-integrated system leveraging real-time thermal monitoring and adaptive therapy to track diabetic wound healing and guide clinical decision-making.</p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="#week1" class="btn-hero-primary text-decoration-none"><i class="fas fa-book-open me-2"></i>View Research Portfolio</a>
-                    <a href="about.html" class="btn-hero-outline text-decoration-none">Project Overview</a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row g-3">
-                    <div class="col-6"><div class="stat-card"><div class="num">93%</div><div class="label">Limb Salvage Rate (Paper 1)</div></div></div>
-                    <div class="col-6"><div class="stat-card"><div class="num">33°C</div><div class="label">Critical Healing Threshold</div></div></div>
-                    <div class="col-6"><div class="stat-card"><div class="num">±0.1°C</div><div class="label">TMP117 Sensor Accuracy</div></div></div>
-                    <div class="col-6"><div class="stat-card"><div class="num">3</div><div class="label">Weeks of Research Completed</div></div></div>
-                </div>
-            </div>
-        </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="num" data-target="0.1" data-prefix="±" data-suffix="°C">±0.1°C</div><div class="lab">Sensor accuracy</div></div>
+      <div class="stat"><div class="num" data-target="2.2" data-prefix="+" data-suffix="°C">+2.2°C</div><div class="lab">Infection spike biomarker</div></div>
+      <div class="stat"><div class="num" data-target="4" data-suffix=" stages">4 stages</div><div class="lab">Thermal integration</div></div>
+      <div class="stat"><div class="num" data-target="4" data-suffix=" zones">4 zones</div><div class="lab">Spatial monitoring</div></div>
     </div>
+  </div>
 </section>
 
+<div class="divider"></div>
 
-<!-- RESEARCHER STRIP -->
-<div style="background:#fff; border-bottom: 2px solid #e2e8f0; padding: 18px 0;">
-    <div class="container">
-        <div class="row align-items-center g-3">
-            <!-- Researcher -->
-            <div class="col-md-4 d-flex align-items-center gap-3">
-                <div style="width:48px;height:48px;min-width:48px;border-radius:50%;background:linear-gradient(135deg,#0077b6,#00b4d8);display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-user-graduate" style="color:#fff;font-size:1.2rem;"></i>
-                </div>
-                <div>
-                    <div style="font-weight:700;color:#03045e;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;">GIMHANI K.K.G.T.</div>
-                    <div style="font-size:0.78rem;color:#666;">Undergraduate Researcher · EE405</div>
-                </div>
-            </div>
-            <!-- University -->
-            <div class="col-md-4 d-flex align-items-center gap-3">
-                <div style="width:48px;height:48px;min-width:48px;border-radius:50%;background:#f0f8ff;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-university" style="color:#0077b6;font-size:1.1rem;"></i>
-                </div>
-                <div>
-                    <div style="font-weight:600;color:#03045e;font-size:0.88rem;">University of Peradeniya</div>
-                    <div style="font-size:0.78rem;color:#666;">Dept. of Electrical &amp; Electronic Engineering</div>
-                </div>
-            </div>
-            <!-- Supervisor -->
-            <div class="col-md-4 d-flex align-items-center gap-3">
-                <div style="width:48px;height:48px;min-width:48px;border-radius:50%;background:#f0f8ff;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-chalkboard-teacher" style="color:#0077b6;font-size:1.1rem;"></i>
-                </div>
-                <div>
-                    <div style="font-weight:600;color:#03045e;font-size:0.88rem;">Dr. Ruwan Ranaweera</div>
-                    <div style="font-size:0.78rem;color:#666;">Project Supervisor</div>
-                </div>
-            </div>
-        </div>
+<!-- ===================== OVERVIEW ===================== -->
+<section id="overview">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Project Overview</div>
+      <h2 class="sec-title">A clinical-grade sensor, embedded in a everyday plaster</h2>
+      <p class="sec-sub">Chronic wounds — diabetic foot ulcers, pressure injuries, surgical sites — affect millions of patients and carry an enormous economic burden. A sudden, localized rise in temperature is one of the earliest and most reliable signals of inflammation and bacterial colonisation, often preceding redness or pus by several days. This project captures that signal continuously, non-invasively, and at clinical resolution.</p>
     </div>
-</div>
-
-<!-- WEEK NAVIGATION -->
-<div class="week-nav overflow-auto">
-    <div class="container d-flex" style="gap:0;">
-        <a href="#week1" class="week-tab active text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 1 — Literature Review</a>
-        <a href="#week2" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 2 — Thermal Methods & Wound Biology</a>
-        <a href="#week3" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 3 — Sensor Selection & Hardware</a>
-        <span class="week-tab disabled"><i class="fas fa-clock me-2"></i>Week 4 — Coming Soon</span>
-        <span class="week-tab disabled"><i class="fas fa-clock me-2"></i>Week 5 — Coming Soon</span>
+    <div class="grid-3">
+      <div class="card reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v6m0 0a3 3 0 100 6 3 3 0 000-6m0 6v8m-7-7h14"/></svg></div>
+        <h3>The clinical problem</h3>
+        <p>By the time a wound looks infected, the patient is often already days into a deteriorating cascade. Visual inspection also requires removing the dressing — which itself cools the wound bed and tears fragile new tissue.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>The thermal signal</h3>
+        <p>A localized temperature rise of more than <b class="mono">2.2&nbsp;°C</b> over baseline is a definitive early biomarker of impending infection. The TMP117 resolves changes as fine as <b class="mono">0.0078&nbsp;°C</b>, well below the threshold that matters.</p>
+      </div>
+      <div class="card reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM4 9h1M19 9h1M4 14h1M19 14h1M9 4v1M14 4v1M9 19v1M14 19v1"/></svg></div>
+        <h3>The patch</h3>
+        <p>The sensor is mechanically and thermally integrated across four discrete layers of a flexible plaster, so it reads the heat radiating from the wound — and only the wound — without interference from room air.</p>
+      </div>
     </div>
-</div>
-
-<!-- ======================================================= -->
-<!-- WEEK 1 -->
-<!-- ======================================================= -->
-<section id="week1" class="py-5" style="background:#f8faff;">
-    <div class="container py-4">
-        <div class="text-center mb-5">
-            <div class="sec-tag">Week 1</div>
-            <div class="sec-title">Literature Review — Clinical Papers</div>
-            <p class="text-muted mt-2" style="max-width:650px;margin:auto;">Two peer-reviewed papers were reviewed to establish the clinical and experimental foundations for IWMTAS.</p>
-        </div>
-
-        <!-- PAPER 1 -->
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Research Article Review · Paper 1</div>
-                <h3>Clinical Significance of Wound Temperature Monitoring in Diabetic Foot Microcirculation Reconstruction</h3>
-                <div class="authors"><i class="fas fa-users me-2"></i>Hong Liu, Xian-Yan Yan, Guo-Qing Li, Bao-Na Wang, Dong Wang, Yong-Hong Zhang, Jin-Li Guo</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-virus text-primary me-2"></i>Clinical Background</h6>
-                            <p>Chronic hyperglycemia causes vascular endothelial damage, leading to micro-thrombosis and microcirculation failure. 25% of diabetic patients develop foot ulcers; 50–60% progress to chronic non-healing wounds without precise intervention.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-tools text-primary me-2"></i>Study Methodology</h6>
-                            <p>Retrospective analysis of 29 patients (Wagner grade ≥ 3). Infrared temperature recorded at wound center and distal tibia (5 cm above ankle) at admission, weekly for 1 month, then monthly. Room temperature controlled at 20–25°C.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-procedures text-primary me-2"></i>Treatment Applied</h6>
-                            <p>Transverse Tibial Bone Transport via distraction histogenesis stimulated neurovascular regeneration. Ultrasound debridement cleared biofilms. Silver-containing lipid hydrocolloid dressings maintained the wound microenvironment.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Clinical Images from Paper -->
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-images me-2 text-primary"></i>Clinical Images from Paper 1</h5>
-                <div class="row g-3 mb-4">
-                    <div class="col-md-4">
-                        <div class="fig-box">
-                            <img src="img/papers/w1p1_page-5.jpg" alt="Fig 2 – First wound diagnosis" style="height:260px;object-fit:cover;">
-                            <div class="fig-caption"><strong>Fig. 2</strong> — Initial wound diagnosis: ischemic necrosis on dorsal, plantar, and medial aspects of foot at admission (A), small incision for compartment drainage (B), drainage with silver hydrocolloid dressing (C).</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fig-box">
-                            <img src="img/papers/w1p1_page-6.jpg" alt="Fig 3 – Bone transport" style="height:260px;object-fit:cover;">
-                            <div class="fig-caption"><strong>Fig. 3</strong> — Post-transverse tibial bone transport: X-ray and photograph following surgery (A); extent of debridement on dorsal, plantar, and medial surfaces (B).</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fig-box">
-                            <img src="img/papers/w1p1_page-7.jpg" alt="Fig 4 – Healing progression" style="height:260px;object-fit:cover;">
-                            <div class="fig-caption"><strong>Fig. 4</strong> — Healing progression: Week 1 post-op (A) → 1 month (B) → 2 months (C) → 4 months (D) → 4.5 months fully healed (E).</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Temperature Table -->
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-table me-2 text-primary"></i>Temperature Monitoring Data — Wound Center vs Distal Tibia (°C)</h5>
-                <div class="table-responsive mb-3">
-                    <table class="table table-bordered data-table">
-                        <thead><tr>
-                            <th>Site</th><th>Admission</th><th>1 Week</th><th>2 Weeks</th><th>3 Weeks</th><th>4 Weeks</th><th>2 Months</th><th>3 Months</th>
-                        </tr></thead>
-                        <tbody>
-                            <tr><td><strong>Wound Center</strong></td><td>35.30</td><td>35.40</td><td>35.60</td><td>35.80</td><td>35.90</td><td>36.20</td><td>36.30</td></tr>
-                            <tr><td><strong>Distal Tibia</strong></td><td>35.40</td><td>35.60</td><td>35.80</td><td>35.80</td><td>35.90</td><td>36.10</td><td>36.30</td></tr>
-                            <tr><td><strong>P-Value</strong></td>
-                                <td><span class="badge-danger-sm">0.003</span></td>
-                                <td><span class="badge-warn-sm">&lt;0.05</span></td>
-                                <td><span class="badge-warn-sm">&lt;0.05</span></td>
-                                <td><span class="badge-warn-sm">0.012</span></td>
-                                <td><span class="badge-ok-sm">0.283 ✓</span></td>
-                                <td><span class="badge-ok-sm">0.752</span></td>
-                                <td><span class="badge-ok-sm">0.180</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="text-muted" style="font-size:0.83rem;"><i class="fas fa-info-circle text-primary me-1"></i><strong>Equilibrium Point at Week 4 (P=0.283):</strong> Convergence of temperatures between sites signals successful microcirculation reconstruction. A widening difference = poor perfusion → immediate intervention required.</p>
-
-                <div class="row g-3 mb-4 mt-3">
-                    <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>33°C Biological Threshold</strong><p>Below this level, neutrophil, fibroblast, and keratinocyte activity drops sharply — high risk of total healing failure.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-eye"></i></div><div class="finding-text"><strong>SMI Validation</strong><p>Superb Microvascular Imaging confirmed temperature rise directly correlates with increased microvascular density.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-award"></i></div><div class="finding-text"><strong>WIFi Grade Improvement</strong><p>Wound: 3→0, Ischemia: 1→0, Infection: 3→0. All statistically significant (P&lt;0.05).</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-percentage"></i></div><div class="finding-text"><strong>93% Limb Salvage Rate</strong><p>27 of 29 patients achieved wound repair. Zero re-amputations for protocol completers.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-calendar-check"></i></div><div class="finding-text"><strong>Healing Time Range</strong><p>Average healing ranged from 34 to 264 days. 2 cases of ulcer recurrence (7%), 1 ectopic ulcer (3.5%).</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-user-md"></i></div><div class="finding-text"><strong>64-year-old Case Study</strong><p>13-year diabetes history with gangrene. Achieved complete wound closure at 4.5 months after bone transport.</p></div></div>
-                    </div>
-                </div>
-
-                <div class="relevance-box">
-                    <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>This paper directly defines our core monitoring logic. The 33°C threshold will be programmed as a critical alert in our system. The Equilibrium Point concept (P&gt;0.05 between wound center and distal tibia) becomes our primary success metric, and the multi-site, multi-interval monitoring protocol forms the backbone of our sensor array design.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- PAPER 2 -->
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Technical Report Review · Paper 2</div>
-                <h3>Topical Radiant Heating (TRH) in Wound Healing — Experimental Study in a Donor Site Wound Model</h3>
-                <div class="authors"><i class="fas fa-flask me-2"></i>Warm-Up™ Dressing System (Arizant Healthcare) · Laser Doppler Imaging Study</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-sun text-primary me-2"></i>What is TRH?</h6>
-                            <p>Topical Radiant Heating delivers constant radiant heat at 38°C via the Warm-Up™ non-contact dressing. It maintains a humid microenvironment to facilitate re-epithelialization and collagen synthesis via Van't Hoff's Law and oxygen-dependent enzyme activity.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-vials text-primary me-2"></i>Study Design</h6>
-                            <p><strong>Study 1:</strong> n=20 healthy volunteers — intermittent TRH on right thigh, left as control.<br><strong>Study 2:</strong> n=12 skin graft patients — 6 received TRH, 6 standard dressings. Protocol: 3× 1-hour heating cycles over 5 hours at 38°C.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-microscope text-primary me-2"></i>Measurement Tools</h6>
-                            <p>Laser Doppler Imaging (helium-neon 632.8 nm) mapped dermal microvascular blood flow. Immunohistochemical analysis tracked NP57 (neutrophils), CD3 (T-lymphocytes), CD68 (macrophages) via Streptavidin-Biotin staining.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRH Image from Smart Band paper (related) -->
-                <div class="row g-3 mb-4">
-                    <div class="col-md-6">
-                        <div class="fig-box">
-                            <img src="img/papers/smartband_page-2.jpg" alt="Smart wound dressing concept" style="height:280px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Smart wound dressing concept — continuous monitoring of temperature and moisture within a flexible bandage (from related literature).</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="fig-box">
-                            <img src="img/papers/smartband_page-3.jpg" alt="Smart bandage system architecture" style="height:280px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Smart bandage system architecture showing sensor integration, wireless communication, and clinical diagnostics methodology.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRH Results -->
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-chart-bar me-2 text-primary"></i>Key Experimental Results</h5>
-                <div class="row g-3 mb-4">
-                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">83%</div><div class="rlabel">Blood flow ↑ — 1st heating cycle (uninjured, P&lt;0.001)</div></div></div>
-                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">103%</div><div class="rlabel">Blood flow ↑ — 2nd heating cycle (uninjured, P&lt;0.001)</div></div></div>
-                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">97%</div><div class="rlabel">Blood flow ↑ — injured skin during TRH (P&lt;0.001)</div></div></div>
-                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">195%</div><div class="rlabel">CD3 T-lymphocyte ↑ at Day 1 post-op (P&lt;0.05)</div></div></div>
-                </div>
-
-                <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-fire"></i></div><div class="finding-text"><strong>Van't Hoff's Law</strong><p>Applied heat at 38°C accelerates biochemical reactions — hyperthermia stimulates fibroblast proliferation and enhances polymorph chemotaxis and phagocytosis.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-tint"></i></div><div class="finding-text"><strong>Oxygen Tension Elevation</strong><p>TRH increases subcutaneous oxygen tension, enabling oxygen-dependent collagen cross-linking via prolyl 4-hydroxylase. Oxygen elevation persists up to 3 hours post-treatment.</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-shield-alt"></i></div><div class="finding-text"><strong>Immune Regulatory Effect</strong><p>Early lymphocytic infiltrate regulates neutrophil activity, preventing chaotic cytokine release — associated with superior healing prognosis.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-clock"></i></div><div class="finding-text"><strong>Temporal Blood Flow Dynamics</strong><p>Blood flow returns to baseline within 1 hour of TRH cessation. Subcutaneous oxygen tension remains elevated for up to 3 hours — informs therapy scheduling.</p></div></div>
-                    </div>
-                </div>
-
-                <div class="relevance-box">
-                    <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>TRH becomes our primary therapy module. The 38°C target, 1-hour cycle protocol, and 3-hour oxygen elevation window will directly shape our adaptive therapy scheduling algorithm. The LDI-validated blood flow response provides the scientific basis for using temperature as a real-time therapy response indicator.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- ======================================================= -->
-<!-- WEEK 2 -->
-<!-- ======================================================= -->
-<section id="week2" class="py-5" style="background:#fff;">
-    <div class="container py-4">
-        <div class="text-center mb-5">
-            <div class="sec-tag">Week 2</div>
-            <div class="sec-title">Thermal Monitoring Methods & Wound Healing Biology</div>
-            <p class="text-muted mt-2" style="max-width:650px;margin:auto;">Evaluated all temperature measurement technologies for wound monitoring suitability, and reviewed the physiological mechanisms of wound healing.</p>
-        </div>
+<div class="divider"></div>
 
-        <!-- Temperature Comparison -->
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Week 2 · Document 1</div>
-                <h3>Temperature Measurement Methods for Wound Monitoring — Comparison Table</h3>
-                <div class="authors"><i class="fas fa-table me-2"></i>Literature-Based Comparative Analysis</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered sensor-table">
-                        <thead><tr>
-                            <th>Method</th><th>Accuracy</th><th>Response</th><th>Real-Time Suitability</th><th>Pros</th><th>Cons</th>
-                        </tr></thead>
-                        <tbody>
-                            <tr><td><strong>Thermistor (NTC)</strong></td><td>±0.1–0.2°C</td><td>Fast</td><td class="highlight">Excellent</td><td>Highly sensitive 30–40°C; low cost; miniaturizable</td><td>Non-linear; requires calibration</td></tr>
-                            <tr><td><strong>RTD (Platinum)</strong></td><td>±0.15°C (Class A)</td><td>Moderate</td><td>Moderate–Good</td><td>Stable; linear; highly accurate</td><td>Expensive; rigid forms less conformal</td></tr>
-                            <tr><td><strong>Thermocouple</strong></td><td>±0.5–1°C</td><td>Very Fast</td><td>Moderate</td><td>Wide temperature range; fast</td><td>Low sensitivity in bio-range; needs cold-junction</td></tr>
-                            <tr><td><strong>Digital IC (TMP117)</strong></td><td class="highlight">±0.1°C</td><td>Fast</td><td class="highlight">Excellent</td><td>I2C direct; no calibration; ultra-low power</td><td>Higher unit cost than thermistors</td></tr>
-                            <tr><td><strong>Infrared (IR)</strong></td><td>±0.3–0.5°C</td><td>Instant</td><td>Good (non-contact)</td><td>No skin contact; fast scanning</td><td>Biofilm interference; surface-only</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="row g-3 mb-4">
-                    <div class="col-md-4">
-                        <div class="fig-box">
-                            <img src="img/papers/w2acad_page-01.jpg" alt="Academic Report Page 1" style="height:220px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Academic Report — Physiological Mechanisms of Wound Healing and the Role of Thermal Monitoring (Page 1).</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fig-box">
-                            <img src="img/papers/w2acad_page-02.jpg" alt="Academic Report Page 2" style="height:220px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Cellular proliferation classification and Basement Membrane role in tissue regeneration vs. repair pathways.</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fig-box">
-                            <img src="img/papers/smartband_page-1.jpg" alt="Smart Band Paper" style="height:220px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Referenced paper: Smart Band for Wound Monitoring Using Temperature and Moisture Sensor (IJNRD, 2025).</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relevance-box">
-                    <strong><i class="fas fa-link me-2"></i>Week 2 Conclusion</strong>
-                    <p>Based on the comparison, the <strong>digital IC sensor (TMP117)</strong> was identified as the primary candidate — offering ±0.1°C accuracy, I2C interface, no calibration requirement, and ultra-low power. Wound healing biology review confirmed: temperature tracks all three healing phases (inflammation, proliferation, remodeling), making continuous monitoring scientifically valid.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Wound Healing Biology -->
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Week 2 · Document 2</div>
-                <h3>Academic Report: Physiological Mechanisms of Wound Healing & Role of Thermal Monitoring</h3>
-                <div class="authors"><i class="fas fa-book me-2"></i>Resource Book Analysis — Ratnatunga Clinical Framework</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-redo text-primary me-2"></i>Tissue Restitution</h6>
-                            <p>Re-establishment of epithelial continuity via migration of existing cells — occurs before proliferation and inflammation. Example: gastric erosion recovery.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-dna text-primary me-2"></i>Tissue Regeneration</h6>
-                            <p>Replacement of lost cells with the same cell type. Requires intact Basement Membrane (BM) and surviving stem cells. Labile and stable cells can regenerate.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-band-aid text-primary me-2"></i>Tissue Repair (Scarring)</h6>
-                            <p>When BM is destroyed — damaged tissue is replaced by fibrous scar tissue through granulation tissue formation and collagen deposition.</p>
-                        </div>
-                    </div>
-                </div>
-                <h6 class="fw-bold mb-3" style="color:var(--dark-blue)">Cell Proliferation Classification</h6>
-                <div class="table-responsive">
-                    <table class="table table-bordered sensor-table">
-                        <thead><tr><th>Category</th><th>Behavior</th><th>Examples</th><th>Thermal Significance</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>Labile Cells</strong></td><td>Multiply continuously throughout life</td><td>Skin, epithelium, bone marrow</td><td>High metabolic activity → elevated temperature signal</td></tr>
-                            <tr><td><strong>Stable (Quiescent) Cells</strong></td><td>Low baseline, rapid mitosis on stimulus</td><td>Liver, kidney, fibroblasts, vascular endothelium</td><td>Temperature rise indicates activation</td></tr>
-                            <tr><td><strong>Permanent Cells</strong></td><td>Cannot divide post-natally</td><td>Nerve cells, cardiac muscle, skeletal muscle</td><td>Loss = irreversible; cold spots signal necrosis</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<!-- ===================== SCIENCE ===================== -->
+<section id="science">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">The Science</div>
+      <h2 class="sec-title">Reading temperature like a clinician</h2>
+      <p class="sec-sub">Healing is not a uniform event — it is a moving thermal map. Understanding where heat belongs lets the system tell ordinary healing apart from danger.</p>
     </div>
+
+    <div class="scale-card reveal">
+      <h3 style="font-size:1.3rem;margin-bottom:6px;font-family:'Bricolage Grotesque'">The wound thermal spectrum</h3>
+      <p style="color:var(--dim);font-weight:300;font-size:.95rem">From the optimal healing window to the unmistakable signature of active infection.</p>
+      <div class="scale-bar">
+        <div class="tick" style="left:30%"><div class="lab">33–35°C</div><div class="sub">optimal bed</div><div class="pin"></div></div>
+        <div class="tick below" style="left:56%"><div class="pin"></div><div class="lab">+2.2°C</div><div class="sub">alert threshold</div></div>
+        <div class="tick" style="left:88%"><div class="lab">&gt;39.5°C</div><div class="sub">active infection</div><div class="pin"></div></div>
+      </div>
+      <div class="legend">
+        <div class="leg"><div class="sw" style="background:linear-gradient(#0ea5e9,#22d3ee)"></div><div><b>Healthy wound bed</b><p>An open bed loses heat by evaporative cooling. Optimal repair happens at 33–35°C; below 33°C, fibroblast activity stalls.</p></div></div>
+        <div class="leg"><div class="sw" style="background:linear-gradient(#a3e635,#fde047)"></div><div><b>Warm periwound</b><p>Intact skin around the wound runs warmer thanks to healthy perfusion — a good prognostic sign when it stays warmer than the bed.</p></div></div>
+        <div class="leg"><div class="sw" style="background:linear-gradient(#fb923c,#ef4444)"></div><div><b>Infection signature</b><p>A uniform rise across bed and periwound, or 2–3°C above the matching healthy limb, flags deep microbial colonisation.</p></div></div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:22px">
+      <div class="card reveal d1"><h3 style="font-size:1.05rem">① Hemostasis</h3><p>Within seconds: vasoconstriction and a fibrin–platelet clot seal the wound and recruit immune cells.</p></div>
+      <div class="card reveal d2"><h3 style="font-size:1.05rem">② Inflammation</h3><p>24h–7 days: neutrophils then macrophages clear debris and bacteria — the heat-producing phase.</p></div>
+      <div class="card reveal d3"><h3 style="font-size:1.05rem">③ Proliferation</h3><p>Day 3–21: granulation tissue, new vessels, and keratinocytes migrate inward to rebuild the defect.</p></div>
+      <div class="card reveal d4"><h3 style="font-size:1.05rem">④ Maturation</h3><p>21 days–1 yr: collagen remodels and cross-links, restoring up to 70–80% of original tensile strength.</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- ======================================================= -->
-<!-- WEEK 3 -->
-<!-- ======================================================= -->
-<section id="week3" class="py-5" style="background:#f8faff;">
-    <div class="container py-4">
-        <div class="text-center mb-5">
-            <div class="sec-tag">Week 3</div>
-            <div class="sec-title">Sensor Selection, Hardware Specification & Manufacturing Plan</div>
-            <p class="text-muted mt-2" style="max-width:650px;margin:auto;">Detailed analysis of the TMP117 sensor architecture, comparison with alternatives, flexible PCB fabrication options, and project budget planning.</p>
-        </div>
+<div class="divider"></div>
 
-        <!-- TMP117 Architecture -->
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Week 3 · Document 1</div>
-                <h3>Sensor Technology for Wound Monitoring: TMP117 Architecture, Size & Application</h3>
-                <div class="authors"><i class="fas fa-microchip me-2"></i>Texas Instruments TMP117 · Flexible Bioelectronic Systems Research</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="row g-3 mb-4">
-                    <div class="col-md-6">
-                        <div class="fig-box">
-                            <img src="img/papers/w3sensor_page-1.jpg" alt="Sensor Operation Document" style="height:300px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">TMP117 sensor operation, size specifications, and wound bandage integration methodology.</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="fig-box">
-                            <img src="img/papers/w3sensor_page-2.jpg" alt="Sensor Application Document" style="height:300px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Smart bandage architecture — flexible substrate integration, biocompatible encapsulation, wireless mapping, and clinical diagnostic application.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-microchip text-primary me-2"></i>How TMP117 Works</h6>
-                            <p>Uses a thermal BJT coupled with a 16-bit ADC for digital conversion. Operates at 3.5 µA (1-Hz cycle) and 150 nA in shutdown mode — prevents self-heating. Outputs via I2C/SMBus. Averaging mode (8 readings) reduces thermal noise to achieve ±0.1°C clinical-grade accuracy.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-ruler-combined text-primary me-2"></i>Physical Dimensions</h6>
-                            <p><strong>WSON Package:</strong> 2.00 mm × 2.00 mm<br><strong>DSBGA Package:</strong> 1.53 mm × 1.00 mm (grain of sand)<br><strong>Array Thickness:</strong> 12–50 µm on polyimide substrate — thinner than a strand of human hair.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-layer-group text-primary me-2"></i>Smart Bandage Integration</h6>
-                            <p>Sensors mounted on Flexible PCB (FPCB) to conform to wound topography. Sealed in medical-grade silicone (PDMS) for biocompatibility. Wireless via BLE/NFC. Array creates continuous thermal map — hot spots = infection, cold spots = ischemia.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sensor Comparison Table -->
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-balance-scale me-2 text-primary"></i>NTC Thermistor vs TMP117 — Engineering Comparison</h5>
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered sensor-table">
-                        <thead><tr><th>Feature</th><th>Analog NTC Thermistor</th><th class="highlight">Digital TMP117 (Selected)</th></tr></thead>
-                        <tbody>
-                            <tr><td>Price per unit</td><td>~$0.05–$0.20 (bare SMD)</td><td class="highlight">~$1.50–$4.00 bare IC</td></tr>
-                            <tr><td>Ease of use</td><td>Hard — Steinhart-Hart calibration, voltage divider needed</td><td class="highlight">Very Easy — I2C direct, zero calibration</td></tr>
-                            <tr><td>Output type</td><td>Analog (resistance)</td><td class="highlight">Digital (I2C protocol)</td></tr>
-                            <tr><td>Accuracy</td><td>High but requires complex calibration</td><td class="highlight">±0.1°C medical-grade out of box</td></tr>
-                            <tr><td>Self-heating risk</td><td>Moderate (current-driven)</td><td class="highlight">Minimal (3.5 µA operation)</td></tr>
-                            <tr><td>Array scalability</td><td>Difficult (each needs individual ADC channel)</td><td class="highlight">Easy (multiple I2C addresses)</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Manufacturing & Budget -->
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Week 3 · Document 2</div>
-                <h3>Sensor Array Manufacturing, Materials & Budget Plan</h3>
-                <div class="authors"><i class="fas fa-industry me-2"></i>Flexible PCB Fabrication · Component Sourcing · Cost Analysis</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="row g-3 mb-4">
-                    <div class="col-md-6">
-                        <div class="fig-box">
-                            <img src="img/papers/w3budget_page-1.jpg" alt="Manufacturing and Budget Plan" style="height:280px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Sensor Array Manufacturing, Materials, and Budget Plan — FPCB fabrication options and cost breakdown.</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="fig-box">
-                            <img src="img/papers/w3budget_page-2.jpg" alt="Budget Plan Page 2" style="height:280px;object-fit:cover;object-position:top;">
-                            <div class="fig-caption">Alternative sensor comparison table and biocompatible encapsulation material specifications.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-industry me-2 text-primary"></i>FPCB Fabrication Options</h5>
-                <div class="row g-3 mb-4">
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6 class="text-success"><i class="fas fa-star me-2"></i>JLCPCB (Recommended)</h6>
-                            <p>Low-cost polyimide flex PCBs starting ~$15–$30 for small batches. Excellent for student FYP prototypes. Upload Gerber files (KiCad/Altium/Eagle).</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-tools me-2"></i>PCBWay</h6>
-                            <p>Excellent rapid-prototyping with stiffener options and custom thicknesses. Good for second iteration with more precise requirements.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="info-box">
-                            <h6><i class="fas fa-hospital me-2"></i>Epec / PCB Unlimited</h6>
-                            <p>USA-based clinical-grade production. More expensive — suitable for advanced clinical prototype if funding allows.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-list-alt me-2 text-primary"></i>Sensor Alternatives Evaluated</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered sensor-table">
-                        <thead><tr><th>Sensor</th><th>Manufacturer</th><th>Accuracy</th><th>Interface</th><th>Key Advantage</th><th>Approx. Price</th></tr></thead>
-                        <tbody>
-                            <tr class="table-primary"><td><strong>TMP117 ✓ (Primary)</strong></td><td>Texas Instruments</td><td class="highlight">±0.1°C</td><td>I2C</td><td>Ultra-low power, clinical grade</td><td>~$2–4 USD</td></tr>
-                            <tr><td>TMP119</td><td>Texas Instruments</td><td class="highlight">±0.03°C</td><td>I2C</td><td>Direct upgrade to TMP117, smaller package</td><td>~$3–6 USD</td></tr>
-                            <tr><td>MAX30205</td><td>Analog Devices</td><td>±0.1°C</td><td>I2C</td><td>Calibrated for 37–39°C, meets ASTM specs</td><td>~$3–5 USD</td></tr>
-                            <tr><td>SHT45</td><td>Sensirion</td><td>±0.1°C</td><td>I2C</td><td>Measures Temperature AND Humidity</td><td>~$4–7 USD</td></tr>
-                            <tr><td>SHT31-D</td><td>Sensirion</td><td>±0.2°C</td><td>I2C</td><td>Breakout board available; dual measurement</td><td>$2.50–$13.95</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="relevance-box mt-4">
-                    <strong><i class="fas fa-check-circle me-2"></i>Week 3 Decision</strong>
-                    <p>The <strong>TMP117</strong> is confirmed as the primary sensor for the IWMTAS prototype. Its ±0.1°C accuracy matches the clinical requirements identified in Week 1 (33°C threshold detection), the I2C interface simplifies multi-sensor array wiring, and the ultra-low 3.5 µA power prevents self-heating artefacts. JLCPCB will be used for FPCB fabrication in future weeks.</p>
-                </div>
-            </div>
-        </div>
+<!-- ===================== ARCHITECTURE ===================== -->
+<section id="architecture">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">System Architecture</div>
+      <h2 class="sec-title">From heat at the skin to an alert on a screen</h2>
+      <p class="sec-sub">The signal chain that turns a fraction of a degree into a clinically actionable warning, built on an ESP32 core with scalable I²C sensing.</p>
     </div>
+
+    <div class="flow reveal">
+      <div class="node"><div class="step">01 · SENSE</div><h4>TMP117</h4><p>16-bit reading, ±0.1°C, NIST-traceable, EEPROM offset trim.</p>
+        <span class="ar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="node"><div class="step">02 · EXPAND</div><h4>TCA9548A</h4><p>8-channel I²C switch lifts the 4-address limit to dozens of sensors.</p>
+        <span class="ar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="node"><div class="step">03 · CARRY</div><h4>PCA9615 / ESP-NOW</h4><p>Differential I²C over twisted-pair, or low-power 2.4 GHz wireless.</p>
+        <span class="ar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="node"><div class="step">04 · DECIDE</div><h4>ESP32</h4><p>Decodes two's-complement data and checks the +2.2°C alert rule.</p>
+        <span class="ar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="node"><div class="step">05 · LOG</div><h4>microSD</h4><p>Time-stamped CSV records on a fault-tolerant FAT32 file system.</p></div>
+    </div>
+
+    <div class="hw">
+      <span class="hwchip"><b>4</b> native I²C addresses (0x48–0x4B)</span>
+      <span class="hwchip">up to <b>256</b> sensors via cascaded multiplexers</span>
+      <span class="hwchip">differential link to <b>~30 m</b></span>
+      <span class="hwchip">ESP-NOW range <b>&gt;100 m</b></span>
+      <span class="hwchip"><b>3.5 µA</b> active · <b>150 nA</b> sleep</span>
+      <span class="hwchip">4 monitored zones: bed · periwound · control · ambient</span>
+    </div>
+  </div>
 </section>
 
-<!-- COMING SOON -->
-<section class="py-5 bg-white">
-    <div class="container py-3">
-        <div class="text-center mb-5">
-            <div class="sec-tag">Up Next</div>
-            <div class="sec-title" style="font-size:1.6rem;">Upcoming Weeks</div>
-            <p class="text-muted mt-2">Research and development continues — new content added weekly.</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-3 col-sm-6">
-                <div class="coming-card">
-                    <i class="fas fa-drafting-compass"></i>
-                    <h5>Week 4</h5>
-                    <p class="mb-2">System Architecture Design &amp; Circuit Schematic</p>
-                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="coming-card">
-                    <i class="fas fa-code"></i>
-                    <h5>Week 5</h5>
-                    <p class="mb-2">Firmware Development &amp; Alert Threshold Programming</p>
-                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="coming-card">
-                    <i class="fas fa-cubes"></i>
-                    <h5>Weeks 6–8</h5>
-                    <p class="mb-2">Prototype Build, PCB Assembly &amp; Initial Testing</p>
-                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="coming-card">
-                    <i class="fas fa-clipboard-check"></i>
-                    <h5>Weeks 9–12</h5>
-                    <p class="mb-2">Clinical Validation, Analysis &amp; Final Report</p>
-                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
-                </div>
-            </div>
-        </div>
+<div class="divider"></div>
+
+<!-- ===================== WEEK 4 DEEP DIVE ===================== -->
+<section id="week4">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Week 4 · Deep Dive</div>
+      <h2 class="sec-title">The four-stage temperature integration</h2>
+      <p class="sec-sub">This is the core of my Week 4 contribution: how the TMP117 is mechanically and thermally built into the plaster so it reports the true wound temperature — and the PCB rules that keep the sensor from corrupting its own reading.</p>
     </div>
+
+    <div class="patch-wrap reveal">
+      <!-- cross-section -->
+      <div class="stack">
+        <div class="ambient">
+          <div class="arrow-amb">room air<div class="ln"></div></div>
+          <div class="arrow-amb">A/C draft<div class="ln"></div></div>
+          <div class="arrow-amb">ambient<div class="ln"></div></div>
+        </div>
+        <div class="layer s4">
+          <div class="lnum">4</div>
+          <div class="lmeta"><b>Encapsulation &amp; ambient shield</b><span>closed-cell PU / silicone foam</span></div>
+        </div>
+        <div class="layer s3">
+          <div class="lnum">3</div>
+          <div class="lmeta"><b>Hydrogel &amp; passivation</b><span>chitosan gel · conformal coating</span></div>
+        </div>
+        <div class="layer s2">
+          <div class="lnum">2</div>
+          <div class="lmeta"><b>Flex PCB &amp; traces</b><span>polyimide / PET</span></div>
+          <div class="chip"><span class="blink"></span>TMP117</div>
+        </div>
+        <div class="layer s1">
+          <div class="lnum">1</div>
+          <div class="lmeta"><b>Wound interface</b><span>≈100 µm silicone adhesive</span></div>
+        </div>
+        <div class="woundbed">
+          <b>Wound bed</b> &nbsp;<span>heat source</span>
+          <div class="heat"><span class="w"></span><span class="w"></span><span class="w"></span><span class="w"></span></div>
+        </div>
+      </div>
+
+      <!-- copy -->
+      <div class="patch-copy">
+        <h3>Heat flows up; the room is shut out</h3>
+        <p><b style="color:var(--text)">Stage 1</b> keeps the substrate beneath the sensor exceptionally thin (~100 µm) so wound heat transfers with minimal thermal lag. <b style="color:var(--text)">Stage 2</b> places the TMP117 at the exact geometric centre of the patch — directly over the deepest part of the wound — with its thermal pad soldered to a copper/silver pad for a direct path into the silicon die.</p>
+        <p><b style="color:var(--text)">Stage 3</b> coats the sensor in a thermally conductive but electrically insulating conformal layer, so hydrogel moisture can't short the I²C pins while heat still passes freely. <b style="color:var(--text)">Stage 4</b> — the most critical layer for accuracy — caps the top and sides with dense foam, forcing the sensor to measure heat radiating from below rather than the hospital's air conditioning.</p>
+
+        <h3 style="font-size:1.15rem;margin-top:28px;margin-bottom:14px">PCB layout rules for honest readings</h3>
+        <ul class="ruleslist">
+          <li><span class="mk">01</span><span><b>Zero self-heating.</b> One-shot mode at 1 Hz: wake, draw ~3.5 µA for a single reading, drop to 150 nA sleep — so the chip never warms its own data.</span></li>
+          <li><span class="mk">02</span><span><b>Pull-up isolation.</b> SDA/SCL pull-up resistors sit 5–10 mm away, since current through them dissipates heat.</span></li>
+          <li><span class="mk">03</span><span><b>Decoupling cap.</b> A 0.1 µF bypass capacitor next to V+/GND filters power-supply noise from the ESP32's Bluetooth radio.</span></li>
+          <li><span class="mk">04</span><span><b>Thermal relief.</b> Traces are kept as thin as safe so they can't act as heatsinks and pull heat away from the sensor.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer-main">
-    <div class="container">
-        <div class="row g-5 pb-4">
-            <div class="col-md-4">
-                <h5><i class="fas fa-heartbeat me-2" style="color:var(--accent)"></i>IWMTAS</h5>
-                <p>Intelligent Wound Monitoring and Therapy Adjustment System<br>EE405 — Undergraduate Project I, 2025–2026</p>
-                <p>Biomedical Engineering · Smart Healthcare · Thermal Sensing</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Portfolio Sections</h5>
-                <a href="#week1">Week 1 — Literature Review</a>
-                <a href="#week2">Week 2 — Thermal Methods &amp; Biology</a>
-                <a href="#week3">Week 3 — Sensor &amp; Hardware</a>
-                <a href="#" style="opacity:0.5;">Week 4 — Coming Soon</a>
-                <a href="#" style="opacity:0.5;">Week 5 — Coming Soon</a>
-                <a href="team.html" style="margin-top:8px;color:#ade8f4;">Meet the Team →</a>
-            </div>
-            <div class="col-md-4">
-                <h5>Key Technologies</h5>
-                <a href="#">TMP117 Digital Temperature Sensor</a>
-                <a href="#">Flexible PCB (FPCB) on Polyimide</a>
-                <a href="#">Topical Radiant Heating (TRH)</a>
-                <a href="#">BLE / NFC Wireless Communication</a>
-                <a href="#">WIFi Wound Classification</a>
-                <a href="#">SMI Microvascular Imaging</a>
-            </div>
-        </div>
+<div class="divider"></div>
+
+<!-- ===================== WEEKLY PROGRESS ===================== -->
+<section id="weeks">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Weekly Progress</div>
+      <h2 class="sec-title">My project log, week by week</h2>
+      <p class="sec-sub">Each week links straight to its Google Drive folder with the full documentation, files and notes.</p>
     </div>
+
+    <div class="note-banner reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.3 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.3a2 2 0 0 0-3.4 0z"/></svg>
+      <span><b style="color:var(--text)">Heads-up:</b> Week 4 is filled in from your uploaded documents. The summaries for Weeks 1–3 are <b style="color:var(--text)">suggested placeholders</b> based on a typical project progression — open <code class="mono" style="color:var(--teal)">index.html</code> and edit the text in each card to match what you actually did. The Drive links are exactly as you provided them.</span>
+    </div>
+
+    <div class="weeks">
+      <div class="week reveal d1">
+        <div class="wk-top"><span class="wk-no">WEEK 01</span><span class="badge edit">editable</span></div>
+        <h3>Foundation &amp; research <span class="edit-flag">replace me</span></h3>
+        <p>Defining the clinical problem and reviewing the literature on diabetic wound healing, infection biomarkers and existing smart-bandage work.</p>
+        <ul><li>Problem statement &amp; project scope</li><li>Literature review on wound thermography</li><li>Initial requirements gathering</li></ul>
+        <a class="wk-link" href="https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r?usp=drive_link" target="_blank" rel="noopener">Open Week 1 folder
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+
+      <div class="week reveal d2">
+        <div class="wk-top"><span class="wk-no">WEEK 02</span><span class="badge edit">editable</span></div>
+        <h3>Sensor selection <span class="edit-flag">replace me</span></h3>
+        <p>Comparing temperature-sensing technologies and justifying the TMP117 over thermistors and RTDs on accuracy, power and integration.</p>
+        <ul><li>TMP117 vs. thermistor vs. RTD trade study</li><li>System-level requirements</li><li>Component shortlist &amp; sourcing</li></ul>
+        <a class="wk-link" href="https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI?usp=drive_link" target="_blank" rel="noopener">Open Week 2 folder
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+
+      <div class="week reveal d3">
+        <div class="wk-top"><span class="wk-no">WEEK 03</span><span class="badge edit">editable</span></div>
+        <h3>System architecture <span class="edit-flag">replace me</span></h3>
+        <p>Designing the overall electronics: the ESP32 core, the I²C bus, multiplexing for many sensors and the wired/wireless communication topology.</p>
+        <ul><li>Block diagram &amp; data flow</li><li>I²C addressing &amp; multiplexing plan</li><li>Communication &amp; logging strategy</li></ul>
+        <a class="wk-link" href="https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf?usp=drive_link" target="_blank" rel="noopener">Open Week 3 folder
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+
+      <div class="week feature reveal d4">
+        <div class="wk-top"><span class="wk-no">WEEK 04</span><span class="badge live">documented</span></div>
+        <h3>Temperature sensing architecture</h3>
+        <p>The complete four-stage thermal integration of the TMP117 into the flexible patch, plus the PCB layout rules and the full sense-to-alert signal pipeline.</p>
+        <ul><li>4-stage mechanical &amp; thermal integration</li><li>Zero self-heating PCB design rules</li><li>Distributed TMP117 array &amp; calibration</li></ul>
+        <a class="wk-link" href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener">Open Week 4 folder
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===================== RESOURCES ===================== -->
+<section id="resources">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Resources &amp; Links</div>
+      <h2 class="sec-title">Everything in one place</h2>
+      <p class="sec-sub">The complete project Drive, every weekly folder, and the background reference material.</p>
+    </div>
+
+    <div class="res-grid">
+      <div class="res-main reveal">
+        <h3>Project Google Drive</h3>
+        <p>The full project folder containing all weeks, documents and supporting files.</p>
+        <div class="reslist">
+          <a class="reslink" href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">
+            <div class="l"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><b>Full project folder</b><span>all weeks · master drive</span></div></div>
+            <span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+          <a class="reslink" href="https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r?usp=drive_link" target="_blank" rel="noopener">
+            <div class="l"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><b>Week 1</b><span>foundation &amp; research</span></div></div>
+            <span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+          <a class="reslink" href="https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI?usp=drive_link" target="_blank" rel="noopener">
+            <div class="l"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><b>Week 2</b><span>sensor selection</span></div></div>
+            <span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+          <a class="reslink" href="https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf?usp=drive_link" target="_blank" rel="noopener">
+            <div class="l"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><b>Week 3</b><span>system architecture</span></div></div>
+            <span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+          <a class="reslink" href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener">
+            <div class="l"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><b>Week 4</b><span>temperature sensing architecture</span></div></div>
+            <span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-side reveal d2">
+        <a class="vid" href="https://youtu.be/Wu8CXYFqvc4?si=EARSSprH36dLhPZ8" target="_blank" rel="noopener" title="Watch the wound healing reference video">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        <div>
+          <h4>Reference: Wound Healing</h4>
+          <p>Background video on the biology of wound healing that supports the thermal model used in this project.</p>
+        </div>
+        <a class="wk-link" href="https://youtu.be/Wu8CXYFqvc4?si=EARSSprH36dLhPZ8" target="_blank" rel="noopener" style="align-self:flex-start">Watch on YouTube
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>Smart Diabetic Wound Patch</b>
+        <p>A four-stage flexible patch using the TI TMP117 for high-precision thermal monitoring and early infection detection. Final Year Project.</p>
+        <div class="team-card">
+          <div class="row"><span class="k">project type</span><span class="v">Group FYP</span></div>
+          <div class="row"><span class="k">my role</span><span class="v">Team member <span class="edit-flag">not group leader</span></span></div>
+          <div class="row"><span class="k">my focus</span><span class="v">Temperature sensing (Week 4)</span></div>
+          <div class="row"><span class="k">name</span><span class="v" style="color:var(--faint)">— add your name —</span></div>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Sections</h5>
+        <a href="#overview">Overview</a>
+        <a href="#science">The Science</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#week4">Week 4 deep dive</a>
+        <a href="#weeks">Weekly progress</a>
+      </div>
+      <div class="foot-col">
+        <h5>Project files</h5>
+        <a href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">Full Drive folder</a>
+        <a href="https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r?usp=drive_link" target="_blank" rel="noopener">Week 1</a>
+        <a href="https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI?usp=drive_link" target="_blank" rel="noopener">Week 2</a>
+        <a href="https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf?usp=drive_link" target="_blank" rel="noopener">Week 3</a>
+        <a href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener">Week 4</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> · Smart Wound Patch FYP</span>
+      <span>Built as a project showcase · edit freely</span>
+    </div>
+  </div>
 </footer>
-<div class="footer-copy">
-    © 2025–2026 IWMTAS FYP Portfolio &nbsp;|&nbsp; Designed By <a href="https://htmlcodex.com" style="color:rgba(255,255,255,0.5);">HTML Codex</a>
-</div>
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-primary btn-lg-square back-to-top" style="position:fixed;right:30px;bottom:30px;z-index:99;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--mid-blue);border:none;"><i class="fa fa-arrow-up text-white"></i></a>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
 <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-            e.preventDefault();
-            const t = document.querySelector(a.getAttribute('href'));
-            if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
-        });
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // sticky nav border
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30));
+
+  // mobile menu toggle
+  const navLinks = document.getElementById('navlinks');
+  document.getElementById('navToggle').addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    if(!open){
+      navLinks.style.position='absolute';navLinks.style.top='62px';navLinks.style.right='28px';
+      navLinks.style.flexDirection='column';navLinks.style.background='var(--elev)';
+      navLinks.style.border='1px solid var(--line)';navLinks.style.padding='10px';navLinks.style.borderRadius='12px';
+    }
+  });
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    if(innerWidth<=860) navLinks.style.display='none';
+  }));
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+  // active nav highlight
+  const secs = [...document.querySelectorAll('section[id]')];
+  const linkMap = {};
+  navLinks.querySelectorAll('a').forEach(a=>linkMap[a.getAttribute('href').slice(1)] = a);
+  const spy = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.querySelectorAll('a').forEach(a=>a.classList.remove('active'));
+        const id = e.target.id;
+        if(linkMap[id]) linkMap[id].classList.add('active');
+      }
     });
-    // Week tab active state on scroll
-    const sections = ['week1','week2','week3'];
-    window.addEventListener('scroll', () => {
-        sections.forEach(id => {
-            const el = document.getElementById(id);
-            if(!el) return;
-            const rect = el.getBoundingClientRect();
-            const tab = document.querySelector(`.week-tab[href="#${id}"]`);
-            if(tab) tab.classList.toggle('active', rect.top <= 120 && rect.bottom > 120);
-        });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>spy.observe(s));
+
+  // animated stat counters
+  const fmt = (v)=> (v % 1 === 0 ? v.toFixed(0) : v.toFixed(1));
+  const statIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseFloat(el.dataset.target);
+      const pre = el.dataset.prefix || '';
+      const suf = el.dataset.suffix || '';
+      let cur = 0, steps = 38, inc = target/steps;
+      const tick = ()=>{
+        cur += inc;
+        if(cur >= target){ el.textContent = pre + fmt(target) + suf; }
+        else { el.textContent = pre + fmt(cur) + suf; requestAnimationFrame(tick); }
+      };
+      tick();
+      statIO.unobserve(el);
     });
+  },{threshold:.5});
+  document.querySelectorAll('.stat .num[data-target]').forEach(el=>statIO.observe(el));
 </script>
 </body>
 </html>
