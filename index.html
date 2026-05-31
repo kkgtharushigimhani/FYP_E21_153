@@ -1,142 +1,777 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="IWMTAS EE405 Final Year Project Portfolio">
-  <title>Home | IWMTAS</title>
-  <link rel="icon" href="assets/images/icons/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="utf-8">
+    <title>IWMTAS — Intelligent Wound Monitoring & Therapy Adjustment System</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="wound monitoring, diabetic foot ulcer, thermal monitoring, smart bandage, TMP117, FYP" name="keywords">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/animate/animate.min.css"/>
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0096c7;
+            --dark-blue: #03045e;
+            --mid-blue: #0077b6;
+            --light-blue: #caf0f8;
+            --accent: #00b4d8;
+        }
+        body { font-family: 'Inter', sans-serif; }
+
+        /* NEUTRALISE ELECTRA GHOST OVERLAY */
+        .header-top { height: auto !important; position: static !important; }
+        .header-top::before, .header-top::after { display: none !important; content: none !important; }
+        .navbar-brand-2::before, .navbar-brand-2::after { display: none !important; content: none !important; }
+        .header-carousel { display: none !important; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
+
+        /* NAV */
+        .topnav { background: var(--dark-blue); padding: 10px 0; }
+        .topnav span { color: #ade8f4; font-size: 0.82rem; }
+        .topnav span i { color: var(--accent); margin-right: 6px; }
+        .main-nav { background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 999; }
+        .main-nav .navbar-brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--dark-blue) !important; }
+        .main-nav .nav-link { font-weight: 500; color: #333; font-size: 0.9rem; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s; }
+        .main-nav .nav-link:hover, .main-nav .nav-link.active { background: var(--light-blue); color: var(--mid-blue); }
+
+        /* HERO */
+        .hero { background: linear-gradient(135deg, #03045e 0%, #0077b6 60%, #00b4d8 100%); min-height: 88vh; display: flex; align-items: center; }
+        .hero-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #ade8f4; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1.15; }
+        .hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 540px; }
+        .stat-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 22px; text-align: center; }
+        .stat-card .num { font-size: 2.2rem; font-weight: 800; color: #fff; }
+        .stat-card .label { font-size: 0.78rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+        .btn-hero-primary { background: #fff; color: var(--mid-blue); font-weight: 700; padding: 13px 28px; border-radius: 10px; border: none; transition: all 0.3s; }
+        .btn-hero-primary:hover { background: var(--light-blue); }
+        .btn-hero-outline { border: 2px solid rgba(255,255,255,0.6); color: #fff; font-weight: 600; padding: 11px 26px; border-radius: 10px; background: transparent; transition: all 0.3s; }
+        .btn-hero-outline:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+        /* WEEK TABS */
+        .week-nav { background: #f8f9fa; border-bottom: 2px solid #e9ecef; }
+        .week-tab { display: inline-block; padding: 14px 24px; font-weight: 600; font-size: 0.88rem; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; color: #666; transition: all 0.3s; white-space: nowrap; }
+        .week-tab.active { border-bottom-color: var(--mid-blue); color: var(--mid-blue); }
+        .week-tab.disabled { color: #bbb; cursor: default; }
+        .week-tab:hover:not(.disabled) { color: var(--mid-blue); }
+
+        /* SECTION HEADERS */
+        .sec-tag { display: inline-block; background: #e0f4ff; color: var(--mid-blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 10px; }
+        .sec-title { font-size: 2rem; font-weight: 800; color: var(--dark-blue); }
+
+        /* PAPER CARDS */
+        .paper-card { border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 40px; }
+        .paper-card-header { background: linear-gradient(135deg, var(--dark-blue), var(--mid-blue)); padding: 28px 32px; }
+        .paper-card-header .paper-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; color: #ade8f4; text-transform: uppercase; margin-bottom: 10px; }
+        .paper-card-header h3 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
+        .paper-card-header .authors { color: rgba(255,255,255,0.75); font-size: 0.82rem; }
+        .paper-card-body { padding: 32px; }
+
+        /* INFO BOXES */
+        .info-box { background: #f0f8ff; border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 18px 20px; margin-bottom: 18px; }
+        .info-box h6 { font-weight: 700; color: var(--dark-blue); margin-bottom: 6px; font-size: 0.88rem; }
+        .info-box p { font-size: 0.87rem; color: #444; margin: 0; line-height: 1.6; }
+
+        /* IMAGE DISPLAY */
+        .fig-box { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #f9f9f9; }
+        .fig-box img { width: 100%; object-fit: cover; }
+        .fig-caption { padding: 10px 14px; font-size: 0.78rem; color: #666; background: #f9f9f9; border-top: 1px solid #eee; }
+
+        /* DATA TABLE */
+        .data-table th { background: var(--mid-blue); color: #fff; font-size: 0.8rem; padding: 10px 12px; }
+        .data-table td { font-size: 0.82rem; padding: 9px 12px; vertical-align: middle; }
+        .badge-danger-sm { background: #fee2e2; color: #c53030; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; }
+        .badge-warn-sm { background: #fef3c7; color: #92400e; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; }
+        .badge-ok-sm { background: #d1fae5; color: #065f46; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; }
+
+        /* FINDING ROWS */
+        .finding { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+        .finding:last-child { border-bottom: none; }
+        .finding-icon { width: 38px; height: 38px; min-width: 38px; border-radius: 10px; background: #e0f4ff; display: flex; align-items: center; justify-content: center; color: var(--mid-blue); font-size: 0.95rem; }
+        .finding-text strong { font-size: 0.9rem; color: #1a202c; }
+        .finding-text p { font-size: 0.84rem; color: #555; margin: 3px 0 0; line-height: 1.5; }
+
+        /* RELEVANCE ALERT */
+        .relevance-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 12px; padding: 20px 24px; margin-top: 24px; }
+        .relevance-box strong { color: var(--dark-blue); }
+        .relevance-box p { font-size: 0.87rem; color: #1e3a5f; margin: 6px 0 0; line-height: 1.6; }
+
+        /* SENSOR COMPARE TABLE */
+        .sensor-table th { background: var(--dark-blue); color: #fff; font-size: 0.78rem; padding: 10px 14px; }
+        .sensor-table td { font-size: 0.82rem; padding: 10px 14px; }
+        .sensor-table tr:nth-child(even) { background: #f8faff; }
+        .sensor-table .highlight { font-weight: 700; color: var(--mid-blue); }
+
+        /* RESULTS GRID */
+        .result-pill { text-align: center; background: #e0f4ff; border-radius: 14px; padding: 20px 12px; }
+        .result-pill .rnum { font-size: 2rem; font-weight: 800; color: var(--mid-blue); }
+        .result-pill .rlabel { font-size: 0.78rem; color: #555; margin-top: 4px; }
+
+        /* COMING SOON CARD */
+        .coming-card { background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 16px; padding: 40px; text-align: center; color: #999; }
+        .coming-card i { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+
+        /* TIMELINE */
+        .timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--mid-blue); flex-shrink: 0; margin-top: 4px; }
+        .timeline-dot.gray { background: #ccc; }
+        .timeline-line { width: 2px; background: #e2e8f0; flex-grow: 1; min-height: 30px; margin-left: 6px; }
+
+        /* FOOTER */
+        .footer-main { background: var(--dark-blue); padding: 60px 0 30px; }
+        .footer-main h5 { color: #fff; margin-bottom: 20px; font-weight: 700; }
+        .footer-main a { color: rgba(255,255,255,0.65); font-size: 0.88rem; display: block; margin-bottom: 8px; text-decoration: none; transition: color 0.2s; }
+        .footer-main a:hover { color: var(--accent); }
+        .footer-main p { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
+        .footer-copy { background: #020b1a; padding: 18px 0; text-align: center; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+    </style>
 </head>
 <body>
 
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="IWMTAS home">
-    <img src="assets/images/icons/logo.svg" alt="IWMTAS logo"><span><strong>IWMTAS</strong><small>EE405 FYP Portfolio</small></span>
-  </a>
-  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <nav class="nav-menu" aria-label="Main navigation"><a class="nav-link active" href="index.html">Home</a>
-<a class="nav-link " href="week1.html">Week 1</a>
-<a class="nav-link " href="week2.html">Week 2</a>
-<a class="nav-link " href="week3.html">Week 3</a>
-<a class="nav-link " href="week4.html">Week 4</a>
-<a class="nav-link " href="team.html">Team</a>
-<a class="nav-link " href="images.html">Images</a>
-<a class="nav-link " href="resources.html">Drive Links</a></nav>
-</header>
-<main>
-
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <p class="eyebrow">EE405 - Undergraduate Project I | 2025-2026</p>
-    <h1>Intelligent Wound Monitoring & Therapy Adjustment System</h1>
-    <p class="hero-text">A flexible smart wound monitoring patch for diabetic foot ulcers, designed to track wound temperature and pH-related healing indicators, support early infection detection, and guide therapy adjustment using a reusable electronic module.</p>
-    <div class="hero-actions">
-      <a class="btn primary" href="week4.html">View Week 4 Update</a>
-      <a class="btn secondary" href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">Open Full Drive</a>
+<!-- TOP BAR -->
+<div class="topnav">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span><i class="fas fa-university"></i>EE405 — Undergraduate Project I &nbsp;|&nbsp; <i class="fas fa-calendar-alt"></i> 2025–2026</span>
+        <span><i class="fas fa-tag"></i>Biomedical Engineering &amp; Smart Healthcare</span>
     </div>
-    
-<div class="stats-row">
-  <div class="stat"><strong>±0.1°C</strong><span>TMP117 accuracy target</span></div>
-  <div class="stat"><strong>0.0078°C</strong><span>Digital resolution</span></div>
-  <div class="stat"><strong>4</strong><span>documented weekly stages</span></div>
-  <div class="stat"><strong>10</strong><span>planned FPCB prototypes</span></div>
 </div>
-  </div>
-</section>
 
-<section class="section two-col">
-  <div>
-    <p class="section-label">Project Description</p>
-    <h2>Ultra-low-cost flexible monitoring patch for diabetic wound care</h2>
-    <p>The project focuses on a medical-grade flexible smart patch for diabetic foot ulcer monitoring. The disposable sensing patch is planned around an FPCB-based multilayer structure with temperature sensing, pH sensing, biocompatible wound-contact materials and a reusable ESP32-based data-acquisition module.</p>
-    <p>The monitoring concept is based on the fact that wound temperature, local perfusion, inflammation and pH changes can provide clinically useful information about healing progression. The final goal is to provide a low-cost prototype that can observe simulated wound conditions and support future therapy decision-making.</p>
-  </div>
-  <div class="highlight-card">
-    <h3>Core System Blocks</h3>
-    <ul class="check-list">
-      <li>Flexible disposable FPCB sensing patch</li>
-      <li>TMP117 medical-grade digital temperature sensing</li>
-      <li>Screen-printed Carbon-PANI pH sensing concept</li>
-      <li>Hydrogel/passivation and ambient-shielded layers</li>
-      <li>Reusable ESP32 electronics, logging and alert logic</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section soft">
-  <div class="section-title">
-    <p class="section-label">Weekly Progress</p>
-    <h2>Weeks 1 to 4 portfolio summary</h2>
-    <p>Each week page contains the main work completed, the design decisions made and the evidence links from the project Drive folders.</p>
-  </div>
-  <div class="timeline-grid">
-    <a class="week-card" href="week1.html"><span>Week 01</span><h3>Clinical Literature Review</h3><p>Reviewed wound temperature monitoring, diabetic foot ulcer healing and topical radiant heating evidence.</p></a>
-    <a class="week-card" href="week2.html"><span>Week 02</span><h3>Thermal Methods & Biology</h3><p>Compared temperature measurement methods and studied wound healing physiology with thermal monitoring.</p></a>
-    <a class="week-card" href="week3.html"><span>Week 03</span><h3>Sensor Selection & Hardware</h3><p>Compared TMP117, TMP119, SHT45 and alternatives; developed sensor operation, manufacturing and budget plans.</p></a>
-    <a class="week-card accent" href="week4.html"><span>Week 04</span><h3>FPCB Temperature Architecture</h3><p>Added multi-node TMP117 array design, 4-stage patch structure, wound stage mapping and fund request details.</p></a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-title">
-    <p class="section-label">Main Engineering Direction</p>
-    <h2>From biological wound evidence to sensor architecture</h2>
-  </div>
-  <div class="process">
-    <div><b>1</b><h3>Clinical Need</h3><p>Diabetic wounds require earlier detection of delayed healing, infection risk and microcirculation changes than visual inspection alone can provide.</p></div>
-    <div><b>2</b><h3>Sensing Principle</h3><p>Temperature gradients and pH-related changes are used as measurable wound microenvironment indicators.</p></div>
-    <div><b>3</b><h3>Patch Design</h3><p>FPCB layers place the TMP117 close to the wound interface while shielding the sensor from ambient temperature and wound exudate.</p></div>
-    <div><b>4</b><h3>Data Module</h3><p>ESP32 reads sensor arrays, converts digital readings, logs data and compares readings with clinical alert thresholds.</p></div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="section-title">
-    <p class="section-label">Project Image Evidence</p>
-    <h2>Visual previews from the uploaded weekly files</h2>
-    <p>The website ZIP now includes the actual image assets inside <strong>assets/images</strong>. These images are linked directly in the week pages and in the image gallery.</p>
-  </div>
-  <div class="gallery-grid">
-    <figure><img src="assets/images/evidence/week1-paper-review.png" alt="Week 1 literature review image"><figcaption>Week 1 literature review</figcaption></figure>
-    <figure><img src="assets/images/evidence/week2-academic-report.jpg" alt="Week 2 wound biology image"><figcaption>Week 2 wound biology</figcaption></figure>
-    <figure><img src="assets/images/evidence/week3-sensor-operation.jpg" alt="Week 3 sensor operation image"><figcaption>Week 3 sensor operation</figcaption></figure>
-    <figure><img src="assets/images/week4/distributed-tmp117-architecture.jpg" alt="Week 4 TMP117 architecture image"><figcaption>Week 4 TMP117 architecture</figcaption></figure>
-  </div>
-  <p class="wide-note"><a class="text-link" href="images.html">Open full image gallery →</a></p>
-</section>
-
-<section class="section soft">
-  <div class="section-title">
-    <p class="section-label">Drive Access</p>
-    <h2>Project evidence folders</h2>
-  </div>
-  
-<div class="link-grid">
-  <a class="drive-card featured" href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener"><span>Complete Portfolio</span><strong>Full FYP Drive Folder</strong><small>All project documents and weekly evidence</small></a>
-  <a class="drive-card" href="https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r?usp=drive_link" target="_blank" rel="noopener"><span>Week 1</span><strong>Literature Review Folder</strong><small>Research article reviews and clinical paper notes</small></a>
-  <a class="drive-card" href="https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI?usp=drive_link" target="_blank" rel="noopener"><span>Week 2</span><strong>Thermal Methods Folder</strong><small>Temperature method comparison, datasheets and wound biology resources</small></a>
-  <a class="drive-card" href="https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf?usp=drive_link" target="_blank" rel="noopener"><span>Week 3</span><strong>Sensor & Hardware Folder</strong><small>Sensor selection, budget, alternatives and application documents</small></a>
-  <a class="drive-card" href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener"><span>Week 4</span><strong>FPCB Architecture Folder</strong><small>Temperature array, patch layers, funding and wound stage analysis</small></a>
+<!-- NAVBAR -->
+<div class="main-nav py-2">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg p-0">
+            <a class="navbar-brand me-4" href="index.html">
+                <i class="fas fa-heartbeat me-2" style="color:var(--mid-blue)"></i>IWMTAS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMain">
+                <div class="navbar-nav ms-auto gap-1">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="#week1" class="nav-link">Week 1</a>
+                    <a href="#week2" class="nav-link">Week 2</a>
+                    <a href="#week3" class="nav-link">Week 3</a>
+                    <a href="team.html" class="nav-link">Team</a>
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-lg-6">
+                <div class="hero-tag"><i class="fas fa-flask me-2"></i>Final Year Project — EE405</div>
+                <h1>Intelligent Wound Monitoring & Therapy Adjustment System</h1>
+                <p class="my-4">A smart, sensor-integrated system leveraging real-time thermal monitoring and adaptive therapy to track diabetic wound healing and guide clinical decision-making.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#week1" class="btn-hero-primary text-decoration-none"><i class="fas fa-book-open me-2"></i>View Research Portfolio</a>
+                    <a href="about.html" class="btn-hero-outline text-decoration-none">Project Overview</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6"><div class="stat-card"><div class="num">93%</div><div class="label">Limb Salvage Rate (Paper 1)</div></div></div>
+                    <div class="col-6"><div class="stat-card"><div class="num">33°C</div><div class="label">Critical Healing Threshold</div></div></div>
+                    <div class="col-6"><div class="stat-card"><div class="num">±0.1°C</div><div class="label">TMP117 Sensor Accuracy</div></div></div>
+                    <div class="col-6"><div class="stat-card"><div class="num">3</div><div class="label">Weeks of Research Completed</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-</main>
 
-<footer class="footer">
-  <div>
-    <h3>Intelligent Wound Monitoring & Therapy Adjustment System</h3>
-    <p>EE405 - Undergraduate Project I | Faculty of Engineering, University of Peradeniya</p>
-  </div>
-  <div class="footer-links">
-    <a href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">Full Drive Folder</a>
-    <a href="resources.html">All Weekly Links</a>
-    <a href="mailto:e21430@eng.pdn.ac.lk">e21430@eng.pdn.ac.lk</a>
-  </div>
+<!-- RESEARCHER STRIP -->
+<div style="background:#fff; border-bottom: 2px solid #e2e8f0; padding: 18px 0;">
+    <div class="container">
+        <div class="row align-items-center g-3">
+            <!-- Researcher -->
+            <div class="col-md-4 d-flex align-items-center gap-3">
+                <div style="width:48px;height:48px;min-width:48px;border-radius:50%;background:linear-gradient(135deg,#0077b6,#00b4d8);display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-user-graduate" style="color:#fff;font-size:1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-weight:700;color:#03045e;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;">GIMHANI K.K.G.T.</div>
+                    <div style="font-size:0.78rem;color:#666;">Undergraduate Researcher · EE405</div>
+                </div>
+            </div>
+            <!-- University -->
+            <div class="col-md-4 d-flex align-items-center gap-3">
+                <div style="width:48px;height:48px;min-width:48px;border-radius:50%;background:#f0f8ff;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-university" style="color:#0077b6;font-size:1.1rem;"></i>
+                </div>
+                <div>
+                    <div style="font-weight:600;color:#03045e;font-size:0.88rem;">University of Peradeniya</div>
+                    <div style="font-size:0.78rem;color:#666;">Dept. of Electrical &amp; Electronic Engineering</div>
+                </div>
+            </div>
+            <!-- Supervisor -->
+            <div class="col-md-4 d-flex align-items-center gap-3">
+                <div style="width:48px;height:48px;min-width:48px;border-radius:50%;background:#f0f8ff;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-chalkboard-teacher" style="color:#0077b6;font-size:1.1rem;"></i>
+                </div>
+                <div>
+                    <div style="font-weight:600;color:#03045e;font-size:0.88rem;">Dr. Ruwan Ranaweera</div>
+                    <div style="font-size:0.78rem;color:#666;">Project Supervisor</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WEEK NAVIGATION -->
+<div class="week-nav overflow-auto">
+    <div class="container d-flex" style="gap:0;">
+        <a href="#week1" class="week-tab active text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 1 — Literature Review</a>
+        <a href="#week2" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 2 — Thermal Methods & Wound Biology</a>
+        <a href="#week3" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 3 — Sensor Selection & Hardware</a>
+        <span class="week-tab disabled"><i class="fas fa-clock me-2"></i>Week 4 — Coming Soon</span>
+        <span class="week-tab disabled"><i class="fas fa-clock me-2"></i>Week 5 — Coming Soon</span>
+    </div>
+</div>
+
+<!-- ======================================================= -->
+<!-- WEEK 1 -->
+<!-- ======================================================= -->
+<section id="week1" class="py-5" style="background:#f8faff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Week 1</div>
+            <div class="sec-title">Literature Review — Clinical Papers</div>
+            <p class="text-muted mt-2" style="max-width:650px;margin:auto;">Two peer-reviewed papers were reviewed to establish the clinical and experimental foundations for IWMTAS.</p>
+        </div>
+
+        <!-- PAPER 1 -->
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Research Article Review · Paper 1</div>
+                <h3>Clinical Significance of Wound Temperature Monitoring in Diabetic Foot Microcirculation Reconstruction</h3>
+                <div class="authors"><i class="fas fa-users me-2"></i>Hong Liu, Xian-Yan Yan, Guo-Qing Li, Bao-Na Wang, Dong Wang, Yong-Hong Zhang, Jin-Li Guo</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-virus text-primary me-2"></i>Clinical Background</h6>
+                            <p>Chronic hyperglycemia causes vascular endothelial damage, leading to micro-thrombosis and microcirculation failure. 25% of diabetic patients develop foot ulcers; 50–60% progress to chronic non-healing wounds without precise intervention.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-tools text-primary me-2"></i>Study Methodology</h6>
+                            <p>Retrospective analysis of 29 patients (Wagner grade ≥ 3). Infrared temperature recorded at wound center and distal tibia (5 cm above ankle) at admission, weekly for 1 month, then monthly. Room temperature controlled at 20–25°C.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-procedures text-primary me-2"></i>Treatment Applied</h6>
+                            <p>Transverse Tibial Bone Transport via distraction histogenesis stimulated neurovascular regeneration. Ultrasound debridement cleared biofilms. Silver-containing lipid hydrocolloid dressings maintained the wound microenvironment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Images from Paper -->
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-images me-2 text-primary"></i>Clinical Images from Paper 1</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="fig-box">
+                            <img src="img/papers/w1p1_page-5.jpg" alt="Fig 2 – First wound diagnosis" style="height:260px;object-fit:cover;">
+                            <div class="fig-caption"><strong>Fig. 2</strong> — Initial wound diagnosis: ischemic necrosis on dorsal, plantar, and medial aspects of foot at admission (A), small incision for compartment drainage (B), drainage with silver hydrocolloid dressing (C).</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fig-box">
+                            <img src="img/papers/w1p1_page-6.jpg" alt="Fig 3 – Bone transport" style="height:260px;object-fit:cover;">
+                            <div class="fig-caption"><strong>Fig. 3</strong> — Post-transverse tibial bone transport: X-ray and photograph following surgery (A); extent of debridement on dorsal, plantar, and medial surfaces (B).</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fig-box">
+                            <img src="img/papers/w1p1_page-7.jpg" alt="Fig 4 – Healing progression" style="height:260px;object-fit:cover;">
+                            <div class="fig-caption"><strong>Fig. 4</strong> — Healing progression: Week 1 post-op (A) → 1 month (B) → 2 months (C) → 4 months (D) → 4.5 months fully healed (E).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temperature Table -->
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-table me-2 text-primary"></i>Temperature Monitoring Data — Wound Center vs Distal Tibia (°C)</h5>
+                <div class="table-responsive mb-3">
+                    <table class="table table-bordered data-table">
+                        <thead><tr>
+                            <th>Site</th><th>Admission</th><th>1 Week</th><th>2 Weeks</th><th>3 Weeks</th><th>4 Weeks</th><th>2 Months</th><th>3 Months</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td><strong>Wound Center</strong></td><td>35.30</td><td>35.40</td><td>35.60</td><td>35.80</td><td>35.90</td><td>36.20</td><td>36.30</td></tr>
+                            <tr><td><strong>Distal Tibia</strong></td><td>35.40</td><td>35.60</td><td>35.80</td><td>35.80</td><td>35.90</td><td>36.10</td><td>36.30</td></tr>
+                            <tr><td><strong>P-Value</strong></td>
+                                <td><span class="badge-danger-sm">0.003</span></td>
+                                <td><span class="badge-warn-sm">&lt;0.05</span></td>
+                                <td><span class="badge-warn-sm">&lt;0.05</span></td>
+                                <td><span class="badge-warn-sm">0.012</span></td>
+                                <td><span class="badge-ok-sm">0.283 ✓</span></td>
+                                <td><span class="badge-ok-sm">0.752</span></td>
+                                <td><span class="badge-ok-sm">0.180</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-muted" style="font-size:0.83rem;"><i class="fas fa-info-circle text-primary me-1"></i><strong>Equilibrium Point at Week 4 (P=0.283):</strong> Convergence of temperatures between sites signals successful microcirculation reconstruction. A widening difference = poor perfusion → immediate intervention required.</p>
+
+                <div class="row g-3 mb-4 mt-3">
+                    <div class="col-md-6">
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>33°C Biological Threshold</strong><p>Below this level, neutrophil, fibroblast, and keratinocyte activity drops sharply — high risk of total healing failure.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-eye"></i></div><div class="finding-text"><strong>SMI Validation</strong><p>Superb Microvascular Imaging confirmed temperature rise directly correlates with increased microvascular density.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-award"></i></div><div class="finding-text"><strong>WIFi Grade Improvement</strong><p>Wound: 3→0, Ischemia: 1→0, Infection: 3→0. All statistically significant (P&lt;0.05).</p></div></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-percentage"></i></div><div class="finding-text"><strong>93% Limb Salvage Rate</strong><p>27 of 29 patients achieved wound repair. Zero re-amputations for protocol completers.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-calendar-check"></i></div><div class="finding-text"><strong>Healing Time Range</strong><p>Average healing ranged from 34 to 264 days. 2 cases of ulcer recurrence (7%), 1 ectopic ulcer (3.5%).</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-user-md"></i></div><div class="finding-text"><strong>64-year-old Case Study</strong><p>13-year diabetes history with gangrene. Achieved complete wound closure at 4.5 months after bone transport.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="relevance-box">
+                    <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
+                    <p>This paper directly defines our core monitoring logic. The 33°C threshold will be programmed as a critical alert in our system. The Equilibrium Point concept (P&gt;0.05 between wound center and distal tibia) becomes our primary success metric, and the multi-site, multi-interval monitoring protocol forms the backbone of our sensor array design.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAPER 2 -->
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Technical Report Review · Paper 2</div>
+                <h3>Topical Radiant Heating (TRH) in Wound Healing — Experimental Study in a Donor Site Wound Model</h3>
+                <div class="authors"><i class="fas fa-flask me-2"></i>Warm-Up™ Dressing System (Arizant Healthcare) · Laser Doppler Imaging Study</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-sun text-primary me-2"></i>What is TRH?</h6>
+                            <p>Topical Radiant Heating delivers constant radiant heat at 38°C via the Warm-Up™ non-contact dressing. It maintains a humid microenvironment to facilitate re-epithelialization and collagen synthesis via Van't Hoff's Law and oxygen-dependent enzyme activity.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-vials text-primary me-2"></i>Study Design</h6>
+                            <p><strong>Study 1:</strong> n=20 healthy volunteers — intermittent TRH on right thigh, left as control.<br><strong>Study 2:</strong> n=12 skin graft patients — 6 received TRH, 6 standard dressings. Protocol: 3× 1-hour heating cycles over 5 hours at 38°C.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-microscope text-primary me-2"></i>Measurement Tools</h6>
+                            <p>Laser Doppler Imaging (helium-neon 632.8 nm) mapped dermal microvascular blood flow. Immunohistochemical analysis tracked NP57 (neutrophils), CD3 (T-lymphocytes), CD68 (macrophages) via Streptavidin-Biotin staining.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRH Image from Smart Band paper (related) -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="fig-box">
+                            <img src="img/papers/smartband_page-2.jpg" alt="Smart wound dressing concept" style="height:280px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Smart wound dressing concept — continuous monitoring of temperature and moisture within a flexible bandage (from related literature).</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="fig-box">
+                            <img src="img/papers/smartband_page-3.jpg" alt="Smart bandage system architecture" style="height:280px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Smart bandage system architecture showing sensor integration, wireless communication, and clinical diagnostics methodology.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRH Results -->
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-chart-bar me-2 text-primary"></i>Key Experimental Results</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">83%</div><div class="rlabel">Blood flow ↑ — 1st heating cycle (uninjured, P&lt;0.001)</div></div></div>
+                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">103%</div><div class="rlabel">Blood flow ↑ — 2nd heating cycle (uninjured, P&lt;0.001)</div></div></div>
+                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">97%</div><div class="rlabel">Blood flow ↑ — injured skin during TRH (P&lt;0.001)</div></div></div>
+                    <div class="col-6 col-md-3"><div class="result-pill"><div class="rnum">195%</div><div class="rlabel">CD3 T-lymphocyte ↑ at Day 1 post-op (P&lt;0.05)</div></div></div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-fire"></i></div><div class="finding-text"><strong>Van't Hoff's Law</strong><p>Applied heat at 38°C accelerates biochemical reactions — hyperthermia stimulates fibroblast proliferation and enhances polymorph chemotaxis and phagocytosis.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-tint"></i></div><div class="finding-text"><strong>Oxygen Tension Elevation</strong><p>TRH increases subcutaneous oxygen tension, enabling oxygen-dependent collagen cross-linking via prolyl 4-hydroxylase. Oxygen elevation persists up to 3 hours post-treatment.</p></div></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-shield-alt"></i></div><div class="finding-text"><strong>Immune Regulatory Effect</strong><p>Early lymphocytic infiltrate regulates neutrophil activity, preventing chaotic cytokine release — associated with superior healing prognosis.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-clock"></i></div><div class="finding-text"><strong>Temporal Blood Flow Dynamics</strong><p>Blood flow returns to baseline within 1 hour of TRH cessation. Subcutaneous oxygen tension remains elevated for up to 3 hours — informs therapy scheduling.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="relevance-box">
+                    <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
+                    <p>TRH becomes our primary therapy module. The 38°C target, 1-hour cycle protocol, and 3-hour oxygen elevation window will directly shape our adaptive therapy scheduling algorithm. The LDI-validated blood flow response provides the scientific basis for using temperature as a real-time therapy response indicator.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================= -->
+<!-- WEEK 2 -->
+<!-- ======================================================= -->
+<section id="week2" class="py-5" style="background:#fff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Week 2</div>
+            <div class="sec-title">Thermal Monitoring Methods & Wound Healing Biology</div>
+            <p class="text-muted mt-2" style="max-width:650px;margin:auto;">Evaluated all temperature measurement technologies for wound monitoring suitability, and reviewed the physiological mechanisms of wound healing.</p>
+        </div>
+
+        <!-- Temperature Comparison -->
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Week 2 · Document 1</div>
+                <h3>Temperature Measurement Methods for Wound Monitoring — Comparison Table</h3>
+                <div class="authors"><i class="fas fa-table me-2"></i>Literature-Based Comparative Analysis</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered sensor-table">
+                        <thead><tr>
+                            <th>Method</th><th>Accuracy</th><th>Response</th><th>Real-Time Suitability</th><th>Pros</th><th>Cons</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td><strong>Thermistor (NTC)</strong></td><td>±0.1–0.2°C</td><td>Fast</td><td class="highlight">Excellent</td><td>Highly sensitive 30–40°C; low cost; miniaturizable</td><td>Non-linear; requires calibration</td></tr>
+                            <tr><td><strong>RTD (Platinum)</strong></td><td>±0.15°C (Class A)</td><td>Moderate</td><td>Moderate–Good</td><td>Stable; linear; highly accurate</td><td>Expensive; rigid forms less conformal</td></tr>
+                            <tr><td><strong>Thermocouple</strong></td><td>±0.5–1°C</td><td>Very Fast</td><td>Moderate</td><td>Wide temperature range; fast</td><td>Low sensitivity in bio-range; needs cold-junction</td></tr>
+                            <tr><td><strong>Digital IC (TMP117)</strong></td><td class="highlight">±0.1°C</td><td>Fast</td><td class="highlight">Excellent</td><td>I2C direct; no calibration; ultra-low power</td><td>Higher unit cost than thermistors</td></tr>
+                            <tr><td><strong>Infrared (IR)</strong></td><td>±0.3–0.5°C</td><td>Instant</td><td>Good (non-contact)</td><td>No skin contact; fast scanning</td><td>Biofilm interference; surface-only</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="fig-box">
+                            <img src="img/papers/w2acad_page-01.jpg" alt="Academic Report Page 1" style="height:220px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Academic Report — Physiological Mechanisms of Wound Healing and the Role of Thermal Monitoring (Page 1).</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fig-box">
+                            <img src="img/papers/w2acad_page-02.jpg" alt="Academic Report Page 2" style="height:220px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Cellular proliferation classification and Basement Membrane role in tissue regeneration vs. repair pathways.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fig-box">
+                            <img src="img/papers/smartband_page-1.jpg" alt="Smart Band Paper" style="height:220px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Referenced paper: Smart Band for Wound Monitoring Using Temperature and Moisture Sensor (IJNRD, 2025).</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relevance-box">
+                    <strong><i class="fas fa-link me-2"></i>Week 2 Conclusion</strong>
+                    <p>Based on the comparison, the <strong>digital IC sensor (TMP117)</strong> was identified as the primary candidate — offering ±0.1°C accuracy, I2C interface, no calibration requirement, and ultra-low power. Wound healing biology review confirmed: temperature tracks all three healing phases (inflammation, proliferation, remodeling), making continuous monitoring scientifically valid.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wound Healing Biology -->
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Week 2 · Document 2</div>
+                <h3>Academic Report: Physiological Mechanisms of Wound Healing & Role of Thermal Monitoring</h3>
+                <div class="authors"><i class="fas fa-book me-2"></i>Resource Book Analysis — Ratnatunga Clinical Framework</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-redo text-primary me-2"></i>Tissue Restitution</h6>
+                            <p>Re-establishment of epithelial continuity via migration of existing cells — occurs before proliferation and inflammation. Example: gastric erosion recovery.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-dna text-primary me-2"></i>Tissue Regeneration</h6>
+                            <p>Replacement of lost cells with the same cell type. Requires intact Basement Membrane (BM) and surviving stem cells. Labile and stable cells can regenerate.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-band-aid text-primary me-2"></i>Tissue Repair (Scarring)</h6>
+                            <p>When BM is destroyed — damaged tissue is replaced by fibrous scar tissue through granulation tissue formation and collagen deposition.</p>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="fw-bold mb-3" style="color:var(--dark-blue)">Cell Proliferation Classification</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered sensor-table">
+                        <thead><tr><th>Category</th><th>Behavior</th><th>Examples</th><th>Thermal Significance</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Labile Cells</strong></td><td>Multiply continuously throughout life</td><td>Skin, epithelium, bone marrow</td><td>High metabolic activity → elevated temperature signal</td></tr>
+                            <tr><td><strong>Stable (Quiescent) Cells</strong></td><td>Low baseline, rapid mitosis on stimulus</td><td>Liver, kidney, fibroblasts, vascular endothelium</td><td>Temperature rise indicates activation</td></tr>
+                            <tr><td><strong>Permanent Cells</strong></td><td>Cannot divide post-natally</td><td>Nerve cells, cardiac muscle, skeletal muscle</td><td>Loss = irreversible; cold spots signal necrosis</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================= -->
+<!-- WEEK 3 -->
+<!-- ======================================================= -->
+<section id="week3" class="py-5" style="background:#f8faff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Week 3</div>
+            <div class="sec-title">Sensor Selection, Hardware Specification & Manufacturing Plan</div>
+            <p class="text-muted mt-2" style="max-width:650px;margin:auto;">Detailed analysis of the TMP117 sensor architecture, comparison with alternatives, flexible PCB fabrication options, and project budget planning.</p>
+        </div>
+
+        <!-- TMP117 Architecture -->
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Week 3 · Document 1</div>
+                <h3>Sensor Technology for Wound Monitoring: TMP117 Architecture, Size & Application</h3>
+                <div class="authors"><i class="fas fa-microchip me-2"></i>Texas Instruments TMP117 · Flexible Bioelectronic Systems Research</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="fig-box">
+                            <img src="img/papers/w3sensor_page-1.jpg" alt="Sensor Operation Document" style="height:300px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">TMP117 sensor operation, size specifications, and wound bandage integration methodology.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="fig-box">
+                            <img src="img/papers/w3sensor_page-2.jpg" alt="Sensor Application Document" style="height:300px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Smart bandage architecture — flexible substrate integration, biocompatible encapsulation, wireless mapping, and clinical diagnostic application.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-microchip text-primary me-2"></i>How TMP117 Works</h6>
+                            <p>Uses a thermal BJT coupled with a 16-bit ADC for digital conversion. Operates at 3.5 µA (1-Hz cycle) and 150 nA in shutdown mode — prevents self-heating. Outputs via I2C/SMBus. Averaging mode (8 readings) reduces thermal noise to achieve ±0.1°C clinical-grade accuracy.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-ruler-combined text-primary me-2"></i>Physical Dimensions</h6>
+                            <p><strong>WSON Package:</strong> 2.00 mm × 2.00 mm<br><strong>DSBGA Package:</strong> 1.53 mm × 1.00 mm (grain of sand)<br><strong>Array Thickness:</strong> 12–50 µm on polyimide substrate — thinner than a strand of human hair.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-layer-group text-primary me-2"></i>Smart Bandage Integration</h6>
+                            <p>Sensors mounted on Flexible PCB (FPCB) to conform to wound topography. Sealed in medical-grade silicone (PDMS) for biocompatibility. Wireless via BLE/NFC. Array creates continuous thermal map — hot spots = infection, cold spots = ischemia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sensor Comparison Table -->
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-balance-scale me-2 text-primary"></i>NTC Thermistor vs TMP117 — Engineering Comparison</h5>
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered sensor-table">
+                        <thead><tr><th>Feature</th><th>Analog NTC Thermistor</th><th class="highlight">Digital TMP117 (Selected)</th></tr></thead>
+                        <tbody>
+                            <tr><td>Price per unit</td><td>~$0.05–$0.20 (bare SMD)</td><td class="highlight">~$1.50–$4.00 bare IC</td></tr>
+                            <tr><td>Ease of use</td><td>Hard — Steinhart-Hart calibration, voltage divider needed</td><td class="highlight">Very Easy — I2C direct, zero calibration</td></tr>
+                            <tr><td>Output type</td><td>Analog (resistance)</td><td class="highlight">Digital (I2C protocol)</td></tr>
+                            <tr><td>Accuracy</td><td>High but requires complex calibration</td><td class="highlight">±0.1°C medical-grade out of box</td></tr>
+                            <tr><td>Self-heating risk</td><td>Moderate (current-driven)</td><td class="highlight">Minimal (3.5 µA operation)</td></tr>
+                            <tr><td>Array scalability</td><td>Difficult (each needs individual ADC channel)</td><td class="highlight">Easy (multiple I2C addresses)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manufacturing & Budget -->
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Week 3 · Document 2</div>
+                <h3>Sensor Array Manufacturing, Materials & Budget Plan</h3>
+                <div class="authors"><i class="fas fa-industry me-2"></i>Flexible PCB Fabrication · Component Sourcing · Cost Analysis</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="fig-box">
+                            <img src="img/papers/w3budget_page-1.jpg" alt="Manufacturing and Budget Plan" style="height:280px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Sensor Array Manufacturing, Materials, and Budget Plan — FPCB fabrication options and cost breakdown.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="fig-box">
+                            <img src="img/papers/w3budget_page-2.jpg" alt="Budget Plan Page 2" style="height:280px;object-fit:cover;object-position:top;">
+                            <div class="fig-caption">Alternative sensor comparison table and biocompatible encapsulation material specifications.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-industry me-2 text-primary"></i>FPCB Fabrication Options</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6 class="text-success"><i class="fas fa-star me-2"></i>JLCPCB (Recommended)</h6>
+                            <p>Low-cost polyimide flex PCBs starting ~$15–$30 for small batches. Excellent for student FYP prototypes. Upload Gerber files (KiCad/Altium/Eagle).</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-tools me-2"></i>PCBWay</h6>
+                            <p>Excellent rapid-prototyping with stiffener options and custom thicknesses. Good for second iteration with more precise requirements.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box">
+                            <h6><i class="fas fa-hospital me-2"></i>Epec / PCB Unlimited</h6>
+                            <p>USA-based clinical-grade production. More expensive — suitable for advanced clinical prototype if funding allows.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-list-alt me-2 text-primary"></i>Sensor Alternatives Evaluated</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered sensor-table">
+                        <thead><tr><th>Sensor</th><th>Manufacturer</th><th>Accuracy</th><th>Interface</th><th>Key Advantage</th><th>Approx. Price</th></tr></thead>
+                        <tbody>
+                            <tr class="table-primary"><td><strong>TMP117 ✓ (Primary)</strong></td><td>Texas Instruments</td><td class="highlight">±0.1°C</td><td>I2C</td><td>Ultra-low power, clinical grade</td><td>~$2–4 USD</td></tr>
+                            <tr><td>TMP119</td><td>Texas Instruments</td><td class="highlight">±0.03°C</td><td>I2C</td><td>Direct upgrade to TMP117, smaller package</td><td>~$3–6 USD</td></tr>
+                            <tr><td>MAX30205</td><td>Analog Devices</td><td>±0.1°C</td><td>I2C</td><td>Calibrated for 37–39°C, meets ASTM specs</td><td>~$3–5 USD</td></tr>
+                            <tr><td>SHT45</td><td>Sensirion</td><td>±0.1°C</td><td>I2C</td><td>Measures Temperature AND Humidity</td><td>~$4–7 USD</td></tr>
+                            <tr><td>SHT31-D</td><td>Sensirion</td><td>±0.2°C</td><td>I2C</td><td>Breakout board available; dual measurement</td><td>$2.50–$13.95</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="relevance-box mt-4">
+                    <strong><i class="fas fa-check-circle me-2"></i>Week 3 Decision</strong>
+                    <p>The <strong>TMP117</strong> is confirmed as the primary sensor for the IWMTAS prototype. Its ±0.1°C accuracy matches the clinical requirements identified in Week 1 (33°C threshold detection), the I2C interface simplifies multi-sensor array wiring, and the ultra-low 3.5 µA power prevents self-heating artefacts. JLCPCB will be used for FPCB fabrication in future weeks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-5 bg-white">
+    <div class="container py-3">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Up Next</div>
+            <div class="sec-title" style="font-size:1.6rem;">Upcoming Weeks</div>
+            <p class="text-muted mt-2">Research and development continues — new content added weekly.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="coming-card">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h5>Week 4</h5>
+                    <p class="mb-2">System Architecture Design &amp; Circuit Schematic</p>
+                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="coming-card">
+                    <i class="fas fa-code"></i>
+                    <h5>Week 5</h5>
+                    <p class="mb-2">Firmware Development &amp; Alert Threshold Programming</p>
+                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="coming-card">
+                    <i class="fas fa-cubes"></i>
+                    <h5>Weeks 6–8</h5>
+                    <p class="mb-2">Prototype Build, PCB Assembly &amp; Initial Testing</p>
+                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="coming-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h5>Weeks 9–12</h5>
+                    <p class="mb-2">Clinical Validation, Analysis &amp; Final Report</p>
+                    <span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">🔒 Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-main">
+    <div class="container">
+        <div class="row g-5 pb-4">
+            <div class="col-md-4">
+                <h5><i class="fas fa-heartbeat me-2" style="color:var(--accent)"></i>IWMTAS</h5>
+                <p>Intelligent Wound Monitoring and Therapy Adjustment System<br>EE405 — Undergraduate Project I, 2025–2026</p>
+                <p>Biomedical Engineering · Smart Healthcare · Thermal Sensing</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Portfolio Sections</h5>
+                <a href="#week1">Week 1 — Literature Review</a>
+                <a href="#week2">Week 2 — Thermal Methods &amp; Biology</a>
+                <a href="#week3">Week 3 — Sensor &amp; Hardware</a>
+                <a href="#" style="opacity:0.5;">Week 4 — Coming Soon</a>
+                <a href="#" style="opacity:0.5;">Week 5 — Coming Soon</a>
+                <a href="team.html" style="margin-top:8px;color:#ade8f4;">Meet the Team →</a>
+            </div>
+            <div class="col-md-4">
+                <h5>Key Technologies</h5>
+                <a href="#">TMP117 Digital Temperature Sensor</a>
+                <a href="#">Flexible PCB (FPCB) on Polyimide</a>
+                <a href="#">Topical Radiant Heating (TRH)</a>
+                <a href="#">BLE / NFC Wireless Communication</a>
+                <a href="#">WIFi Wound Classification</a>
+                <a href="#">SMI Microvascular Imaging</a>
+            </div>
+        </div>
+    </div>
 </footer>
-<button class="to-top" aria-label="Back to top">↑</button>
-<script src="assets/js/main.js"></script>
+<div class="footer-copy">
+    © 2025–2026 IWMTAS FYP Portfolio &nbsp;|&nbsp; Designed By <a href="https://htmlcodex.com" style="color:rgba(255,255,255,0.5);">HTML Codex</a>
+</div>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-lg-square back-to-top" style="position:fixed;right:30px;bottom:30px;z-index:99;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--mid-blue);border:none;"><i class="fa fa-arrow-up text-white"></i></a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+    });
+    // Week tab active state on scroll
+    const sections = ['week1','week2','week3'];
+    window.addEventListener('scroll', () => {
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if(!el) return;
+            const rect = el.getBoundingClientRect();
+            const tab = document.querySelector(`.week-tab[href="#${id}"]`);
+            if(tab) tab.classList.toggle('active', rect.top <= 120 && rect.bottom > 120);
+        });
+    });
+</script>
 </body>
 </html>
