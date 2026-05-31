@@ -2,338 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Team — IWMTAS Project</title>
+    <title>Project Team | IWMTAS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IWMTAS, wound monitoring, FYP, University of Peradeniya" name="keywords">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="lib/animate/animate.min.css"/>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-        :root { --mid-blue: #0077b6; --dark-blue: #03045e; --accent: #00b4d8; }
-        body { font-family: 'Inter', sans-serif; }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
-
-        /* neutralise Electra ghost */
-        .header-top { height: auto !important; position: static !important; }
-        .header-top::before, .header-top::after { display: none !important; content: none !important; }
-        .navbar-brand-2::before, .navbar-brand-2::after { display: none !important; content: none !important; }
-
-        .topnav { background: #03045e; padding: 10px 0; }
-        .topnav span { color: #ade8f4; font-size: 0.82rem; }
-        .topnav span i { color: #00b4d8; margin-right: 6px; }
-        .main-nav { background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 999; }
-        .main-nav .navbar-brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; color: #03045e !important; }
-        .main-nav .nav-link { font-weight: 500; color: #333; font-size: 0.9rem; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s; }
-        .main-nav .nav-link:hover, .main-nav .nav-link.active { background: #caf0f8; color: var(--mid-blue); }
-
-        /* PAGE HERO */
-        .page-hero { background: linear-gradient(135deg, #03045e 0%, #0077b6 70%, #00b4d8 100%); padding: 70px 0 50px; }
-        .page-hero h1 { color: #fff; font-size: 2.4rem; font-weight: 800; }
-        .page-hero p { color: rgba(255,255,255,0.82); font-size: 1rem; max-width: 550px; }
-        .breadcrumb-item, .breadcrumb-item a { color: rgba(255,255,255,0.65); font-size: 0.85rem; text-decoration: none; }
-        .breadcrumb-item.active { color: #ade8f4; }
-        .breadcrumb-divider { color: rgba(255,255,255,0.4); }
-
-        /* TEAM CARDS */
-        .team-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.09);
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-        }
-        .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,119,182,0.18); }
-        .team-card-top {
-            background: linear-gradient(135deg, #03045e, #0077b6);
-            padding: 36px 20px 20px;
-            text-align: center;
-            position: relative;
-        }
-        .team-card-top.supervisor { background: linear-gradient(135deg, #1a1a2e, #16213e); }
-        .team-card-top.member2 { background: linear-gradient(135deg, #023e8a, #0096c7); }
-        .team-card-top.member3 { background: linear-gradient(135deg, #005f73, #0a9396); }
-        .team-card-top.member4 { background: linear-gradient(135deg, #6a0572, #ab83a1); }
-
-        .avatar-circle {
-            width: 90px; height: 90px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.18);
-            border: 3px solid rgba(255,255,255,0.4);
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 14px;
-            font-size: 2rem; color: #fff;
-        }
-        .role-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            color: #fff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 4px 14px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-        .team-card-top h4 { color: #fff; font-size: 1.1rem; margin-bottom: 4px; }
-        .team-card-body { padding: 24px; }
-        .detail-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
-        .detail-row i { color: var(--mid-blue); width: 18px; margin-top: 2px; flex-shrink: 0; }
-        .detail-row span { font-size: 0.85rem; color: #444; line-height: 1.5; }
-        .edit-hint { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 14px; font-size: 0.78rem; color: #92400e; margin-top: 12px; }
-        .edit-hint i { margin-right: 6px; }
-
-        /* SUPERVISOR SPECIAL */
-        .supervisor-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-            border: 2px solid #e0f0ff;
-        }
-        .supervisor-header {
-            background: linear-gradient(135deg, #012a4a, #014f86);
-            padding: 40px 32px;
-            display: flex; align-items: center; gap: 28px;
-        }
-        .supervisor-avatar {
-            width: 100px; height: 100px; min-width: 100px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            border: 3px solid rgba(255,255,255,0.4);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.5rem; color: #fff;
-        }
-        .supervisor-header h3 { color: #fff; font-size: 1.4rem; margin-bottom: 4px; }
-        .supervisor-header .sup-role { color: #ade8f4; font-size: 0.88rem; font-weight: 600; }
-        .supervisor-header .sup-uni { color: rgba(255,255,255,0.7); font-size: 0.83rem; margin-top: 4px; }
-        .supervisor-body { padding: 28px 32px; }
-
-        /* FOOTER */
-        .footer-main { background: #03045e; padding: 50px 0 24px; }
-        .footer-main h5 { color: #fff; margin-bottom: 18px; font-weight: 700; }
-        .footer-main a { color: rgba(255,255,255,0.65); font-size: 0.88rem; display: block; margin-bottom: 8px; text-decoration: none; }
-        .footer-main a:hover { color: #00b4d8; }
-        .footer-main p { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
-        .footer-copy { background: #020b1a; padding: 16px 0; text-align: center; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+        :root { --primary:#0096c7; --dark-blue:#03045e; --mid-blue:#0077b6; --light-blue:#caf0f8; --accent:#00b4d8; }
+        body { font-family:'Inter',sans-serif; background:#f8faff; }
+        h1,h2,h3,h4,h5,h6 { font-family:'Space Grotesk',sans-serif; }
+        .topnav { background:var(--dark-blue); padding:10px 0; }
+        .topnav span { color:#ade8f4; font-size:.82rem; }
+        .topnav span i { color:var(--accent); margin-right:6px; }
+        .main-nav { background:#fff; box-shadow:0 2px 20px rgba(0,0,0,.08); position:sticky; top:0; z-index:999; }
+        .main-nav .navbar-brand { font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--dark-blue)!important; }
+        .main-nav .nav-link { font-weight:500; color:#333; font-size:.9rem; padding:8px 14px!important; border-radius:6px; }
+        .main-nav .nav-link:hover,.main-nav .nav-link.active { background:var(--light-blue); color:var(--mid-blue); }
+        .page-hero { background:linear-gradient(135deg,#03045e,#0077b6,#00b4d8); color:#fff; padding:70px 0; }
+        .page-hero h1 { font-weight:800; }
+        .sec-tag { display:inline-block; background:#e0f4ff; color:var(--mid-blue); font-size:.75rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:10px; }
+        .project-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,.06); height:100%; }
+        .avatar { width:64px; height:64px; border-radius:16px; background:#e0f4ff; color:var(--mid-blue); display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:18px; }
+        .footer-main { background:var(--dark-blue); padding:45px 0 25px; margin-top:40px; }
+        .footer-main h5 { color:#fff; margin-bottom:16px; font-weight:700; }
+        .footer-main a { color:rgba(255,255,255,.68); font-size:.88rem; display:block; margin-bottom:8px; text-decoration:none; }
+        .footer-main a:hover { color:var(--accent); }
+        .footer-main p { color:rgba(255,255,255,.65); font-size:.88rem; }
+        .footer-copy { background:#020b1a; padding:16px 0; text-align:center; color:rgba(255,255,255,.55); font-size:.82rem; }
     </style>
 </head>
 <body>
+<div class="topnav"><div class="container d-flex justify-content-between flex-wrap gap-2"><span><i class="fas fa-university"></i>EE405 - Undergraduate Project I</span><span><i class="fas fa-heartbeat"></i>Intelligent Wound Monitoring &amp; Therapy Adjustment System</span></div></div>
+<div class="main-nav py-2"><div class="container"><nav class="navbar navbar-expand-lg p-0"><a class="navbar-brand me-4" href="index.html"><i class="fas fa-heartbeat me-2" style="color:var(--mid-blue)"></i>IWMTAS</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="fa fa-bars"></span></button><div class="collapse navbar-collapse" id="navMain"><div class="navbar-nav ms-auto gap-1"><a href="index.html" class="nav-link">Home</a><a href="index.html#week1" class="nav-link">Week 1</a><a href="index.html#week2" class="nav-link">Week 2</a><a href="index.html#week3" class="nav-link">Week 3</a><a href="index.html#week4" class="nav-link">Week 4</a><a href="index.html#week5" class="nav-link">Week 5</a><a href="team.html" class="nav-link active">Team</a><a href="contact.html" class="nav-link ">Contact</a></div></div></nav></div></div>
 
-<!-- TOP BAR -->
-<div class="topnav">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <span><i class="fas fa-university"></i>EE405 — Undergraduate Project I &nbsp;|&nbsp; <i class="fas fa-calendar-alt"></i> 2025–2026</span>
-        <span><i class="fas fa-tag"></i>Biomedical Engineering &amp; Smart Healthcare</span>
-    </div>
-</div>
-
-<!-- NAVBAR -->
-<div class="main-nav py-2">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg p-0">
-            <a class="navbar-brand me-4" href="index.html">
-                <i class="fas fa-heartbeat me-2" style="color:#0077b6"></i>IWMTAS
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMain">
-                <div class="navbar-nav ms-auto gap-1">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="index.html#week1" class="nav-link">Week 1</a>
-                    <a href="index.html#week2" class="nav-link">Week 2</a>
-                    <a href="index.html#week3" class="nav-link">Week 3</a>
-                    <a href="team.html" class="nav-link active">Team</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-
-<!-- PAGE HERO -->
-<div class="page-hero">
-    <div class="container">
-        <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb mb-0" style="background:none;padding:0;">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Team</li>
-            </ol>
-        </nav>
-        <h1><i class="fas fa-users me-3"></i>Project Team</h1>
-        <p class="mt-3">Meet the researcher and supervisor behind the Intelligent Wound Monitoring and Therapy Adjustment System — EE405 Final Year Project, University of Peradeniya.</p>
-    </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<section class="py-5" style="background:#f8faff;">
-<div class="container py-4">
-
-    <!-- SUPERVISOR -->
-    <div class="mb-5">
-        <div class="sec-tag mb-3" style="display:inline-block;background:#e0f4ff;color:#0077b6;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;">Project Supervisor</div>
-        <div class="supervisor-card">
-            <div class="supervisor-header flex-wrap">
-                <div class="supervisor-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
-                <div>
-                    <h3>Dr. Ruwan Ranaweera</h3>
-                    <div class="sup-role"><i class="fas fa-star me-2"></i>Project Supervisor</div>
-                    <div class="sup-uni"><i class="fas fa-university me-2"></i>University of Peradeniya — Dept. of Electrical &amp; Electronic Engineering</div>
-                </div>
-            </div>
-            <div class="supervisor-body">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="detail-row"><i class="fas fa-envelope"></i><span>Edit this with supervisor email</span></div>
-                        <div class="detail-row"><i class="fas fa-phone"></i><span>Edit this with contact number</span></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="detail-row"><i class="fas fa-flask"></i><span>Edit this with research area</span></div>
-                        <div class="detail-row"><i class="fas fa-building"></i><span>Faculty of Engineering, University of Peradeniya</span></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="detail-row"><i class="fas fa-globe"></i><span>Edit this with supervisor website/profile link</span></div>
-                        <div class="edit-hint"><i class="fas fa-pencil-alt"></i>Click the pencil icon on GitHub to edit these details</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TEAM MEMBERS -->
-    <div class="mb-4">
-        <div class="sec-tag mb-4" style="display:inline-block;background:#e0f4ff;color:#0077b6;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;">Research Team</div>
-    </div>
-    <div class="row g-4">
-
-        <!-- MEMBER 1 — YOU -->
-        <div class="col-md-6 col-lg-3">
-            <div class="team-card">
-                <div class="team-card-top">
-                    <div class="role-badge">Project Lead</div>
-                    <div class="avatar-circle"><i class="fas fa-user-graduate"></i></div>
-                    <h4>GIMHANI K.K.G.T.</h4>
-                    <div style="color:rgba(255,255,255,0.75);font-size:0.8rem;">Undergraduate Researcher</div>
-                </div>
-                <div class="team-card-body">
-                    <div class="detail-row"><i class="fas fa-id-badge"></i><span>Student ID: <strong>Edit here</strong></span></div>
-                    <div class="detail-row"><i class="fas fa-envelope"></i><span>Edit your email here</span></div>
-                    <div class="detail-row"><i class="fas fa-university"></i><span>Dept. of Electrical &amp; Electronic Engineering</span></div>
-                    <div class="detail-row"><i class="fas fa-map-marker-alt"></i><span>University of Peradeniya, Sri Lanka</span></div>
-                    <div class="edit-hint"><i class="fas fa-pencil-alt"></i>Edit your Student ID &amp; email on GitHub</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MEMBER 2 -->
-        <div class="col-md-6 col-lg-3">
-            <div class="team-card">
-                <div class="team-card-top member2">
-                    <div class="role-badge">Team Member</div>
-                    <div class="avatar-circle"><i class="fas fa-user"></i></div>
-                    <h4>Member Name</h4>
-                    <div style="color:rgba(255,255,255,0.75);font-size:0.8rem;">Edit Role Here</div>
-                </div>
-                <div class="team-card-body">
-                    <div class="detail-row"><i class="fas fa-id-badge"></i><span>Student ID: <strong>Edit here</strong></span></div>
-                    <div class="detail-row"><i class="fas fa-envelope"></i><span>Edit email here</span></div>
-                    <div class="detail-row"><i class="fas fa-university"></i><span>Dept. of Electrical &amp; Electronic Engineering</span></div>
-                    <div class="detail-row"><i class="fas fa-map-marker-alt"></i><span>University of Peradeniya, Sri Lanka</span></div>
-                    <div class="edit-hint"><i class="fas fa-pencil-alt"></i>Edit name, ID &amp; email on GitHub</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MEMBER 3 -->
-        <div class="col-md-6 col-lg-3">
-            <div class="team-card">
-                <div class="team-card-top member3">
-                    <div class="role-badge">Team Member</div>
-                    <div class="avatar-circle"><i class="fas fa-user"></i></div>
-                    <h4>Member Name</h4>
-                    <div style="color:rgba(255,255,255,0.75);font-size:0.8rem;">Edit Role Here</div>
-                </div>
-                <div class="team-card-body">
-                    <div class="detail-row"><i class="fas fa-id-badge"></i><span>Student ID: <strong>Edit here</strong></span></div>
-                    <div class="detail-row"><i class="fas fa-envelope"></i><span>Edit email here</span></div>
-                    <div class="detail-row"><i class="fas fa-university"></i><span>Dept. of Electrical &amp; Electronic Engineering</span></div>
-                    <div class="detail-row"><i class="fas fa-map-marker-alt"></i><span>University of Peradeniya, Sri Lanka</span></div>
-                    <div class="edit-hint"><i class="fas fa-pencil-alt"></i>Edit name, ID &amp; email on GitHub</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MEMBER 4 -->
-        <div class="col-md-6 col-lg-3">
-            <div class="team-card">
-                <div class="team-card-top member4">
-                    <div class="role-badge">Team Member</div>
-                    <div class="avatar-circle"><i class="fas fa-user"></i></div>
-                    <h4>Member Name</h4>
-                    <div style="color:rgba(255,255,255,0.75);font-size:0.8rem;">Edit Role Here</div>
-                </div>
-                <div class="team-card-body">
-                    <div class="detail-row"><i class="fas fa-id-badge"></i><span>Student ID: <strong>Edit here</strong></span></div>
-                    <div class="detail-row"><i class="fas fa-envelope"></i><span>Edit email here</span></div>
-                    <div class="detail-row"><i class="fas fa-university"></i><span>Dept. of Electrical &amp; Electronic Engineering</span></div>
-                    <div class="detail-row"><i class="fas fa-map-marker-alt"></i><span>University of Peradeniya, Sri Lanka</span></div>
-                    <div class="edit-hint"><i class="fas fa-pencil-alt"></i>Edit name, ID &amp; email on GitHub</div>
-                </div>
-            </div>
-        </div>
-
-    </div><!-- end row -->
-
-    <!-- HOW TO EDIT NOTE -->
-    <div class="mt-5 p-4 rounded-3" style="background:#fffbeb;border:1px solid #f59e0b;">
-        <h6 style="color:#92400e;font-weight:700;"><i class="fas fa-info-circle me-2"></i>How to Edit Team Details on GitHub</h6>
-        <ol style="color:#78350f;font-size:0.87rem;margin:10px 0 0;padding-left:20px;line-height:2;">
-            <li>Go to your GitHub repository → click <strong>team.html</strong></li>
-            <li>Click the <strong>pencil ✏️ icon</strong> (top right of the file)</li>
-            <li>Find the text <code>Edit here</code>, <code>Edit email here</code>, <code>Member Name</code> and replace with real details</li>
-            <li>Scroll down → click <strong>"Commit changes"</strong></li>
-        </ol>
-    </div>
-
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer-main">
-    <div class="container">
-        <div class="row g-5 pb-4">
-            <div class="col-md-4">
-                <h5><i class="fas fa-heartbeat me-2" style="color:#00b4d8"></i>IWMTAS</h5>
-                <p>Intelligent Wound Monitoring and Therapy Adjustment System<br>EE405 — Undergraduate Project I, 2025–2026</p>
-                <p>University of Peradeniya · Dept. of Electrical &amp; Electronic Engineering</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Portfolio Sections</h5>
-                <a href="index.html#week1">Week 1 — Literature Review</a>
-                <a href="index.html#week2">Week 2 — Thermal Methods &amp; Biology</a>
-                <a href="index.html#week3">Week 3 — Sensor &amp; Hardware</a>
-                <a href="#" style="opacity:0.5;">Week 4 — Coming Soon</a>
-            </div>
-            <div class="col-md-4">
-                <h5>Project Team</h5>
-                <a href="team.html">GIMHANI K.K.G.T. — Project Lead</a>
-                <a href="team.html">Dr. Ruwan Ranaweera — Supervisor</a>
-                <a href="team.html" style="margin-top:4px;">→ View Full Team</a>
-            </div>
-        </div>
-    </div>
-</footer>
-<div class="footer-copy">
-    © 2025–2026 IWMTAS FYP Portfolio &nbsp;|&nbsp; Designed By <a href="https://htmlcodex.com" style="color:rgba(255,255,255,0.5);">HTML Codex</a>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-</html>
+<div class="page-hero"><div class="container"><h1><i class="fas fa-users me-3"></i>Project Team</h1><p class="mt-3" style="max-width:760px;">Team information for the Intelligent Wound Monitoring and Therapy Adjustment System. The student is shown as a research team member, not as group leader.</p></div></div>
+<section class="py-5"><div class="container py-4"><div class="text-center mb-5"><div class="sec-tag">Research Team</div><h2 style="color:var(--dark-blue);font-weight:800;">People Involved</h2></div><div class="row g-4">
+<div class="col-md-4"><div class="project-card"><div class="avatar"><i class="fas fa-user-graduate"></i></div><h4>GIMHANI K.K.G.T.</h4><p class="text-primary fw-bold mb-2">Undergraduate Research Team Member</p><p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p><p><i class="fas fa-envelope text-primary me-2"></i><a href="mailto:e21430@eng.pdn.ac.lk">e21430@eng.pdn.ac.lk</a></p></div></div>
+<div class="col-md-4"><div class="project-card"><div class="avatar"><i class="fas fa-chalkboard-teacher"></i></div><h4>Dr. Ruwan Ranaweera</h4><p class="text-primary fw-bold mb-2">Project Supervisor</p><p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p><p>Guidance for system design, electronics and engineering development.</p></div></div>
+<div class="col-md-4"><div class="project-card"><div class="avatar"><i class="fas fa-user-md"></i></div><h4>Dr. Manjula Peiris</h4><p class="text-primary fw-bold mb-2">Co-Supervisor</p><p>Faculty of Medicine, University of Peradeniya</p><p>Clinical guidance related to wound monitoring, diabetic wound healing and healthcare relevance.</p></div></div>
+</div></div></section>
+<footer class="footer-main"><div class="container"><div class="row g-4"><div class="col-md-4"><h5><i class="fas fa-heartbeat me-2" style="color:var(--accent)"></i>IWMTAS</h5><p>Intelligent Wound Monitoring and Therapy Adjustment System<br>Faculty of Engineering, University of Peradeniya</p></div><div class="col-md-4"><h5>Website Sections</h5><a href="index.html#week1">Week 1 - Literature Review</a><a href="index.html#week2">Week 2 - Thermal Methods</a><a href="index.html#week3">Week 3 - Sensor Selection</a><a href="index.html#week4">Week 4 - FPCB Architecture</a><a href="index.html#week5">Week 5 - pH Gradient</a></div><div class="col-md-4"><h5>Evidence Links</h5><a href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">Full Drive Folder</a><a href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener">Week 4/5 Folder</a><a href="mailto:e21430@eng.pdn.ac.lk">e21430@eng.pdn.ac.lk</a></div></div></div></footer><div class="footer-copy">© 2025-2026 IWMTAS FYP Portfolio | University of Peradeniya</div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script></body></html>
