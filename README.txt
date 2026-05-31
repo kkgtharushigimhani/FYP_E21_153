@@ -1,52 +1,26 @@
-SMART DIABETIC WOUND PATCH — FYP PROJECT WEBSITE
-=================================================
+IWMTAS EE405 FYP Portfolio Website
+===================================
 
-A single-page showcase website for the Final Year Project:
-a 4-stage flexible smart wound patch using the TI TMP117
-high-precision temperature sensor for early infection detection.
+How to open:
+1. Extract this ZIP file.
+2. Open index.html in a browser.
+3. Use the top navigation to access Week 1, Week 2, Week 3, Week 4, Team and Drive Links pages.
 
-The site covers:
-  • Project overview & clinical rationale
-  • The science (wound healing stages + thermal spectrum)
-  • System architecture (TMP117 → multiplexer → ESP32 → SD log)
-  • Week 4 deep dive: the 4-stage temperature integration + PCB rules
-  • Weekly progress (Weeks 1–4) with Google Drive links
-  • Resources: full Drive folder + reference video
+Included project focus:
+- Intelligent Wound Monitoring & Therapy Adjustment System
+- Week 1 literature review
+- Week 2 thermal methods and wound biology
+- Week 3 sensor selection and hardware plan
+- Week 4 distributed TMP117 temperature sensor architecture, FPCB patch layers, wound healing stages and fund request details
 
+Main Google Drive folder:
+https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link
 
-HOW TO OPEN
------------
-Just double-click "index.html" — it opens in any web browser.
-Everything (HTML, CSS, JavaScript, fonts) loads automatically.
-No installation, server or build step needed.
-An internet connection is used only to load Google Fonts and to
-open the Google Drive / YouTube links.
+Weekly Drive folders:
+Week 1: https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r?usp=drive_link
+Week 2: https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI?usp=drive_link
+Week 3: https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf?usp=drive_link
+Week 4: https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link
 
-
-WHAT YOU SHOULD EDIT BEFORE SUBMITTING
---------------------------------------
-Open index.html in any text editor and search for these markers:
-
-  1. "replace me"  — the Week 1, 2 and 3 card descriptions are
-     SUGGESTED placeholders. Replace the text with what you
-     actually did each week. (Week 4 is filled from your documents.)
-
-  2. "add your name" — in the footer team card, add your name.
-
-  3. "not group leader" — already noted as requested; adjust if needed.
-
-The five Google Drive links are exactly the ones you provided and
-do not need changing.
-
-
-LINKS USED
-----------
-Full project:  https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS
-Week 1:        https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r
-Week 2:        https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI
-Week 3:        https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf
-Week 4:        https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws
-Reference:     https://youtu.be/Wu8CXYFqvc4
-
-Tip: make sure your Drive folders are shared as
-"Anyone with the link can view" so others can open them.
+Role note:
+The student is shown as an undergraduate researcher / project group member, not as group leader.
