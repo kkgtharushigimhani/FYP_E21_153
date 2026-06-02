@@ -153,6 +153,7 @@
             <div class="collapse navbar-collapse" id="navMain">
                 <div class="navbar-nav ms-auto gap-1">
                     <a href="index.html" class="nav-link active">Home</a>
+                    <a href="#project-overview" class="nav-link">Overview</a>
                     <a href="#week1" class="nav-link">Week 1</a>
                     <a href="#week2" class="nav-link">Week 2</a>
                     <a href="#week3" class="nav-link">Week 3</a>
@@ -176,7 +177,7 @@
                 <p class="my-4">A smart, sensor-integrated system leveraging real-time thermal monitoring and adaptive therapy to track diabetic wound healing and guide clinical decision-making.</p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="#week1" class="btn-hero-primary text-decoration-none"><i class="fas fa-book-open me-2"></i>View Research Portfolio</a>
-                    <a href="#week1" class="btn-hero-outline text-decoration-none">Project Overview</a>
+                    <a href="#project-overview" class="btn-hero-outline text-decoration-none">Project Overview</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -229,6 +230,79 @@
         </div>
     </div>
 </div>
+
+<!-- PROJECT OVERVIEW -->
+<section id="project-overview" class="py-5" style="background:#ffffff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Project Overview</div>
+            <div class="sec-title">Intelligent Wound Monitoring &amp; Therapy Adjustment System</div>
+            <p class="text-muted mt-3" style="max-width:880px;margin:auto;">
+                IWMTAS is a smart biomedical monitoring system designed to support diabetic wound care by continuously observing important wound-healing conditions. The project focuses on real-time temperature monitoring, wound-stage analysis, pH variation understanding, and adaptive therapy decision support. By combining sensor-based measurements with clinical wound-healing knowledge, the system aims to help detect delayed healing, infection risk, poor perfusion, and abnormal wound-bed conditions at an earlier stage.
+            </p>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="info-box h-100">
+                    <h6><i class="fas fa-thermometer-half text-primary me-2"></i>Temperature-Based Monitoring</h6>
+                    <p>The system uses wound temperature as a major healing indicator. Multi-point monitoring helps compare the wound center, wound edge, periwound skin, and reference skin to identify inflammation, ischemia, and healing progression.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-box h-100">
+                    <h6><i class="fas fa-microchip text-primary me-2"></i>Flexible Smart Patch</h6>
+                    <p>The proposed patch uses TMP117 digital temperature sensors arranged on a flexible PCB. This supports accurate, low-power, wearable biomedical monitoring while keeping the sensor layer close to the wound region.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-box h-100">
+                    <h6><i class="fas fa-vial text-primary me-2"></i>pH Healing Condition Study</h6>
+                    <p>The project also studies pH changes from the wound corner toward the center. A more alkaline wound center can indicate delayed healing, biofilm formation, infection risk, or abnormal wound-bed conditions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="paper-card h-100 mb-0">
+                    <div class="paper-card-header">
+                        <div class="paper-num">System Aim</div>
+                        <h3>Early Detection and Therapy Support</h3>
+                    </div>
+                    <div class="paper-card-body">
+                        <p>
+                            The main aim of IWMTAS is to develop an intelligent wound monitoring platform that can assist healthcare decision-making. Instead of depending only on visual wound inspection, the system provides measurable wound data such as temperature distribution and pH-related healing condition.
+                        </p>
+                        <div class="relevance-box">
+                            <strong><i class="fas fa-bullseye me-2"></i>Main Goal</strong>
+                            <p>To create a smart wound monitoring and therapy adjustment system that improves early warning, healing progress tracking, and future clinical wound-care support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="paper-card h-100 mb-0">
+                    <div class="paper-card-header">
+                        <div class="paper-num">Project Direction</div>
+                        <h3>From Research to Prototype Development</h3>
+                    </div>
+                    <div class="paper-card-body">
+                        <p>
+                            The project work begins with literature review and clinical background study, then moves into sensor selection, FPCB design, wound-stage mapping, biochemical monitoring concepts, firmware development, prototype testing, and final validation.
+                        </p>
+                        <div class="row g-3 mt-2">
+                            <div class="col-6"><div class="result-pill"><div class="rnum">TMP117</div><div class="rlabel">Selected temperature sensor</div></div></div>
+                            <div class="col-6"><div class="result-pill"><div class="rnum">FPCB</div><div class="rlabel">Flexible patch architecture</div></div></div>
+                            <div class="col-6"><div class="result-pill"><div class="rnum">pH</div><div class="rlabel">Biochemical healing indicator</div></div></div>
+                            <div class="col-6"><div class="result-pill"><div class="rnum">Alerts</div><div class="rlabel">Future decision support</div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- WEEK NAVIGATION -->
 <div class="week-nav overflow-auto">
@@ -927,6 +1001,7 @@
             </div>
             <div class="col-md-4">
                 <h5>Portfolio Sections</h5>
+                <a href="#project-overview">Project Overview</a>
                 <a href="#week1">Week 1 - Literature Review</a>
                 <a href="#week2">Week 2 - Thermal Methods &amp; Biology</a>
                 <a href="#week3">Week 3 - Sensor &amp; Hardware</a>
@@ -962,9 +1037,13 @@
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
-            e.preventDefault();
-            const t = document.querySelector(a.getAttribute('href'));
-            if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+            const targetSelector = a.getAttribute('href');
+            if(targetSelector === '#') return;
+            const t = document.querySelector(targetSelector);
+            if(t) {
+                e.preventDefault();
+                t.scrollIntoView({behavior:'smooth', block:'start'});
+            }
         });
     });
     // Week tab active state on scroll
