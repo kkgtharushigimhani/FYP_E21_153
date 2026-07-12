@@ -1155,3 +1155,20 @@
     .week5-fill-img { height: 210px !important; }
     .week6-extra-img { height: 240px !important; }
 }
+
+
+/* Correction: Week 5 additional images should not be cropped or full-filled */
+.week5-fill-img {
+    width: 100%;
+    height: 220px !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #ffffff;
+    padding: 8px !important;
+}
+@media (max-width: 768px) {
+    .week5-fill-img {
+        height: 210px !important;
+        object-fit: contain !important;
+    }
+}
