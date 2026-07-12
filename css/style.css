@@ -1082,18 +1082,52 @@
 }
 
 
-/* === Week 5 biological baseline image correction === */
-.week5-bio-grid .week5-img {
-    height: 320px !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-    background: #ffffff;
-    padding: 10px;
+/* Read-more buttons for weekly portfolio details */
+.week-readmore {
+    margin-top: 18px;
 }
-.week5-bio-grid .fig-caption {
-    min-height: 90px;
-    line-height: 1.45;
+.week-readmore summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    list-style: none;
+    background: linear-gradient(135deg, #0077b6, #0096c7);
+    color: #ffffff;
+    padding: 11px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,119,182,0.20);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-@media (max-width: 768px) {
-    .week5-bio-grid .week5-img { height: 240px !important; }
+.week-readmore summary::-webkit-details-marker {
+    display: none;
+}
+.week-readmore summary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0,119,182,0.26);
+}
+.week-readmore[open] summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.week-readmore-body {
+    border: 1px solid rgba(0,119,182,0.18);
+    border-top: 4px solid #0096c7;
+    background: #f8fcff;
+    border-radius: 0 14px 14px 14px;
+    padding: 20px 22px;
+    margin-top: 0;
+    color: #4d5b6b;
+    line-height: 1.72;
+}
+.week-readmore-body p {
+    margin-bottom: 12px;
+}
+.week-readmore-body ul {
+    margin-bottom: 0;
+    padding-left: 1.25rem;
+}
+.week-readmore-body li {
+    margin-bottom: 7px;
 }
