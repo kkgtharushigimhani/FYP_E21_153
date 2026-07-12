@@ -1,0 +1,32 @@
+IWMTAS Portfolio Correction Notes — Week 5, Week 8 and Week 9
+
+What was changed:
+1. Week 5
+   - Removed the incorrect pH-study images that were not part of the user's previous portfolio evidence.
+   - Kept Week 5 as a descriptive pH sensing / biochemical monitoring section.
+   - Added a concise pH interpretation table and short findings without extra images.
+
+2. Week 8
+   - Reduced the number of images to only three clear evidence images.
+   - Used statistical analysis results: review dataset heatmap/priority map and co-occurrence map.
+   - Added the temperature measuring method image from the uploaded presentation.
+   - Added text that the project leader collaborated with the review/journal-paper preparation work.
+
+3. Week 9
+   - Removed the DAQ module + flowchart image from the visible portfolio section.
+   - Kept the disposable patch circuit image, cost analysis image, TMP117 temperature-method evidence and order details.
+   - Added an end-of-week note explaining the main disposable patch changes: wound-contact part remains disposable, electronics remain reusable, only sensing windows are exposed, and safer carbon/PANI sensing surfaces are preferred over exposed copper/electronics near the wound.
+
+4. Image formatting
+   - Added CSS so Week 8 and Week 9 images display using object-fit: contain instead of cropped cover view.
+   - Added a stronger overlay-removal CSS rule for the black/orange diagonal shape.
+
+Files to upload/replace in GitHub:
+- index.html
+- css/style.css
+- img/papers/week8_results_review_dataset_clean.png
+- img/papers/week8_methods_temperature_clean.png
+- img/papers/week9_circuit1_disposable_patch_clean.png
+- img/papers/week9_cost_analysis_clean.png
+
+Do not delete or change Week 1–4 content.

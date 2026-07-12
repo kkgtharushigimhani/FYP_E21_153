@@ -873,3 +873,61 @@
     z-index: 9999 !important;
     overflow: visible !important;
 }
+
+
+/* === IWMTAS portfolio correction: remove old template diagonal overlay === */
+.navbar-brand::before,
+.navbar-brand::after,
+.navbar-brand-2::before,
+.navbar-brand-2::after,
+.main-nav .navbar-brand::before,
+.main-nav .navbar-brand::after,
+.navbar::before,
+.navbar::after,
+.nav-bar::before,
+.nav-bar::after {
+    display: none !important;
+    content: none !important;
+    background: transparent !important;
+}
+.navbar-brand,
+.navbar-brand-2,
+.nav-bar,
+.navbar {
+    overflow: visible !important;
+}
+
+/* === Clear image formatting for Week 8 and Week 9 evidence cards === */
+.week-evidence-grid .clean-fig-box {
+    height: 100%;
+    border: 1px solid #dce8f7;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ffffff;
+}
+.week-evidence-grid .portfolio-evidence-img {
+    display: block;
+    width: 100%;
+    height: 330px;
+    object-fit: contain;
+    object-position: center center;
+    background: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid #eef3f8;
+}
+.week-evidence-grid .large-evidence-img {
+    height: 380px;
+}
+.week-evidence-grid .fig-caption {
+    min-height: 84px;
+    padding: 14px 16px;
+    line-height: 1.45;
+    color: #4b5563;
+    background: #fbfdff;
+}
+@media (max-width: 768px) {
+    .week-evidence-grid .portfolio-evidence-img,
+    .week-evidence-grid .large-evidence-img {
+        height: 260px;
+    }
+}
