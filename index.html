@@ -977,7 +977,7 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Week 6</div>
             <div class="sec-title">TMP117 Circuit Direction, Laboratory Equipment Review & Journal Support</div>
-            <p class="text-muted mt-2" style="max-width:760px;margin:auto;">Week 6 connected the selected TMP117 temperature sensor to a practical circuit direction, reviewed required fabrication/testing equipment, and started organizing evidence that later supported the review/journal-paper preparation work.</p>
+            <p class="text-muted mt-2" style="max-width:790px;margin:auto;">In Week 6, I focused more on the temperature-sensing part of our project. I studied how the TMP117 should be connected, how the I2C lines should be arranged, what supporting components are needed, and what laboratory tools or fabrication methods may be required later when we move from design work to practical implementation.</p>
         </div>
         <div class="paper-card">
             <div class="paper-card-header">
@@ -987,9 +987,9 @@
             </div>
             <div class="paper-card-body">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-project-diagram text-primary me-2"></i>Circuit Direction</h6><p>The uploaded circuit evidence was used to confirm the basic TMP117 connection concept: VDD/GND power, SDA/SCL I2C communication, address/alert pins, and simple pull-up logic for reliable digital temperature readout.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-plug text-primary me-2"></i>Pinout & Wiring Study</h6><p>The TMP117 guide was reviewed to understand the breakout pinout, I2C wiring path, and address-selection concept before moving the design toward a compact wearable patch circuit.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-flask text-primary me-2"></i>Equipment Review</h6><p>Required fabrication and testing equipment were listed, including screen printing, SEM, NMR, spin coating, plasma treatment, physical-vapour deposition, laser cutting and potentiostat-based electrochemical work.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-project-diagram text-primary me-2"></i>Circuit Direction</h6><p>This week, I checked the basic TMP117 connection direction in more detail. I looked at the power pins, SDA/SCL I2C communication lines, address and alert pins, and the simple pull-up arrangement needed to get a stable digital temperature reading.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-plug text-primary me-2"></i>Pinout & Wiring Study</h6><p>I also studied the TMP117 pinout carefully so that later we can place the sensor correctly in the disposable patch and route the lines properly toward the reusable module. This helped me understand how the sensor can be connected without making the wound-contact part too bulky.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-flask text-primary me-2"></i>Equipment Review</h6><p>At the same time, I reviewed the practical tools and processes that may be needed later, such as screen printing, surface treatment, electrochemical testing and general fabrication equipment. This helped us see what is possible now and what may need outside support.</p></div></div>
                 </div>
 
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-images me-2 text-primary"></i>Week 6 Evidence Images from Uploaded Files</h5>
@@ -1001,18 +1001,19 @@
 
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>TMP117 retained as the core temperature sensor</strong><p>The week focused on converting the previous sensor-selection conclusion into an implementable digital temperature sensing circuit.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-network-wired"></i></div><div class="finding-text"><strong>I2C bus logic clarified</strong><p>The SDA/SCL communication path and address pin behaviour were reviewed before considering multi-sensor expansion and PCB routing.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-book"></i></div><div class="finding-text"><strong>Journal-paper support started</strong><p>The literature-review evidence and sensor-method notes were organized so they could later support the warning-alarm review paper and statistical evidence package.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>TMP117 kept as the main temperature sensor</strong><p>From the options we considered, TMP117 still looked like the best fit because it gives accurate digital temperature readings and is easier to integrate into a monitoring system than many analogue alternatives.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-network-wired"></i></div><div class="finding-text"><strong>I2C connection path became clearer</strong><p>By checking the pinout and circuit reference, I got a much better idea about how the sensor should communicate with the controller, and how this can later support more than one temperature-sensing point.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-layer-group"></i></div><div class="finding-text"><strong>Patch-to-module thinking started</strong><p>This week also helped shape the idea of keeping the wound-contact side simple while sending the signals toward a reusable electronics section. That separation is important for cost, hygiene and reuse.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-book"></i></div><div class="finding-text"><strong>Support for later paper work</strong><p>The notes and figures organized in this week also became useful when explaining our sensor choice and measurement direction in the review and journal-paper-related work.</p></div></div>
                     </div>
                     <div class="col-md-6">
-                        <div class="fig-box"><img src="img/papers/week6_04_meeting_notes_from_pdf.png" alt="Week 6 meeting notes" style="height:305px;object-fit:cover;object-position:top;background:#fff;"><div class="fig-caption">Meeting-note evidence from Week 6: system orientation, sensor method discussion, pH/moisture direction, block diagram and materials planning.</div></div>
+                        <div class="fig-box"><img src="img/papers/week6_04_meeting_notes_from_pdf.png" alt="Week 6 meeting notes" style="height:360px;object-fit:cover;object-position:top;background:#fff;"><div class="fig-caption">Meeting-note evidence from Week 6 showing sensor discussion, system direction, block-diagram thinking, pH/moisture ideas and early material/planning notes.</div></div>
                     </div>
                 </div>
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>Week 6 strengthened the engineering basis of the temperature-measurement part of the smart plaster. It ensured that the TMP117 circuit, pinout and wiring method were understood before adding more sensors and integrating the signal path into a flexible wearable wound-monitoring design.</p>
+                    <p>Week 6 gave me a much clearer practical understanding of how the TMP117 can be used in our smart wound-monitoring project. Instead of only selecting a sensor from literature, I moved one step closer to implementation by understanding the connection method, the communication path, the support components and the practical fabrication direction needed for the next stages.</p>
                 </div>
             </div>
         </div>
@@ -1109,8 +1110,8 @@
     <div class="container py-4">
         <div class="text-center mb-5">
             <div class="sec-tag">Week 8</div>
-            <div class="sec-title">Review Dataset Results & Temperature Measuring Method</div>
-            <p class="text-muted mt-2" style="max-width:820px;margin:auto;">In Week 8, we used the review-dataset results to support our sensor-selection decision. I kept this section focused only on the analysis output and the TMP117 temperature-measuring method, without adding the Week 7 pie charts here.</p>
+            <div class="sec-title">Review Dataset Results, Statistical Evidence & Temperature Measuring Method</div>
+            <p class="text-muted mt-2" style="max-width:860px;margin:auto;">In Week 8, I focused more on the literature-analysis side of the project. I used the review-dataset results and heatmap-based statistical outputs to better justify why pH, temperature and moisture/exudate should be the main parameter group. I also included the temperature-sensing concept clearly because it links the analysis results to our actual hardware direction.</p>
         </div>
 
         <div class="paper-card">
@@ -1121,23 +1122,29 @@
             </div>
             <div class="paper-card-body">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-database text-primary me-2"></i>Review Dataset Output</h6><p>We used the collected journal-paper dataset to compare wound-monitoring parameters and check which measurements are repeatedly useful in smart wound-dressing research.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-check-circle text-primary me-2"></i>Selected Parameters</h6><p>The result supported our decision to continue with pH, temperature and moisture/exudate as the main first-line sensing group for the disposable smart plaster.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-users text-primary me-2"></i>Paper Preparation Support</h6><p>Our project leader, Vikum Vichakshana, collaborated with the journal/review-paper preparation work, and the team used these outputs to connect the literature findings with our project design.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-database text-primary me-2"></i>Review Dataset Output</h6><p>This week, I looked more carefully at the review-dataset outputs to understand which wound parameters are commonly studied together and which ones are more meaningful for practical monitoring.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-check-circle text-primary me-2"></i>Selected Parameters</h6><p>The statistical outputs continued to support our decision to work with pH, temperature and moisture/exudate as the first-line parameter group for the disposable smart plaster.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-users text-primary me-2"></i>Paper Preparation Support</h6><p><strong>I also collaborated with our project leader, Vikum Vichakshana, in the review/journal-paper preparation work</strong>, and these figures helped us explain why our selected parameters are clinically meaningful and technically practical.</p></div></div>
                 </div>
 
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-images me-2 text-primary"></i>Week 8 Evidence Images</h5>
                 <div class="row g-3 mb-4 week-evidence-grid week8-equal-grid">
-                    <div class="col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="fig-box clean-fig-box">
                             <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_results_review_dataset_clean.png" alt="Results from review dataset">
-                            <div class="fig-caption"><strong>Fig. 1</strong> — Review-dataset analysis output showing the co-occurrence and priority results that supported pH, temperature and moisture/exudate as our practical first-line parameter group.</div>
+                            <div class="fig-caption"><strong>Fig. 1</strong> — Review-dataset analysis output showing the combined co-occurrence and priority results that supported pH, temperature and moisture/exudate as our practical first-line parameter group.</div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="fig-box clean-fig-box">
+                            <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_04_parameter_cooccurrence_heatmap.png" alt="Week 8 parameter co-occurrence heatmap">
+                            <div class="fig-caption"><strong>Fig. 2</strong> — Heatmap-based co-occurrence analysis showing how wound-monitoring variables relate to each other across the reviewed literature.</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
                         <div class="fig-box clean-fig-box">
                             <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_temperature_sensing_concept_clean.png" alt="TMP117 temperature sensing concept">
-                            <div class="fig-caption"><strong>Fig. 2</strong> — TMP117 temperature-sensing concept used to explain local wound-site temperature monitoring while keeping the reusable electronics away from the wound-contact area.</div>
+                            <div class="fig-caption"><strong>Fig. 3</strong> — TMP117 temperature-sensing concept used to clearly explain local wound-site temperature monitoring while keeping the reusable electronics away from the wound-contact area.</div>
                         </div>
                     </div>
                 </div>
@@ -1145,18 +1152,18 @@
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-list-check me-2 text-primary"></i>What I Understood from Week 8</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-check-circle"></i></div><div class="finding-text"><strong>Evidence-Based Sensor Choice</strong><p>The statistical output helped us justify why our system should not depend on only one parameter. pH, temperature and moisture together give a more meaningful wound-bed picture.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>Temperature Method</strong><p>The TMP117 method was selected because it gives accurate digital temperature readings and can support trend-based monitoring of inflammation or infection risk.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-check-circle"></i></div><div class="finding-text"><strong>Evidence-based sensor selection became stronger</strong><p>The statistical outputs helped me understand more clearly why our system should not depend on a single parameter. pH, temperature and moisture/exudate together can give a more useful wound-bed picture than looking at only one measurement.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-chart-bar"></i></div><div class="finding-text"><strong>Heatmaps made the literature easier to interpret</strong><p>The heatmap-style figures were useful because they showed not just which parameters appear often, but also which combinations are repeatedly important across the reviewed papers. That gave better support for our design decisions.</p></div></div>
                     </div>
                     <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-notes-medical"></i></div><div class="finding-text"><strong>Sensor-to-Warning Idea</strong><p>The review work helped us think about how raw wound-bed readings can later be converted into simple warning outputs for clinical decisions.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-file-alt"></i></div><div class="finding-text"><strong>Journal Paper Contribution</strong><p>This week also supported the review/journal paper work by organizing analysis figures and explaining why the selected parameter group is important.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>Temperature method is now easier to explain</strong><p>The TMP117 concept image helped connect the review results to our actual implementation idea. It clearly shows how a local wound-site temperature reading can be taken while the reusable DAQ stays away from the wound-contact area.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-file-alt"></i></div><div class="finding-text"><strong>Useful for the paper and for the portfolio</strong><p>This week was important not only for the design itself, but also for explaining the project properly. The figures and analysis made it easier to present our work in the portfolio and in the review/journal-paper-related discussions.</p></div></div>
                     </div>
                 </div>
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>Week 8 gave stronger evidence for the final sensing direction. Instead of selecting sensors only by availability, we used review-dataset results to support the pH-temperature-moisture combination and the TMP117-based temperature-measuring method.</p>
+                    <p>Week 8 gave stronger evidence for the final sensing direction. Instead of selecting sensors only because they are available, I used the review-dataset results, heatmap-based analysis and the temperature-method concept to better justify the pH-temperature-moisture combination and the TMP117-based temperature-measuring approach used in our project.</p>
                 </div>
             </div>
         </div>
