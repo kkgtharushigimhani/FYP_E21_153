@@ -1,9 +1,8 @@
-Upload/replace only these files:
-- index.html
-- img/papers/week5_ph_gradient_diagram.png
-- img/papers/week5_ph_page-1.png
-- img/papers/week5_ph_page-2.png
-- img/papers/week5_ph_page-3.png
-- img/papers/week5_ph_page-4.png
+Upload/replace only these files in your GitHub repository:
 
-This restores the Week 5 bottom images, replaces only the first two Week 5 images with the newly provided biological-baseline images, and adds the Project Overview section. No CSS/image-size changes are included.
+img/papers/week7_pie_local_dfu_burden.png
+img/papers/week7_pie_lk_amputation_outcome.png
+img/papers/week7_pie_global_dfu_burden.png
+img/papers/week7_pie_global_dfu_outcome.png
+
+Do not upload index.html or style.css for this fix. The website HTML already points to these filenames; the first file was accidentally the wrong image, so replacing these image files fixes Week 7 without changing the layout.
