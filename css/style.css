@@ -829,7 +829,38 @@
     background: var(--bs-dark);
 }
 /*** copyright end ***/
+/* Remove unwanted black/orange rotated overlay */
+.hero-shape,
+.bg-shape,
+.shape-bg,
+.decorative-shape,
+.rotate-shape,
+.banner-shape,
+.home-shape,
+.section-shape,
+.hero::before,
+.hero::after,
+#week6::before,
+#week6::after,
+#week7::before,
+#week7::after,
+#week8::before,
+#week8::after,
+#week9::before,
+#week9::after,
+#week10::before,
+#week10::after {
+    display: none !important;
+}
 
+/* Keep weekly content above any hidden background layer */
+section,
+.paper-card,
+.fig-box,
+.container {
+    position: relative;
+    z-index: 2;
+}
 
 
 
