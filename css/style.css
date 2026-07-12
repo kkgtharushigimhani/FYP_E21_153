@@ -1131,3 +1131,27 @@
 .week-readmore-body li {
     margin-bottom: 7px;
 }
+
+
+/* Week 5 newly added images should fill the box */
+.week5-fill-img {
+    width: 100%;
+    height: 220px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    background: #ffffff;
+}
+
+/* Additional Week 6 images */
+.week6-extra-img {
+    width: 100%;
+    height: 300px !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #ffffff;
+    padding: 8px;
+}
+@media (max-width: 768px) {
+    .week5-fill-img { height: 210px !important; }
+    .week6-extra-img { height: 240px !important; }
+}
