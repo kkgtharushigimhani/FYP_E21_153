@@ -128,6 +128,27 @@
         .footer-main a:hover { color: var(--accent); }
         .footer-main p { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
         .footer-copy { background: #020b1a; padding: 18px 0; text-align: center; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+        /* FIX: remove black/orange diagonal overlay from old template CSS */
+        .navbar-brand::before, .navbar-brand::after,
+        .navbar-brand-2::before, .navbar-brand-2::after,
+        .main-nav .navbar-brand::before, .main-nav .navbar-brand::after,
+        .hero-shape-1, .hero-shape-2,
+        .hero-shape-1::before, .hero-shape-1::after,
+        .hero-shape-2::before, .hero-shape-2::after {
+            content: none !important;
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+            transform: none !important;
+            border: 0 !important;
+        }
+        .main-nav, .main-nav .navbar, .main-nav .navbar-brand, .main-nav .navbar-nav {
+            position: relative !important;
+            z-index: 9999 !important;
+            overflow: visible !important;
+        }
     </style>
 </head>
 <body>
