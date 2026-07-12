@@ -13,7 +13,7 @@
     <link href="css/style.css" rel="stylesheet">
     <style>
         :root { --primary:#0096c7; --dark-blue:#03045e; --mid-blue:#0077b6; --light-blue:#caf0f8; --accent:#00b4d8; }
-        body { font-family:'Inter',sans-serif; background:#f8faff; }
+        body { font-family:'Inter',sans-serif; background:#f8faff; color:#344054; }
         h1,h2,h3,h4,h5,h6 { font-family:'Space Grotesk',sans-serif; }
         .topnav { background:var(--dark-blue); padding:10px 0; }
         .topnav span { color:#ade8f4; font-size:.82rem; }
@@ -25,8 +25,14 @@
         .page-hero { background:linear-gradient(135deg,#03045e,#0077b6,#00b4d8); color:#fff; padding:70px 0; }
         .page-hero h1 { font-weight:800; }
         .sec-tag { display:inline-block; background:#e0f4ff; color:var(--mid-blue); font-size:.75rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:10px; }
-        .project-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,.06); height:100%; }
+        .project-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,.06); height:100%; transition:transform .2s ease, box-shadow .2s ease; }
+        .project-card:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.09); }
         .avatar { width:64px; height:64px; border-radius:16px; background:#e0f4ff; color:var(--mid-blue); display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:18px; }
+        .role-text { color:#fb8500; font-weight:700; margin-bottom:12px; }
+        .id-badge { display:inline-block; background:#f0f8ff; color:var(--dark-blue); padding:4px 10px; border-radius:999px; font-size:.8rem; font-weight:700; margin-bottom:12px; }
+        .week-link-box { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:24px; box-shadow:0 4px 20px rgba(0,0,0,.05); }
+        .week-link-box a { display:block; text-decoration:none; color:#0077b6; font-weight:600; margin-bottom:8px; }
+        .week-link-box a:hover { color:#03045e; }
         .footer-main { background:var(--dark-blue); padding:45px 0 25px; margin-top:40px; }
         .footer-main h5 { color:#fff; margin-bottom:16px; font-weight:700; }
         .footer-main a { color:rgba(255,255,255,.68); font-size:.88rem; display:block; margin-bottom:8px; text-decoration:none; }
@@ -36,13 +42,155 @@
     </style>
 </head>
 <body>
-<div class="topnav"><div class="container d-flex justify-content-between flex-wrap gap-2"><span><i class="fas fa-university"></i>EE405 - Undergraduate Project I</span><span><i class="fas fa-heartbeat"></i>Intelligent Wound Monitoring &amp; Therapy Adjustment System</span></div></div>
-<div class="main-nav py-2"><div class="container"><nav class="navbar navbar-expand-lg p-0"><a class="navbar-brand me-4" href="index.html"><i class="fas fa-heartbeat me-2" style="color:var(--mid-blue)"></i>IWMTAS</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="fa fa-bars"></span></button><div class="collapse navbar-collapse" id="navMain"><div class="navbar-nav ms-auto gap-1"><a href="index.html" class="nav-link">Home</a><a href="index.html#week1" class="nav-link">Week 1</a><a href="index.html#week2" class="nav-link">Week 2</a><a href="index.html#week3" class="nav-link">Week 3</a><a href="index.html#week4" class="nav-link">Week 4</a><a href="index.html#week5" class="nav-link">Week 5</a><a href="team.html" class="nav-link active">Team</a><a href="contact.html" class="nav-link ">Contact</a></div></div></nav></div></div>
+<div class="topnav">
+    <div class="container d-flex justify-content-between flex-wrap gap-2">
+        <span><i class="fas fa-university"></i>EE405 - Undergraduate Project I | 2025-2026</span>
+        <span><i class="fas fa-heartbeat"></i>Intelligent Wound Monitoring &amp; Therapy Adjustment System</span>
+    </div>
+</div>
+<div class="main-nav py-2">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg p-0">
+            <a class="navbar-brand me-4" href="index.html"><i class="fas fa-heartbeat me-2" style="color:var(--mid-blue)"></i>IWMTAS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="fa fa-bars"></span></button>
+            <div class="collapse navbar-collapse" id="navMain">
+                <div class="navbar-nav ms-auto gap-1">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#week1" class="nav-link">Week 1</a>
+                    <a href="index.html#week2" class="nav-link">Week 2</a>
+                    <a href="index.html#week3" class="nav-link">Week 3</a>
+                    <a href="index.html#week4" class="nav-link">Week 4</a>
+                    <a href="index.html#week5" class="nav-link">Week 5</a>
+                    <a href="index.html#week6" class="nav-link">Week 6</a>
+                    <a href="index.html#week7" class="nav-link">Week 7</a>
+                    <a href="index.html#week8" class="nav-link">Week 8</a>
+                    <a href="index.html#week9" class="nav-link">Week 9</a>
+                    <a href="index.html#week10" class="nav-link">Week 10</a>
+                    <a href="index.html#drive-links" class="nav-link">Drive Links</a>
+                    <a href="team.html" class="nav-link active">Team</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
 
-<div class="page-hero"><div class="container"><h1><i class="fas fa-users me-3"></i>Project Team</h1><p class="mt-3" style="max-width:760px;">Team information for the Intelligent Wound Monitoring and Therapy Adjustment System. The student is shown as a research team member, not as group leader.</p></div></div>
-<section class="py-5"><div class="container py-4"><div class="text-center mb-5"><div class="sec-tag">Research Team</div><h2 style="color:var(--dark-blue);font-weight:800;">People Involved</h2></div><div class="row g-4">
-<div class="col-md-4"><div class="project-card"><div class="avatar"><i class="fas fa-user-graduate"></i></div><h4>GIMHANI K.K.G.T.</h4><p class="text-primary fw-bold mb-2">Undergraduate Research Team Member</p><p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p><p><i class="fas fa-envelope text-primary me-2"></i><a href="mailto:e21430@eng.pdn.ac.lk">e21430@eng.pdn.ac.lk</a></p></div></div>
-<div class="col-md-4"><div class="project-card"><div class="avatar"><i class="fas fa-chalkboard-teacher"></i></div><h4>Dr. Ruwan Ranaweera</h4><p class="text-primary fw-bold mb-2">Project Supervisor</p><p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p><p>Guidance for system design, electronics and engineering development.</p></div></div>
-<div class="col-md-4"><div class="project-card"><div class="avatar"><i class="fas fa-user-md"></i></div><h4>Dr. Manjula Peiris</h4><p class="text-primary fw-bold mb-2">Co-Supervisor</p><p>Faculty of Medicine, University of Peradeniya</p><p>Clinical guidance related to wound monitoring, diabetic wound healing and healthcare relevance.</p></div></div>
-</div></div></section>
-<footer class="footer-main"><div class="container"><div class="row g-4"><div class="col-md-4"><h5><i class="fas fa-heartbeat me-2" style="color:var(--accent)"></i>IWMTAS</h5><p>Intelligent Wound Monitoring and Therapy Adjustment System<br>Faculty of Engineering, University of Peradeniya</p></div><div class="col-md-4"><h5>Website Sections</h5><a href="index.html#week1">Week 1 - Literature Review</a><a href="index.html#week2">Week 2 - Thermal Methods</a><a href="index.html#week3">Week 3 - Sensor Selection</a><a href="index.html#week4">Week 4 - FPCB Architecture</a><a href="index.html#week5">Week 5 - pH Gradient</a></div><div class="col-md-4"><h5>Evidence Links</h5><a href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">Full Drive Folder</a><a href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener">Week 4/5 Folder</a><a href="mailto:e21430@eng.pdn.ac.lk">e21430@eng.pdn.ac.lk</a></div></div></div></footer><div class="footer-copy">© 2025-2026 IWMTAS FYP Portfolio | University of Peradeniya</div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script></body></html>
+<div class="page-hero">
+    <div class="container">
+        <h1><i class="fas fa-users me-3"></i>Project Team</h1>
+        <p class="mt-3" style="max-width:820px;">Team information for the Intelligent Wound Monitoring and Therapy Adjustment System. This portfolio presents the student contribution as an undergraduate research team member and does not mark the student as the group leader.</p>
+    </div>
+</div>
+
+<section class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Research Team</div>
+            <h2 style="color:var(--dark-blue);font-weight:800;">People Involved</h2>
+            <p class="text-muted" style="max-width:800px;margin:auto;">The work was carried out under academic and clinical supervision as Group 36, with three undergraduate members contributing to the project development and portfolio evidence.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <span class="id-badge">E/21/153</span>
+                    <h4>GIMHANI K.K.G.T.</h4>
+                    <p class="role-text">Undergraduate Research Team Member</p>
+                    <p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p>
+                    <p>This portfolio documents the individual contribution to the IWMTAS smart wound-monitoring project as a team member.</p>
+                    <p><i class="fas fa-envelope text-primary me-2"></i><a href="mailto:e21153@eng.pdn.ac.lk">e21153@eng.pdn.ac.lk</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <span class="id-badge">E/21/203</span>
+                    <h4>Undergraduate Team Member</h4>
+                    <p class="role-text">Project Group Member</p>
+                    <p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p>
+                    <p>Contributed to project discussions, design decisions, documentation work and group-level progress activities.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-card">
+                    <div class="avatar"><i class="fas fa-user-graduate"></i></div>
+                    <span class="id-badge">E/21/430</span>
+                    <h4>Undergraduate Team Member</h4>
+                    <p class="role-text">Project Group Member</p>
+                    <p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p>
+                    <p>Contributed to the shared IWMTAS project work, group coordination and technical development activities.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="project-card">
+                    <div class="avatar"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h4>Dr. Ruwan Ranaweera</h4>
+                    <p class="role-text">Project Supervisor</p>
+                    <p>Faculty of Engineering, University of Peradeniya<br>Department of Electrical &amp; Electronic Engineering</p>
+                    <p>Guidance for system design, electronics, embedded hardware direction, engineering feasibility and project development.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="project-card">
+                    <div class="avatar"><i class="fas fa-user-md"></i></div>
+                    <h4>Dr. Manjula Peiris</h4>
+                    <p class="role-text">Co-Supervisor</p>
+                    <p>Faculty of Medicine, University of Peradeniya</p>
+                    <p>Clinical guidance related to diabetic wound healing, wound-monitoring relevance and healthcare interpretation of the selected parameters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" style="background:#fff;">
+    <div class="container py-3">
+        <div class="text-center mb-4">
+            <div class="sec-tag">Portfolio Navigation</div>
+            <h2 style="color:var(--dark-blue);font-weight:800;">All Weekly Sections</h2>
+            <p class="text-muted">The team page now links to all updated portfolio weeks from Week 1 to Week 10.</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4"><div class="week-link-box"><a href="index.html#week1">Week 1 - Literature Review</a><a href="index.html#week2">Week 2 - Thermal Methods</a><a href="index.html#week3">Week 3 - Sensor Selection</a><a href="index.html#week4">Week 4 - FPCB Architecture</a></div></div>
+            <div class="col-md-4"><div class="week-link-box"><a href="index.html#week5">Week 5 - pH Study</a><a href="index.html#week6">Week 6 - TMP117 Circuit</a><a href="index.html#week7">Week 7 - Cost &amp; Fund Request</a></div></div>
+            <div class="col-md-4"><div class="week-link-box"><a href="index.html#week8">Week 8 - Statistical Analysis</a><a href="index.html#week9">Week 9 - Full Circuit &amp; Orders</a><a href="index.html#week10">Week 10 - New Design &amp; Chemicals</a></div></div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-main">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h5><i class="fas fa-heartbeat me-2" style="color:var(--accent)"></i>IWMTAS</h5>
+                <p>Intelligent Wound Monitoring and Therapy Adjustment System<br>Faculty of Engineering, University of Peradeniya</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Website Sections</h5>
+                <a href="index.html#week1">Week 1 - Literature Review</a>
+                <a href="index.html#week2">Week 2 - Thermal Methods</a>
+                <a href="index.html#week3">Week 3 - Sensor Selection</a>
+                <a href="index.html#week4">Week 4 - FPCB Architecture</a>
+                <a href="index.html#week5">Week 5 - pH Study</a>
+                <a href="index.html#week6">Week 6 - TMP117 Circuit</a>
+                <a href="index.html#week7">Week 7 - Cost &amp; Fund Request</a>
+                <a href="index.html#week8">Week 8 - Statistical Analysis</a>
+                <a href="index.html#week9">Week 9 - Full Circuit &amp; Orders</a>
+                <a href="index.html#week10">Week 10 - New Design &amp; Chemicals</a>
+            </div>
+            <div class="col-md-4">
+                <h5>Evidence Links</h5>
+                <a href="https://drive.google.com/drive/folders/1-xBttuHcKbzLprP1NRHI01qpF6mVDaKS?usp=drive_link" target="_blank" rel="noopener">Full Drive Folder</a>
+                <a href="https://drive.google.com/drive/folders/1M3LaG85BX9eOAUx1IkAJ6r5JHHQYfg1r?usp=drive_link" target="_blank" rel="noopener">Week 1 Folder</a>
+                <a href="https://drive.google.com/drive/folders/1AFzbqAfX54NgfFZHj5daXPLEidqzl9KI?usp=drive_link" target="_blank" rel="noopener">Week 2 Folder</a>
+                <a href="https://drive.google.com/drive/folders/1gOPzjT4xvITR3vcCq44nhfJkA7cF7NTf?usp=drive_link" target="_blank" rel="noopener">Week 3 Folder</a>
+                <a href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener">Week 4/5 Folder</a>
+                <a href="mailto:e21153@eng.pdn.ac.lk">e21153@eng.pdn.ac.lk</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-copy">© 2025-2026 IWMTAS FYP Portfolio | University of Peradeniya</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
