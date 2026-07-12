@@ -263,7 +263,7 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Project Overview</div>
             <div class="sec-title">Smart Wound Monitoring System</div>
-            <p class="text-muted mt-2" style="max-width:820px;margin:auto;">This is our EE405 undergraduate project portfolio. The main idea is to build a low-cost smart plaster that can monitor important wound-bed changes without repeatedly opening the dressing.</p>
+            <p class="text-muted mt-2" style="max-width:820px;margin:auto;">This EE405 undergraduate project portfolio documents the development of a low-cost smart plaster designed to monitor important wound-bed changes without repeated dressing removal.</p>
         </div>
 
         <div class="paper-card">
@@ -283,13 +283,13 @@
                     <div class="col-md-3">
                         <div class="info-box h-100">
                             <h6><i class="fas fa-lightbulb text-primary me-2"></i>Our Idea</h6>
-                            <p>We are developing a smart wound plaster that tracks hidden wound-bed trends and supports early clinical warning instead of depending only on visual inspection.</p>
+                            <p>The project develops a smart wound plaster that tracks hidden wound-bed trends and supports early clinical warning rather than relying only on visual inspection.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="info-box h-100">
                             <h6><i class="fas fa-vials text-primary me-2"></i>Selected Parameters</h6>
-                            <p>From the review work, we selected pH, temperature and moisture/exudate as the main practical parameters for first-stage monitoring.</p>
+                            <p>The literature review identified pH, temperature and moisture/exudate as the most practical parameters for the first-stage monitoring system.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -301,7 +301,7 @@
                 </div>
 
                 <div class="row g-3 mb-4">
-                    <div class="col-md-4"><div class="finding"><div class="finding-icon"><i class="fas fa-book-medical"></i></div><div class="finding-text"><strong>Review Foundation</strong><p>We used a literature-derived dataset and sensor matrix to justify the selected sensing parameters and guide the design direction.</p></div></div></div>
+                    <div class="col-md-4"><div class="finding"><div class="finding-icon"><i class="fas fa-book-medical"></i></div><div class="finding-text"><strong>Review Foundation</strong><p>A literature-derived dataset and sensor matrix were used to justify the selected sensing parameters and guide the design direction.</p></div></div></div>
                     <div class="col-md-4"><div class="finding"><div class="finding-icon"><i class="fas fa-band-aid"></i></div><div class="finding-text"><strong>Patch Concept</strong><p>The disposable strip-like plaster is intended to sense local wound regions while remaining thin, flexible and suitable for early prototype testing.</p></div></div></div>
                     <div class="col-md-4"><div class="finding"><div class="finding-icon"><i class="fas fa-user-md"></i></div><div class="finding-text"><strong>Clinical Direction</strong><p>The final output should show trends such as stable, watch, inspect or escalate so that clinicians can make the final decision.</p></div></div></div>
                 </div>
@@ -347,7 +347,7 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 1</h5>
-                <p>In the first week, I mainly built the clinical foundation of the project. I reviewed wound-temperature literature and studied why local temperature can be used as a sign of perfusion, inflammation and healing progress. This helped me understand that our project should not only measure temperature as a number, but should interpret temperature changes as clinical evidence. I also collected important points such as healing thresholds, microcirculation behaviour, wound-centre temperature changes and therapy response, then connected them to the need for a smart plaster that can monitor the wound without repeatedly opening the dressing.</p>
+                <p>The first week established the clinical foundation of the project through a focused review of wound-temperature literature. The work examined how local temperature can indicate perfusion, inflammation and healing progress, showing that temperature readings should be interpreted as clinical evidence rather than isolated numerical values. Key findings on healing thresholds, microcirculation behaviour, wound-centre temperature variation and therapy response were connected to the need for a smart plaster capable of monitoring wounds without repeated dressing removal.</p>
                 <ul class="mb-0">
                     <li>Reviewed clinical wound-temperature monitoring papers.</li><li>Identified temperature as an early indicator of blood flow, inflammation and healing response.</li><li>Collected figures and tables from the reviewed papers as evidence for the portfolio.</li><li>Connected the literature findings to the first version of the IWMTAS monitoring idea.</li>
                 </ul>
@@ -356,8 +356,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 1</summary>
                     <div class="week-readmore-body">
                         
-<p>During Week 1, I started the project by understanding the clinical background instead of directly moving into circuit design. I reviewed diabetic wound-healing literature and focused mainly on why temperature monitoring is important in chronic wounds. The main point I learned was that wound temperature is not just a normal value; it can show perfusion problems, inflammation, infection risk and delayed healing.</p>
-<p>I also studied how clinical papers used wound-centre and surrounding-region measurements to compare healing progress. This gave me the first idea that our smart plaster should not only collect one reading, but should observe changes and trends over time. This week gave the biological reason for selecting temperature as one of the main parameters in IWMTAS.</p>
+<p>During Week 1, the project began with clinical-background analysis before moving into circuit design. Diabetic wound-healing literature was reviewed with emphasis on why temperature monitoring is important in chronic wounds. The review showed that wound temperature is not only a normal physical value; it can also indicate perfusion problems, inflammation, infection risk and delayed healing.</p>
+<p>The review also examined how clinical studies compared wound-centre and surrounding-region measurements to evaluate healing progress. This supported the need for a smart plaster that observes trends over time instead of collecting only one isolated reading. Week 1 therefore provided the biological justification for selecting temperature as one of the main IWMTAS parameters.</p>
 <ul><li>Understood diabetic wound deterioration and why hidden changes are difficult to see under a dressing.</li><li>Reviewed temperature monitoring as an early warning method.</li><li>Identified that spatial and time-based monitoring is more useful than a single reading.</li><li>Used this knowledge as the starting point for the later TMP117 sensor direction.</li></ul>
 
                     </div>
@@ -453,7 +453,7 @@
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>This paper directly defines our core monitoring logic. The 33°C threshold will be programmed as a critical alert in our system. The Equilibrium Point concept (P&gt;0.05 between wound center and distal tibia) becomes our primary success metric, and the multi-site, multi-interval monitoring protocol forms the backbone of our sensor array design.</p>
+                    <p>This paper directly informed the core monitoring logic. The 33°C threshold can be considered as a critical alert level, while the equilibrium-point concept (P&gt;0.05 between wound center and distal tibia) supports a measurable healing indicator. The multi-site, multi-interval monitoring protocol also informed the sensor-array design approach.</p>
                 </div>
             </div>
         </div>
@@ -525,7 +525,7 @@
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>TRH becomes our primary therapy module. The 38°C target, 1-hour cycle protocol, and 3-hour oxygen elevation window will directly shape our adaptive therapy scheduling algorithm. The LDI-validated blood flow response provides the scientific basis for using temperature as a real-time therapy response indicator.</p>
+                    <p>The TRH study provides a useful therapy-reference model. The 38°C target, 1-hour cycle protocol and 3-hour oxygen-elevation window support the concept of adaptive therapy scheduling, while the LDI-validated blood-flow response provides scientific justification for using temperature as a real-time therapy-response indicator.</p>
                 </div>
             </div>
         </div>
@@ -548,17 +548,17 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 2</h5>
-                <p>In Week 2, I continued studying the biological side of wound healing and smart-dressing methods. I focused on how wound healing occurs in stages and how abnormal temperature patterns can indicate problems. I also compared previous wound-monitoring approaches and identified the limitations of existing systems, especially single-parameter monitoring and designs that are difficult to translate into a low-cost student prototype.</p>
+                <p>Week 2 continued the biological and engineering review of wound healing and smart-dressing methods. The work examined wound-healing stages, abnormal temperature patterns and limitations of previous wound-monitoring systems, especially single-parameter approaches and designs that are difficult to translate into a low-cost undergraduate prototype.</p>
                 <ul class="mb-0">
-                    <li>Studied wound healing stages and the biological meaning of temperature change.</li><li>Reviewed smart bandage methods and earlier sensor-integration concepts.</li><li>Compared clinical relevance with practical buildability for our project.</li><li>Prepared evidence that later supported the choice of pH, temperature and moisture/exudate.</li>
+                    <li>Studied wound healing stages and the biological meaning of temperature change.</li><li>Reviewed smart bandage methods and earlier sensor-integration concepts.</li><li>Compared clinical relevance with practical buildability for the project.</li><li>Prepared evidence that later supported the choice of pH, temperature and moisture/exudate.</li>
                 </ul>
             </div>
                 <details class="week-readmore mt-3">
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 2</summary>
                     <div class="week-readmore-body">
                         
-<p>In Week 2, I continued the literature review and started connecting clinical wound information with engineering parameters. I looked at how different smart dressing systems monitor wound condition and what types of sensors have already been used in previous research. This helped me understand that pH, temperature and moisture are repeated many times in wound-monitoring literature.</p>
-<p>This week was important because it helped me move from a broad medical problem into measurable engineering quantities. I also started thinking about how the final system should be low-cost, thin, and suitable for placement under a dressing without disturbing the wound.</p>
+<p>In Week 2, the literature review connected clinical wound information with measurable engineering parameters. Existing smart-dressing systems and previously reported sensor types were compared, showing that pH, temperature and moisture repeatedly appear as important wound-monitoring parameters.</p>
+<p>This week was important because it translated the broad medical problem into measurable engineering quantities. It also clarified that the final system should be low-cost, thin and suitable for placement under a dressing without disturbing the wound.</p>
 <ul><li>Compared previous smart wound-monitoring methods.</li><li>Identified pH, temperature and moisture/exudate as useful sensing parameters.</li><li>Studied the need for a disposable wound-contact layer and reusable electronics.</li><li>Built the background for selecting practical sensors in the next weeks.</li></ul>
 
                     </div>
@@ -672,7 +672,7 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 3</h5>
-                <p>Week 3 moved the work from general reading into sensor and hardware selection. I compared possible sensing parameters, checked sensor specifications, and started thinking about how the sensors could be arranged in a wearable plaster. This week was important because it helped convert the literature findings into engineering requirements such as accuracy, sampling method, cost, size, fabrication difficulty and suitability for a disposable/reusable system.</p>
+                <p>Week 3 moved the work from general review into sensor and hardware selection. Possible sensing parameters, sensor specifications and wearable-plaster arrangements were compared. This converted the literature findings into engineering requirements such as accuracy, sampling method, cost, size, fabrication difficulty and suitability for a disposable/reusable system.</p>
                 <ul class="mb-0">
                     <li>Compared pH, temperature, moisture/exudate and other possible wound parameters.</li><li>Started selecting practical sensor types for an undergraduate prototype.</li><li>Reviewed hardware specification sheets and manufacturing limitations.</li><li>Prepared the early direction for a low-cost smart plaster with reusable electronics.</li>
                 </ul>
@@ -681,8 +681,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 3</summary>
                     <div class="week-readmore-body">
                         
-<p>In Week 3, I focused more on selecting the temperature sensor and checking whether it is suitable for our prototype. I compared the TMP117 with other temperature-sensing options and studied why its accuracy, digital output and low power operation are useful for wound monitoring.</p>
-<p>I also started considering practical fabrication and cost. Since the final system should be affordable, I looked at FPCB options and how the temperature sensor could be integrated into a flexible patch. This week gave the first clear hardware direction for the temperature-sensing part of our project.</p>
+<p>In Week 3, the temperature-sensor selection was refined by comparing the TMP117 with other temperature-sensing options. Its accuracy, digital output and low-power operation were identified as key advantages for wound-monitoring use.</p>
+<p>Practical fabrication and cost were also considered. Since the system is intended to remain affordable, FPCB options and flexible-patch integration methods were reviewed. Week 3 therefore provided the first clear hardware direction for the temperature-sensing part of the project.</p>
 <ul><li>Selected TMP117 as the main temperature sensor direction.</li><li>Studied the sensor accuracy and I2C digital communication advantage.</li><li>Started thinking about FPCB fabrication and low-cost prototype development.</li><li>Prepared the basis for the Week 4 architecture work.</li></ul>
 
                     </div>
@@ -834,7 +834,7 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 4</h5>
-                <p>In Week 4, I focused on the temperature-sensor architecture and the flexible-patch layout. I explored how multiple TMP117 sensors could be used to measure different wound regions and how the temperature-sensing part could be placed without making the plaster uncomfortable. This week also helped us think about the separation between the wound-contact disposable layer and the electronics that should be reused.</p>
+                <p>Week 4 focused on the temperature-sensor architecture and flexible-patch layout. The work explored how multiple TMP117 sensors could measure different wound regions and how the sensing layer could be placed without making the plaster uncomfortable. This week also clarified the separation between the disposable wound-contact layer and the reusable electronics.</p>
                 <ul class="mb-0">
                     <li>Developed the early FPCB/TMP117 temperature-sensing architecture.</li><li>Studied multi-point temperature monitoring for spatial wound assessment.</li><li>Connected wound healing stages to possible temperature interpretations.</li><li>Prepared design evidence for the later disposable patch and reusable module concept.</li>
                 </ul>
@@ -843,8 +843,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 4</summary>
                     <div class="week-readmore-body">
                         
-<p>Week 4 was one of the key design weeks because I connected the selected TMP117 sensor with the real architecture of the smart patch. I studied how more than one TMP117 sensor can be used to check different wound regions, and I included the distributed sensor architecture, sensing placement and patch-layer idea.</p>
-<p>I also focused on the sensor patch layers, because the sensor cannot be placed randomly on the wound. The design needs a wound-side interface, sensor/FPCB layer, protection or passivation layer, and some way to reduce the effect of ambient temperature. This week helped me understand the difference between simply placing a sensor on a plaster and designing a proper sensor-integrated wound-monitoring patch.</p>
+<p>Week 4 was a key design stage because the selected TMP117 sensor was connected to the practical smart-patch architecture. The work examined the use of multiple TMP117 sensors for different wound regions and documented the distributed sensor architecture, sensing placement and patch-layer concept.</p>
+<p>The sensor patch layers were also reviewed because the sensor placement must follow the wound-interface requirements. The design requires a wound-side interface, sensor/FPCB layer, protection or passivation layer and ambient-temperature shielding. This clarified the difference between simply attaching a sensor to a plaster and designing a proper sensor-integrated wound-monitoring patch.</p>
 <ul><li>Prepared the TMP117 multi-point temperature-sensing architecture.</li><li>Included the architecture and sensor patch layer images as main Week 4 evidence.</li><li>Studied how the FPCB sensing layer should be protected from wound moisture.</li><li>Linked wound healing stages with the temperature-monitoring concept.</li></ul>
 
                     </div>
@@ -959,7 +959,7 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Week 5</div>
             <div class="sec-title">pH Gradient in Wound Healing</div>
-            <p class="text-muted mt-2" style="max-width:720px;margin:auto;">In Week 5, I studied how wound-bed pH changes from the wound corner toward the wound center. This helped us connect the earlier temperature-monitoring idea with biochemical wound-condition monitoring.</p>
+            <p class="text-muted mt-2" style="max-width:720px;margin:auto;">Week 5 examined how wound-bed pH changes from the wound corner toward the wound center, connecting the earlier temperature-monitoring concept with biochemical wound-condition monitoring.</p>
         </div>
 
         <!-- WEEK 5 MAIN WORK -->
@@ -967,7 +967,7 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 5</h5>
-                <p>Week 5 added stronger biological meaning to the monitoring concept. I studied normal wound healing, diabetic-foot-ulcer development, hot spots related to inflammation or infection, and cold spots related to poor perfusion or ischemia. This helped me understand why the smart plaster should monitor trends instead of relying on one single reading. The week also connected pH changes and wound-bed conditions to the overall early-warning idea.</p>
+                <p>Week 5 added stronger biological meaning to the monitoring concept by examining normal wound healing, diabetic-foot-ulcer development, hot spots associated with inflammation or infection and cold spots associated with poor perfusion or ischemia. This supported the need for trend-based monitoring rather than reliance on a single isolated reading. The week also connected pH variation and wound-bed conditions to the overall early-warning concept.</p>
                 <ul class="mb-0">
                     <li>Studied wound healing phases and diabetic-foot-ulcer pathophysiology.</li><li>Connected hot-spot and cold-spot behaviour to temperature monitoring.</li><li>Explored pH variation from wound edge to centre as a possible biochemical warning sign.</li><li>Added biological evidence that supports multi-parameter wound monitoring.</li>
                 </ul>
@@ -976,8 +976,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 5</summary>
                     <div class="week-readmore-body">
                         
-<p>In Week 5, I added more biological understanding to the portfolio. I studied the normal wound-healing process and the diabetic-foot-ulcer pathway to understand why wounds become chronic and why monitoring is needed before visible symptoms become severe.</p>
-<p>I also studied hot spots and cold spots. A hot spot can be related to inflammation or infection, while a cold spot can be related to ischemia and poor perfusion. Together with the pH-gradient study, this week showed me why our system should monitor more than one parameter and why a smart plaster can help detect wound-bed deterioration earlier.</p>
+<p>Week 5 added biological background to the portfolio by reviewing the normal wound-healing process and the diabetic-foot-ulcer pathway. This explained why wounds can become chronic and why monitoring is valuable before visible symptoms become severe.</p>
+<p>Hot spots and cold spots were also reviewed. A hot spot can be related to inflammation or infection, while a cold spot can be related to ischemia and poor perfusion. Together with the pH-gradient study, this week showed me why the system should monitor more than one parameter and why a smart plaster can help detect wound-bed deterioration earlier.</p>
 <ul><li>Studied wound healing stages and diabetic-foot-ulcer development.</li><li>Connected temperature changes with inflammation, infection and poor perfusion.</li><li>Studied pH gradient from wound edge/corner toward the wound centre.</li><li>Kept the earlier Week 5 document evidence images and added the biological-baseline evidence.</li></ul>
 
                     </div>
@@ -1069,7 +1069,7 @@
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>This week added a second monitoring direction to our project. Temperature can indicate perfusion and inflammation, while pH can indicate biochemical healing condition. Combining both in future work can improve early detection of infection risk, delayed healing and abnormal wound-bed conditions.</p>
+                    <p>This week added a second monitoring direction to the project. Temperature can indicate perfusion and inflammation, while pH can indicate biochemical healing condition. Combining both in future work can improve early detection of infection risk, delayed healing and abnormal wound-bed conditions.</p>
                     <p class="mt-2"><a href="https://drive.google.com/drive/folders/1Noh17UqqyVmF9kNtp9ht_RqC9Ubkarws?usp=drive_link" target="_blank" rel="noopener" style="font-weight:700;color:#0077b6;text-decoration:none;"><i class="fab fa-google-drive me-1"></i>Open Week 4/5 Evidence Folder</a></p>
                 </div>
             </div>
@@ -1084,13 +1084,13 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Week 6</div>
             <div class="sec-title">TMP117 Circuit Direction, Laboratory Equipment Review & Journal Support</div>
-            <p class="text-muted mt-2" style="max-width:790px;margin:auto;">In Week 6, I focused more on the temperature-sensing part of our project. I studied how the TMP117 should be connected, how the I2C lines should be arranged, what supporting components are needed, and what laboratory tools or fabrication methods may be required later when we move from design work to practical implementation.</p>
+            <p class="text-muted mt-2" style="max-width:790px;margin:auto;">Week 6 focused on the practical temperature-sensing part of the project. The TMP117 connection method, I2C line arrangement, supporting components and required laboratory or fabrication tools were reviewed to prepare the design for later implementation.</p>
         </div>
         
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 6</h5>
-                <p>In Week 6, I worked more deeply on the TMP117 temperature-sensing circuit. I studied the sensor pinout, power and I2C communication lines, and the basic wiring needed for stable digital readings. I also reviewed fabrication and testing equipment that may be needed later. This week was important because it changed my understanding from “we selected TMP117” to “we know how TMP117 can actually be connected and used in our system.”</p>
+                <p>Week 6 developed the TMP117 temperature-sensing circuit in more detail. The sensor pinout, power connections, I2C communication lines and wiring requirements for stable digital readings were reviewed. Fabrication and testing equipment were also considered, making the transition from sensor selection to practical connection planning clearer.</p>
                 <ul class="mb-0">
                     <li>Studied TMP117 pinout, I2C wiring, address selection and sensor support parts.</li><li>Reviewed uploaded circuit references and meeting notes.</li><li>Checked practical equipment needs for fabrication and testing.</li><li>Organized evidence that later supported the review/journal-paper work.</li>
                 </ul>
@@ -1099,8 +1099,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 6</summary>
                     <div class="week-readmore-body">
                         
-<p>In Week 6, I worked more deeply on the practical temperature-sensing circuit. I checked how TMP117 should be connected, what each pin is used for, and how the SDA/SCL I2C communication lines connect to the controller. This made the temperature-sensing part more realistic because I was no longer only saying that TMP117 is selected; I was studying how it can actually be wired and used.</p>
-<p>I also reviewed the equipment and fabrication methods that may be needed for future patch development. This included thinking about screen printing, surface treatment, electrochemical testing and other lab processes. These notes later helped when preparing the review-paper and project explanation material.</p>
+<p>In Week 6, the practical temperature-sensing circuit was studied in detail. The TMP117 connection method, pin functions and SDA/SCL I2C communication path to the controller were reviewed, making the temperature-sensing design more realistic and implementation-oriented.</p>
+<p>Equipment and fabrication methods required for future patch development were also reviewed. This included screen printing, surface treatment, electrochemical testing and other lab processes. These notes later helped when preparing the review-paper and project explanation material.</p>
 <ul><li>Studied TMP117 pinout, I2C wiring, address/alert pins and stable sensor readout.</li><li>Connected the circuit idea with the disposable patch and reusable module concept.</li><li>Reviewed possible fabrication and testing equipment.</li><li>Organized notes that were useful for later journal/review-paper preparation.</li></ul>
 
                     </div>
@@ -1114,9 +1114,9 @@
             </div>
             <div class="paper-card-body">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-project-diagram text-primary me-2"></i>Circuit Direction</h6><p>This week, I checked the basic TMP117 connection direction in more detail. I looked at the power pins, SDA/SCL I2C communication lines, address and alert pins, and the simple pull-up arrangement needed to get a stable digital temperature reading.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-plug text-primary me-2"></i>Pinout & Wiring Study</h6><p>I also studied the TMP117 pinout carefully so that later we can place the sensor correctly in the disposable patch and route the lines properly toward the reusable module. This helped me understand how the sensor can be connected without making the wound-contact part too bulky.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-flask text-primary me-2"></i>Equipment Review</h6><p>At the same time, I reviewed the practical tools and processes that may be needed later, such as screen printing, surface treatment, electrochemical testing and general fabrication equipment. This helped us see what is possible now and what may need outside support.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-project-diagram text-primary me-2"></i>Circuit Direction</h6><p>This week, the basic TMP117 connection direction was checked in more detail. The review considered at the power pins, SDA/SCL I2C communication lines, address and alert pins, and the simple pull-up arrangement needed to get a stable digital temperature reading.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-plug text-primary me-2"></i>Pinout & Wiring Study</h6><p>The TMP117 pinout was studied so that the sensor can be placed correctly in the disposable patch and routed properly toward the reusable module. This supports a compact wound-contact design without unnecessary bulk.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-flask text-primary me-2"></i>Equipment Review</h6><p>At the same time, The review examined the practical tools and processes that may be needed later, such as screen printing, surface treatment, electrochemical testing and general fabrication equipment. This clarified which fabrication steps are currently feasible and which may require external support.</p></div></div>
                 </div>
 
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-images me-2 text-primary"></i>Week 6 Evidence Images from Uploaded Files</h5>
@@ -1128,10 +1128,10 @@
 
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>TMP117 kept as the main temperature sensor</strong><p>From the options we considered, TMP117 still looked like the best fit because it gives accurate digital temperature readings and is easier to integrate into a monitoring system than many analogue alternatives.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-network-wired"></i></div><div class="finding-text"><strong>I2C connection path became clearer</strong><p>By checking the pinout and circuit reference, I got a much better idea about how the sensor should communicate with the controller, and how this can later support more than one temperature-sensing point.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-layer-group"></i></div><div class="finding-text"><strong>Patch-to-module thinking started</strong><p>This week also helped shape the idea of keeping the wound-contact side simple while sending the signals toward a reusable electronics section. That separation is important for cost, hygiene and reuse.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-book"></i></div><div class="finding-text"><strong>Support for later paper work</strong><p>The notes and figures organized in this week also became useful when explaining our sensor choice and measurement direction in the review and journal-paper-related work.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>TMP117 kept as the main temperature sensor</strong><p>Among the considered options, TMP117 remained the preferred choice because it provides accurate digital temperature readings and is easier to integrate into a monitoring system than many analogue alternatives.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-network-wired"></i></div><div class="finding-text"><strong>I2C connection path became clearer</strong><p>The pinout and circuit reference clarified how the sensor communicates with the controller and how the same approach can later support more than one temperature-sensing point.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-layer-group"></i></div><div class="finding-text"><strong>Patch-to-module thinking started</strong><p>This week also supported the design principle of keeping the wound-contact side simple while routing signals toward a reusable electronics section. This separation is important for cost, hygiene and reuse.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-book"></i></div><div class="finding-text"><strong>Support for later paper work</strong><p>The notes and figures organized during this week also supported explanation of the sensor choice and measurement direction in the review and journal-paper-related work.</p></div></div>
                     </div>
                     <div class="col-md-6">
                         <div class="fig-box"><img src="img/papers/week6_04_meeting_notes_from_pdf.png" alt="Week 6 meeting notes" style="height:360px;object-fit:cover;object-position:top;background:#fff;"><div class="fig-caption">Meeting-note evidence from Week 6 showing sensor discussion, system direction, block-diagram thinking, pH/moisture ideas and early material/planning notes.</div></div>
@@ -1151,7 +1151,7 @@
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>Week 6 gave me a much clearer practical understanding of how the TMP117 can be used in our smart wound-monitoring project. Instead of only selecting a sensor from literature, I moved one step closer to implementation by understanding the connection method, the communication path, the support components and the practical fabrication direction needed for the next stages.</p>
+                    <p>Week 6 provided a clearer practical understanding of how the TMP117 can be used in the smart wound-monitoring project. The work moved beyond sensor selection by documenting the connection method, communication path, support components and practical fabrication direction required for the next stages.</p>
                 </div>
             </div>
         </div>
@@ -1164,13 +1164,13 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Week 7</div>
             <div class="sec-title">FPCB Cost Estimation, BOM Planning & Fund Request Preparation</div>
-            <p class="text-muted mt-2" style="max-width:780px;margin:auto;">In Week 7, we moved from only designing the patch to checking whether we can actually fabricate it within a low budget. I worked on the cost-estimation evidence, BOM planning, supplier comparison and fund-request preparation.</p>
+            <p class="text-muted mt-2" style="max-width:780px;margin:auto;">Week 7 moved the work from patch design toward practical fabrication planning under a low-budget constraint. The activities included cost-estimation evidence, BOM planning, supplier comparison and fund-request preparation.</p>
         </div>
         
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 7</h5>
-                <p>Week 7 focused on making the project realistic from the cost and procurement side. I worked on the FPCB manufacturer comparison, BOM planning, low-cost prototype budget and fund-request evidence. I also added statistical pie-chart evidence to show why this project is clinically important, because a funding request should show not only the cost but also the need for the device.</p>
+                <p>Week 7 focused on improving project feasibility through cost and procurement planning. The work covered FPCB manufacturer comparison, BOM planning, low-cost prototype budgeting and fund-request evidence preparation. I also added statistical pie-chart evidence to show why this project is clinically important, because a funding request should show not only the cost but also the need for the device.</p>
                 <ul class="mb-0">
                     <li>Compared FPCB manufacturers and low-cost prototype options.</li><li>Prepared BOM, cost estimation and order-process evidence.</li><li>Worked on the fund-request support materials.</li><li>Added local/global diabetic-foot burden and outcome charts to support project importance.</li>
                 </ul>
@@ -1179,8 +1179,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 7</summary>
                     <div class="week-readmore-body">
                         
-<p>Week 7 focused on the practical side of making the prototype. I worked on cost estimation, BOM planning, supplier comparison and fund-request preparation. This was important because our project is not only a design idea; it should also be possible to build with a limited student budget.</p>
-<p>I compared FPCB manufacturing options and looked at whether a low-cost flexible PCB order is possible. I also included statistical pie-chart evidence to show why this project matters clinically. The cost evidence and the clinical burden evidence together supported the need for a low-cost smart wound-monitoring plaster.</p>
+<p>Week 7 focused on the practical side of making the prototype. The work focused on cost estimation, BOM planning, supplier comparison and fund-request preparation. This was important because the project is not only a design idea; it should also be possible to build with a limited student budget.</p>
+<p>FPCB manufacturing options were compared to determine whether a low-cost flexible PCB order was possible. Statistical pie-chart evidence was also included to show why this project matters clinically. The cost evidence and the clinical burden evidence together supported the need for a low-cost smart wound-monitoring plaster.</p>
 <ul><li>Prepared cost-estimation and BOM evidence for the prototype.</li><li>Compared possible FPCB suppliers and ordering routes.</li><li>Prepared fund-request support using budget evidence.</li><li>Added local and global diabetic-foot statistical pie charts as motivation.</li></ul>
 
                     </div>
@@ -1194,8 +1194,8 @@
             </div>
             <div class="paper-card-body">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-industry text-primary me-2"></i>Supplier Comparison</h6><p>We compared JLCPCB, PCBWay, ALLPCB, NextPCB and LankaPCB for flexible PCB fabrication and assembly. From this comparison, JLCPCB looked like the most practical low-cost option for a first bare-FPCB order.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-dollar-sign text-primary me-2"></i>Budget Finding</h6><p>The 20 USD target looked possible only for the bare FPCB route, especially with coupons or low-cost shipping. Full SMT assembly with TMP117 components would need extra funding.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-industry text-primary me-2"></i>Supplier Comparison</h6><p>JLCPCB, PCBWay, ALLPCB, NextPCB and LankaPCB were compared for flexible PCB fabrication and assembly. Based on this comparison, JLCPCB appeared to be a practical low-cost option for an initial bare-FPCB order.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-dollar-sign text-primary me-2"></i>Budget Finding</h6><p>The 20 USD target was considered feasible only for the bare FPCB route, especially with coupons or low-cost shipping. Full SMT assembly with TMP117 components would require additional funding.</p></div></div>
                     <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-file-signature text-primary me-2"></i>Fund Request Preparation</h6><p>The cost estimate, BOM, order process and supplier evidence were organized to support a clear fund request for the first prototype, including bare-board fabrication and essential sensor components.</p></div></div>
                 </div>
 
@@ -1225,7 +1225,7 @@
 
 
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-chart-pie me-2 text-primary"></i>Statistical Analysis Evidence for Week 7</h5>
-                <p class="text-muted mb-3">I also added a small statistical-analysis part in Week 7 because the cost and fund request should be connected to the real clinical need. These four pie charts show the local and global diabetic-foot burden and the seriousness of ulcer outcomes. They help explain why a low-cost smart wound-monitoring plaster is useful.</p>
+                <p class="text-muted mb-3">A statistical-analysis subsection was included in Week 7 to connect the cost and fund-request work with the clinical need. The four pie charts summarize local and global diabetic-foot burden and the seriousness of ulcer outcomes, supporting the relevance of a low-cost smart wound-monitoring plaster.</p>
                 <div class="row g-3 mb-4 week7-pie-grid">
                     <div class="col-sm-6 col-lg-3">
                         <div class="fig-box clean-fig-box small-stat-card">
@@ -1256,7 +1256,7 @@
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>Week 7 made the project more practical by identifying what can realistically be fabricated within a low student budget, what requires extra funding, and how to avoid common ordering mistakes such as choosing a flex heater instead of a flexible PCB.</p>
+                    <p>Week 7 improved the practical feasibility of the project by identifying what can be fabricated within a low undergraduate budget, what requires additional funding and how to avoid common ordering mistakes such as selecting a flex heater instead of a flexible PCB.</p>
                 </div>
             </div>
         </div>
@@ -1269,14 +1269,14 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Week 8</div>
             <div class="sec-title">Review Dataset Results, Statistical Evidence & Temperature Measuring Method</div>
-            <p class="text-muted mt-2" style="max-width:860px;margin:auto;">In Week 8, I focused more on the literature-analysis side of the project and also helped prepare the mid-evaluation presentation using the work we had completed in the previous weeks. I used the review-dataset results, heatmap-based statistical outputs and the TMP117 temperature-sensing concept to explain why pH, temperature and moisture/exudate should be the main parameter group for our smart wound-monitoring system.</p>
+            <p class="text-muted mt-2" style="max-width:860px;margin:auto;">Week 8 focused on literature-dataset analysis and mid-evaluation presentation preparation using the work completed in the previous weeks. Review-dataset results, heatmap-based statistical outputs and the TMP117 temperature-sensing concept were used to justify pH, temperature and moisture/exudate as the main parameter group for the smart wound-monitoring system.</p>
         </div>
 
         
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 8</h5>
-                <p>In Week 8, I worked on the review-dataset analysis and presentation preparation for the mid evaluation. I used the previous work done in Weeks 1–7 to prepare the presentation story: clinical problem, literature review, selected parameters, statistical results, sensor methods, circuit direction, cost analysis, progress and next work. <strong>I also collaborated with the other team members, including Vikum Vichakshana and Vishwa Jayaweera,</strong> when organizing the review/journal-paper-related figures and presentation content.</p>
+                <p>In Week 8, review-dataset analysis and mid-evaluation presentation preparation were completed. The previous work from Weeks 1–7 was organized into a presentation flow covering the clinical problem, literature review, selected parameters, statistical results, sensor methods, circuit direction, cost analysis, progress and next work. <strong>The review/journal-paper-related figures and presentation content were prepared in collaboration with the other team members, including Vikum Vichakshana and Vishwa Jayaweera.</strong></p>
                 <ul class="mb-0">
                     <li>Used review-dataset results and heatmaps to justify pH, temperature and moisture/exudate.</li><li>Prepared mid-evaluation presentation content using the previous weeks’ work.</li><li>Included the TMP117 temperature-measuring concept clearly.</li><li>Collaborated with the other team members for review/journal-paper preparation and evidence organization.</li>
                 </ul>
@@ -1285,8 +1285,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 8</summary>
                     <div class="week-readmore-body">
                         
-<p>In Week 8, I focused on statistical analysis and mid-evaluation presentation preparation. I used the review-dataset outputs, heatmaps and parameter-comparison evidence to explain why pH, temperature and moisture/exudate were selected for the system. This helped make the project decisions look evidence-based rather than only based on availability.</p>
-<p>I also helped prepare the mid-evaluation presentation using the work completed in the previous weeks. The presentation connected the clinical problem, dataset, selected parameters, temperature-sensing method, circuit direction, cost analysis and future work. <strong>I also collaborated with the other team members, including Vikum Vichakshana and Vishwa Jayaweera, in the review/journal-paper preparation and presentation organization work.</strong></p>
+<p>Week 8 focused on statistical analysis and mid-evaluation presentation preparation. Review-dataset outputs, heatmaps and parameter-comparison evidence were used to explain why pH, temperature and moisture/exudate were selected for the system. This strengthened the evidence basis of the project decisions rather than relying only on component availability.</p>
+<p>The mid-evaluation presentation was prepared using the work completed in the previous weeks. It connected the clinical problem, dataset, selected parameters, temperature-sensing method, circuit direction, cost analysis and future work. <strong>The review/journal-paper preparation and presentation organization work was completed in collaboration with the other team members, including Vikum Vichakshana and Vishwa Jayaweera.</strong></p>
 <ul><li>Used review-dataset and heatmap outputs for parameter justification.</li><li>Prepared mid-evaluation slides using Week 1–7 work.</li><li>Included the TMP117 temperature-sensing concept clearly.</li><li>Linked statistical evidence with design decisions and clinician-warning output.</li></ul>
 
                     </div>
@@ -1300,18 +1300,18 @@
             </div>
             <div class="paper-card-body">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-database text-primary me-2"></i>Review Dataset Output</h6><p>This week, I looked more carefully at the review-dataset outputs to understand which wound parameters are commonly studied together and which ones are more meaningful for practical monitoring.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-check-circle text-primary me-2"></i>Selected Parameters</h6><p>The statistical outputs continued to support our decision to work with pH, temperature and moisture/exudate as the first-line parameter group for the disposable smart plaster.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-users text-primary me-2"></i>Paper Preparation Support</h6><p><strong>I also collaborated with the other team members, including Vikum Vichakshana and Vishwa Jayaweera, in the review/journal-paper preparation work</strong>, and these figures helped us explain why our selected parameters are clinically meaningful and technically practical.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-database text-primary me-2"></i>Review Dataset Output</h6><p>This week, the review-dataset outputs were examined in more detail to identify which wound parameters are commonly studied together and which are more meaningful for practical monitoring.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-check-circle text-primary me-2"></i>Selected Parameters</h6><p>The statistical outputs continued to support the selection of pH, temperature and moisture/exudate as the first-line parameter group for the disposable smart plaster.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-users text-primary me-2"></i>Paper Preparation Support</h6><p><strong>The review/journal-paper preparation work was carried out in collaboration with the other team members, including Vikum Vichakshana and Vishwa Jayaweera.</strong> These figures helped explain why the selected parameters are clinically meaningful and technically practical.</p></div></div>
                 </div>
 
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-images me-2 text-primary"></i>Week 8 Detailed Evidence Images</h5>
-                <p class="text-muted mb-3">I replaced the repeated images with clearer evidence images from the Week 8 uploaded review-analysis ZIP. These images show the actual statistical work, the parameter relationships, and the temperature-sensing method that we used when preparing the mid-evaluation presentation.</p>
+                <p class="text-muted mb-3">Clearer evidence images from the Week 8 review-analysis materials are included to show the statistical work, parameter relationships and temperature-sensing method used during mid-evaluation presentation preparation.</p>
                 <div class="row g-3 mb-4 week-evidence-grid week8-equal-grid">
                     <div class="col-lg-4 col-md-6">
                         <div class="fig-box clean-fig-box">
                             <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_parameter_prevalence_map.png" alt="Week 8 parameter prevalence map">
-                            <div class="fig-caption"><strong>Parameter prevalence map</strong> — This helped me see which wound-monitoring parameters appeared most often in the reviewed papers.</div>
+                            <div class="fig-caption"><strong>Parameter prevalence map</strong> — This figure shows which wound-monitoring parameters appeared most often in the reviewed papers.</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -1323,13 +1323,13 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="fig-box clean-fig-box">
                             <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_parameter_correlation_heatmap.png" alt="Week 8 parameter correlation heatmap">
-                            <div class="fig-caption"><strong>Correlation heatmap</strong> — This gave another statistical view of the relationships between wound parameters and supported our multi-parameter design decision.</div>
+                            <div class="fig-caption"><strong>Correlation heatmap</strong> — This provides an additional statistical view of relationships between wound parameters and supports the multi-parameter design decision.</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="fig-box clean-fig-box">
                             <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_latent_space_analysis_panel.png" alt="Week 8 latent-space analysis panel">
-                            <div class="fig-caption"><strong>Latent-space analysis</strong> — This image summarized how the reviewed papers clustered when we looked at the extracted wound-monitoring evidence.</div>
+                            <div class="fig-caption"><strong>Latent-space analysis</strong> — This image summarizes how the reviewed papers clustered based on the extracted wound-monitoring evidence.</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -1341,26 +1341,26 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="fig-box clean-fig-box">
                             <img class="portfolio-evidence-img week8-small-img" src="img/papers/week8_statistical_to_clinical_support.png" alt="Statistical evidence to clinical support concept">
-                            <div class="fig-caption"><strong>Statistical-to-clinical link</strong> — This helped us connect the analysis results to the final idea of turning raw sensor readings into useful wound-warning information.</div>
+                            <div class="fig-caption"><strong>Statistical-to-clinical link</strong> — This supported connect the analysis results to the final idea of turning raw sensor readings into useful wound-warning information.</div>
                         </div>
                     </div>
                 </div>
 
-                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-list-check me-2 text-primary"></i>What I Understood from Week 8</h5>
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-list-check me-2 text-primary"></i>Key Week 8 Understanding</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-check-circle"></i></div><div class="finding-text"><strong>Evidence-based sensor selection became stronger</strong><p>The statistical outputs helped me understand more clearly why our system should not depend on a single parameter. pH, temperature and moisture/exudate together can give a more useful wound-bed picture than looking at only one measurement.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-chart-bar"></i></div><div class="finding-text"><strong>Heatmaps made the literature easier to interpret</strong><p>The heatmap-style figures were useful because they showed not just which parameters appear often, but also which combinations are repeatedly important across the reviewed papers. That gave better support for our design decisions.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-check-circle"></i></div><div class="finding-text"><strong>Evidence-based sensor selection became stronger</strong><p>The statistical outputs clarified why the system should not depend on a single parameter. pH, temperature and moisture/exudate together provide a more useful wound-bed picture than one isolated measurement.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-chart-bar"></i></div><div class="finding-text"><strong>Heatmaps made the literature easier to interpret</strong><p>The heatmap-style figures showed not only which parameters appear frequently, but also which parameter combinations are repeatedly important across the reviewed papers. This provided stronger support for the design decisions.</p></div></div>
                     </div>
                     <div class="col-md-6">
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>Temperature method is now easier to explain</strong><p>The TMP117 concept image helped connect the review results to our actual implementation idea. It clearly shows how a local wound-site temperature reading can be taken while the reusable DAQ stays away from the wound-contact area.</p></div></div>
-                        <div class="finding"><div class="finding-icon"><i class="fas fa-file-alt"></i></div><div class="finding-text"><strong>Useful for the paper and for the portfolio</strong><p>This week was important not only for the design itself, but also for explaining the project properly. The figures and analysis made it easier to present our work in the portfolio and in the review/journal-paper-related discussions.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-thermometer-half"></i></div><div class="finding-text"><strong>Temperature method is now easier to explain</strong><p>The TMP117 concept image connects the review results to the implementation direction by showing how local wound-site temperature readings can be taken while the reusable DAQ remains away from the wound-contact area.</p></div></div>
+                        <div class="finding"><div class="finding-icon"><i class="fas fa-file-alt"></i></div><div class="finding-text"><strong>Useful for the paper and for the portfolio</strong><p>This week was important for both design justification and project communication. The figures and analysis strengthened the portfolio presentation and supported review/journal-paper-related discussions.</p></div></div>
                     </div>
                 </div>
 
                 <div class="relevance-box">
                     <strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong>
-                    <p>Week 8 gave stronger evidence for the final sensing direction. Instead of selecting sensors only because they are available, I used the review-dataset results, heatmap-based analysis and the temperature-method concept to better justify the pH-temperature-moisture combination and the TMP117-based temperature-measuring approach used in our project.</p>
+                    <p>Week 8 provided stronger evidence for the final sensing direction. Review-dataset results, heatmap-based analysis and the temperature-method concept were used to justify the pH-temperature-moisture combination and the TMP117-based temperature-measuring approach used in the project.</p>
                 </div>
             </div>
         </div>
@@ -1380,7 +1380,7 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 9</h5>
-                <p>Week 9 focused on connecting the sensor concepts into a complete circuit and improving the disposable patch architecture. I included the full circuit evidence from the presentation, cost-analysis details, order information and the temperature-sensor design direction. At the end of this week, we changed some main ideas about the disposable patch by keeping the wound-contact part simpler and moving more electronics toward reusable or protected sections.</p>
+                <p>Week 9 focused on connecting the sensor concepts into a complete circuit and improving the disposable patch architecture. The portfolio includes full circuit evidence from the presentation, cost-analysis details, order information and the temperature-sensor design direction. At the end of this week, the disposable patch concept was revised to keep the wound-contact part simpler while moving more electronics toward reusable or protected sections.</p>
                 <ul class="mb-0">
                     <li>Added full circuit evidence for the disposable sensing patch and DAQ direction.</li><li>Included cost analysis and order/procurement evidence.</li><li>Studied temperature-sensor placement and reusable/disposable separation.</li><li>Updated the patch concept to reduce electronics on the wound-contact disposable layer.</li>
                 </ul>
@@ -1389,8 +1389,8 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 9</summary>
                     <div class="week-readmore-body">
                         
-<p>In Week 9, I focused on connecting the sensor idea to the full circuit and the practical ordering process. I included the disposable patch circuit, cost analysis, TMP117-related design thinking, and order details. This week helped convert the project from a concept into something that can be prepared for prototype testing.</p>
-<p>At the end of Week 9, we also changed some important ideas about the disposable patch. The wound-contact part should stay simple, thin and low cost, while the reusable DAQ electronics should stay protected and away from the wound-contact side. This revision made the design more practical for fabrication, cleaning and repeated use.</p>
+<p>In Week 9, the sensor concept was connected to the full circuit and practical ordering process. The disposable patch circuit, cost analysis, TMP117-related design direction and order details were documented. This week supported convert the project from concept-level planning toward prototype preparation.</p>
+<p>At the end of Week 9, important design changes were made to the disposable patch concept. The wound-contact part was kept simple, thin and low cost, while the reusable DAQ electronics remained protected and away from the wound-contact side. This revision improved fabrication practicality, cleaning and repeated use.</p>
 <ul><li>Added full circuit evidence and cost-analysis direction.</li><li>Included order/procurement details for prototype components.</li><li>Revised the disposable patch idea to separate wound-contact sensing from reusable electronics.</li><li>Improved the practical direction for fabrication and testing.</li></ul>
 
                     </div>
@@ -1490,7 +1490,7 @@
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 10</h5>
-                <p>In Week 10, the project moved closer to practical fabrication. I added the new hand-drawn design idea, received-material evidence, graphite powder evidence and chemical-coordination notes. We also contacted the Chemical Department in the Faculty of Science and confirmed that some useful chemicals could be accessed for the PANI-related work. This week helped connect our design plan to the real materials and preparation steps needed for prototype development.</p>
+                <p>In Week 10, the project moved closer to practical fabrication. The portfolio documents the new hand-drawn design idea, received-material evidence, graphite powder evidence and chemical-coordination notes. The Chemical Department in the Faculty of Science was also contacted, and the availability of useful chemicals for PANI-related work was confirmed. This week connected the design plan with real materials and preparation steps required for prototype development.</p>
                 <ul class="mb-0">
                     <li>Added new design direction and hand-drawn patch concept.</li><li>Included received components and materials as evidence.</li><li>Added graphite powder evidence for conductive material investigation.</li><li>Recorded chemical-department coordination and availability of selected chemicals for future work.</li>
                 </ul>
@@ -1499,7 +1499,7 @@
                     <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 10</summary>
                     <div class="week-readmore-body">
                         
-<p>Week 10 focused on new design ideas, hand-drawn patch planning, received components and material collection. I added the received dressing material, small electronic components and graphite powder as evidence that the project is moving toward physical prototype preparation.</p>
+<p>Week 10 focused on new design ideas, hand-drawn patch planning, received components and material collection. The received dressing material, small electronic components and graphite powder are included as evidence that the project is moving toward physical prototype preparation.</p>
 <p>This week also included contact with the Chemical Department from the Faculty of Science to check chemical availability for PANI and electrode-related work. The received materials and chemical availability information helped us prepare for the next stage: fabricating and testing the disposable sensing layer.</p>
 <ul><li>Added new design direction and hand-drawn disposable patch concept.</li><li>Included received component and graphite-powder evidence.</li><li>Recorded chemical availability support from the Science Faculty Chemical Department.</li><li>Prepared for next-stage sensor fabrication and material testing.</li></ul>
 
