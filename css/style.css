@@ -931,3 +931,43 @@
         height: 260px;
     }
 }
+
+
+/* === Final portfolio update: equal aligned evidence images === */
+.week-evidence-grid {
+    align-items: stretch;
+}
+.week-evidence-grid .clean-fig-box,
+.week-evidence-grid .fig-box {
+    height: 100%;
+}
+.week-evidence-grid .clean-fig-box {
+    display: flex;
+    flex-direction: column;
+}
+.week-evidence-grid .portfolio-evidence-img {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    object-position: center center;
+    background: #ffffff;
+    padding: 12px;
+}
+.week-evidence-grid .fig-caption {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+}
+.received-component-img {
+    width: 100%;
+    height: 360px;
+    object-fit: contain;
+    object-position: center center;
+    background: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid #eef3f8;
+}
+@media (max-width: 768px) {
+    .received-component-img { height: 280px; }
+}
