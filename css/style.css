@@ -971,3 +971,54 @@
 @media (max-width: 768px) {
     .received-component-img { height: 280px; }
 }
+
+
+/* === Small portfolio evidence images requested in final correction === */
+.week7-pie-grid .small-stat-card,
+.week10-received-grid .small-material-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dce8f7;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ffffff;
+}
+.week7-pie-grid .small-stat-img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    object-position: center center;
+    background: #ffffff;
+    padding: 8px;
+    border-bottom: 1px solid #eef3f8;
+}
+.week10-received-grid .small-material-img {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    object-position: center center;
+    background: #ffffff;
+    padding: 8px;
+    border-bottom: 1px solid #eef3f8;
+}
+.week8-equal-grid .portfolio-evidence-img {
+    height: 240px !important;
+    object-fit: contain !important;
+    padding: 10px !important;
+}
+.week7-pie-grid .fig-caption,
+.week10-received-grid .fig-caption {
+    flex: 1 1 auto;
+    min-height: 88px;
+    padding: 12px 14px;
+    line-height: 1.4;
+    background: #fbfdff;
+}
+@media (max-width: 768px) {
+    .week7-pie-grid .small-stat-img,
+    .week8-equal-grid .portfolio-evidence-img,
+    .week10-received-grid .small-material-img {
+        height: 220px !important;
+    }
+}
