@@ -1080,3 +1080,20 @@
         height: 200px !important;
     }
 }
+
+
+/* === Week 5 biological baseline image correction === */
+.week5-bio-grid .week5-img {
+    height: 320px !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #ffffff;
+    padding: 10px;
+}
+.week5-bio-grid .fig-caption {
+    min-height: 90px;
+    line-height: 1.45;
+}
+@media (max-width: 768px) {
+    .week5-bio-grid .week5-img { height: 240px !important; }
+}
