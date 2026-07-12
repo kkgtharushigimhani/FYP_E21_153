@@ -954,7 +954,190 @@
         </div>
     </div>
 </section>
+<!--
+COPY-PASTE INSTRUCTION:
+1. Open your current index.html.
+2. Replace the existing Week 6 to Week 10 <details> sections with everything below.
+3. Keep your existing Week 1 to Week 5 content unchanged.
+4. Upload only the three files inside assets/images/week6/ as new website images.
+-->
 
+<details class="week" id="week6" open="">
+<summary><span class="week-no">6</span><span class="week-title"><strong>TMP117 Circuit Study &amp; Journal-Paper Support</strong><span>Reference-board analysis, circuit requirements, signal-processing discussion and research-figure preparation</span></span></summary>
+<div class="week-body">
+<div class="kicker">Circuit reverse engineering</div>
+<h3>From breakout board to a custom TMP117 circuit</h3>
+<p class="lead">The TMP117 reference schematic and PCB were examined to identify the minimum circuit required for a custom wound-monitoring design: supply decoupling, I²C pull-ups, address selection, alert output and correct exposed-pad grounding.</p>
+<div class="gallery">
+<figure class="figure wide"><img alt="Adafruit TMP117 schematic" loading="lazy" src="assets/images/week6/tmp117_adafruit_schematic.png"/><figcaption>1. Adafruit TMP117 reference schematic reviewed for power, pull-ups, headers and address configuration.</figcaption></figure>
+<figure class="figure wide"><img alt="Adafruit TMP117 PCB" loading="lazy" src="assets/images/week6/tmp117_adafruit_pcb.png"/><figcaption>2. Reference PCB layout reviewed for chip placement, routing and board dimensions.</figcaption></figure>
+<figure class="figure wide"><img alt="TMP117 minimum schematic" loading="lazy" src="assets/images/week6/tmp117_reference_schematic.png"/><figcaption>3. Minimum TMP117 circuit: 1 µF + 0.1 µF decoupling, 4.7 kΩ I²C pull-ups, address grounding and optional ALERT pull-up.</figcaption></figure>
+</div>
+<div class="grid-2">
+<article class="card"><h4>Engineering points confirmed</h4><ul class="clean-list"><li>Use one local 0.1 µF ceramic capacitor at each TMP117.</li><li>Use only one effective pair of SDA/SCL pull-ups for the shared bus unless bus analysis requires otherwise.</li><li>Connect the exposed thermal pad and ground pin correctly to ground.</li><li>Set ADD0 to GND, V+, SDA or SCL for four unique addresses.</li></ul></article>
+<article class="card"><h4>Meeting and analysis direction</h4><ul class="clean-list"><li>Signal restoration and filtering were discussed.</li><li>50 Hz interference and notch-filter requirements were considered.</li><li>Literature-derived/synthetic data were proposed for early model development.</li><li>Manifold-learning tools, including t-SNE, were identified for exploratory analysis.</li></ul></article>
+</div>
+<div class="callout">
+<h4>Contribution to journal-paper preparation</h4>
+<p>I supported preparation of the wound-monitoring journal manuscript by organizing the literature-derived evidence, helping prepare and review statistical figures, checking parameter-selection results and assisting the translation of the analysis into a clinician-centred wound-bed alarm framework.</p>
+</div>
+<div class="doc-list">
+<a class="doc" href="documents/week6/TMP117_Adafruit_reference.pdf"><span class="doc-icon">PDF</span><span><strong>TMP117 reference guide</strong><small>Reference schematic and board information</small></span></a>
+<a class="doc" href="documents/week6/Meeting_notes.pdf"><span class="doc-icon">PDF</span><span><strong>Meeting notes</strong><small>Filtering, 50 Hz interference and data-analysis direction</small></span></a>
+<a class="doc" href="documents/week6/Available_equipment_review.xlsx"><span class="doc-icon">XLS</span><span><strong>Equipment review</strong><small>Facilities relevant to fabrication and characterization</small></span></a>
+</div>
+</div>
+</details>
+
+<details class="week" id="week7" open="">
+<summary><span class="week-no">7</span><span class="week-title"><strong>FPCB Cost Estimation &amp; Fund Request</strong><span>Supplier comparison, realistic budget limits and formal project-funding documentation</span></span></summary>
+<div class="week-body">
+<div class="kicker">Procurement planning</div>
+<h3>Prototype cost comparison for a small 2-layer FPCB</h3>
+<p class="lead">A manufacturer comparison was prepared for an approximately 50 mm × 20 mm, two-layer flex PCB with five boards and four addressable TMP117 positions.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Supplier</th><th>Estimated bare-board total (USD)</th><th>Estimated assembled total (USD)</th><th>Portfolio conclusion</th></tr></thead>
+<tbody>
+<tr><td>JLCPCB</td><td>$10–33</td><td>$34.5–84.5</td><td>Lowest-cost prototype route when the design is kept simple.</td></tr>
+<tr><td>PCBWay</td><td>$61.74–90</td><td>$98.74–158</td><td>Useful for additional flex/stiffener options, but higher cost.</td></tr>
+<tr><td>ALLPCB</td><td>$55–100</td><td>$93–178</td><td>Requires quotation confirmation.</td></tr>
+<tr><td>NextPCB</td><td>$50–110</td><td>$58–168</td><td>Wide range depending on assembly and options.</td></tr>
+<tr><td>Local quotation</td><td>$25–68</td><td>$47–120</td><td>Potentially useful when shipping and support are considered.</td></tr>
+</tbody>
+</table></div>
+<div class="note warning"><strong>Budget finding:</strong> a USD 20 target is realistic only in the best case for a simple bare flex board. It does not include TMP117 devices, assembly, ENIG, stiffeners, connectors or delivery.</div>
+<div class="grid-3">
+<article class="metric"><strong>$4.28–28.50</strong><span>Estimated component range for four TMP117s plus passives and connector pads</span></article>
+<article class="metric"><strong>5 boards</strong><span>Small-batch assumption used in the comparison workbook</span></article>
+<article class="metric"><strong>2 layers</strong><span>Prototype FPCB stack used for the cost estimate</span></article>
+</div>
+<h4>Fund request prepared</h4>
+<p>The formal request describes the disposable sensor patch, reusable electronics, planned validation, expected deliverables, data-protection position and the requested support for electronics, PCB fabrication and biomedical consumables.</p>
+<div class="doc-list">
+<a class="doc" href="documents/week7/FPCB_manufacturer_cost_estimate.xlsx"><span class="doc-icon">XLS</span><span><strong>FPCB cost-estimation workbook</strong><small>Supplier, BOM and assembled-cost comparison</small></span></a>
+<a class="doc" href="documents/week7/Completed_Fund_Request_Form.docx"><span class="doc-icon">DOC</span><span><strong>Completed fund request form</strong><small>Project No. 36 funding documentation</small></span></a>
+</div>
+</div>
+</details>
+
+<details class="week" id="week8" open="">
+<summary><span class="week-no">8</span><span class="week-title"><strong>Statistical Analysis &amp; Temperature-Measuring Strategy</strong><span>Evidence synthesis, parameter prioritization and temperature-sensing method selection</span></span></summary>
+<div class="week-body">
+<div class="kicker">Evidence-based design</div>
+<h3>From 122 papers to a practical first-line sensor group</h3>
+<p class="lead">The wound-monitoring literature database was analysed to identify the parameters most frequently studied, the parameters commonly combined, and the measurements that are practical for an undergraduate prototype.</p>
+<div class="grid-4">
+<div class="metric"><strong>122</strong><span>papers in the full review dataset</span></div>
+<div class="metric"><strong>94</strong><span>papers in the cleaned quantitative subset</span></div>
+<div class="metric"><strong>12,799</strong><span>candidate evidence rows processed</span></div>
+<div class="metric"><strong>3</strong><span>first-line parameters selected</span></div>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Analysis performed</th><th>Purpose</th><th>Design conclusion</th></tr></thead>
+<tbody>
+<tr><td>Parameter prevalence analysis</td><td>Identify commonly reported wound measurements.</td><td>Temperature, pH and moisture/exudate had strong practical relevance.</td></tr>
+<tr><td>Co-occurrence and correlation analysis</td><td>Examine which parameters are repeatedly studied together.</td><td>A multi-parameter patch is more informative than a single-sensor design.</td></tr>
+<tr><td>PCA, t-SNE, UMAP and MDS</td><td>Explore the structure and grouping of the literature-derived dataset.</td><td>Supported the separation of clinically useful parameter families.</td></tr>
+<tr><td>Hierarchical clustering and priority ranking</td><td>Convert statistical evidence into a prototype-selection decision.</td><td>pH, temperature and moisture/exudate were selected for the first prototype.</td></tr>
+<tr><td>Time-versus-parameter review</td><td>Study how measurements change during monitoring periods.</td><td>Trend-based alerts are more meaningful than relying on one isolated reading.</td></tr>
+</tbody>
+</table></div>
+<h3>Temperature-measurement methods considered</h3>
+<div class="grid-3">
+<article class="card"><h4>Method A — TMP117 on the disposable patch</h4><p>This gives the shortest thermal path and the most direct reading, but the sensor is discarded with every dressing and is difficult to protect from wound fluid and cleaning procedures.</p></article>
+<article class="card"><h4>Method B — small reusable TMP117 PCB</h4><p>A sealed TMP117 sensor island is positioned close to the wound-contact strip and connected through a thin thermal interface. This was selected as the preferred practical compromise.</p></article>
+<article class="card"><h4>Method C — TMP117 inside the main reusable module</h4><p>An insulated copper thermal path transfers heat to a more distant sensor. This reduces contamination risk but requires calibration for thermal delay, ambient effects and path length.</p></article>
+</div>
+<div class="callout"><h4>Week 8 conclusion</h4><p>The statistical study justified the use of pH, temperature and moisture/exudate as the first-line monitoring group. The temperature study also showed that a reusable TMP117 sensor placed close to a disposable thermal interface can reduce recurring cost while preserving useful trend information.</p></div>
+<div class="doc-list">
+<a class="doc" href="documents/week8/Review_paper_with_analysis.pdf"><span class="doc-icon">PDF</span><span><strong>Review paper with analysis</strong><small>Clinician-centred wound-bed alarm framework</small></span></a>
+<a class="doc" href="documents/week8/Review_paper_with_analysis.docx"><span class="doc-icon">DOC</span><span><strong>Editable review manuscript</strong><small>Statistical analysis and parameter-selection discussion</small></span></a>
+<a class="doc" href="documents/week8/Time_vs_parameter_analysis_report.docx"><span class="doc-icon">DOC</span><span><strong>Time-vs-parameter analysis</strong><small>Corrected time-ascending analysis report</small></span></a>
+<a class="doc" href="documents/week8/Smart_wound_monitoring_system.pptx"><span class="doc-icon">PPT</span><span><strong>Project presentation</strong><small>System concept, circuit architecture and design justification</small></span></a>
+</div>
+</div>
+</details>
+
+<details class="week" id="week9" open="">
+<summary><span class="week-no">9</span><span class="week-title"><strong>Complete Circuit, Cost Analysis &amp; Orders</strong><span>Four-section patch circuit, reusable DAQ architecture, temperature-sensor cost comparison and procurement</span></span></summary>
+<div class="week-body">
+<div class="kicker">System integration</div>
+<h3>Complete four-section sensing circuit</h3>
+<p class="lead">The presentation architecture was developed into a complete four-region design. Each region contains one TMP117 temperature channel, one PANI working electrode and one moisture IDE. The reusable module provides signal conditioning, analogue conversion, digital temperature acquisition and wireless data transfer.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Temperature node</th><th>ADD0 connection</th><th>I²C address</th><th>Local requirement</th></tr></thead>
+<tbody>
+<tr><td>TMP117-1</td><td>GND</td><td>0x48</td><td>0.1 µF ceramic decoupling capacitor near the IC</td></tr>
+<tr><td>TMP117-2</td><td>3.3 V</td><td>0x49</td><td>0.1 µF ceramic decoupling capacitor near the IC</td></tr>
+<tr><td>TMP117-3</td><td>SDA</td><td>0x4A</td><td>0.1 µF ceramic decoupling capacitor near the IC</td></tr>
+<tr><td>TMP117-4</td><td>SCL</td><td>0x4B</td><td>0.1 µF ceramic decoupling capacitor near the IC</td></tr>
+</tbody>
+</table></div>
+<div class="grid-2">
+<article class="card"><h4>Disposable sensing patch</h4><ul class="clean-list"><li>Shared SDA, SCL, 3.3 V and GND connections for the four TMP117 positions.</li><li>Four separate PANI working-electrode outputs.</li><li>One common Ag/AgCl reference-electrode connection for the pH channels.</li><li>One common moisture-drive signal and four separate moisture-sense lines.</li><li>Local 0.1 µF decoupling beside every TMP117.</li></ul></article>
+<article class="card"><h4>Reusable DAQ module</h4><ul class="clean-list"><li>High-input-impedance pH buffers.</li><li>Moisture excitation and signal-conditioning stage.</li><li>ADS1115-class 16-bit ADC for analogue channels.</li><li>Direct I²C acquisition from the four TMP117 sensors.</li><li>ESP32 processing, baseline comparison and BLE/Wi-Fi communication.</li></ul></article>
+</div>
+<h3>Temperature-sensor cost analysis</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Architecture</th><th>Initial cost</th><th>Recurring patch cost</th><th>Design conclusion</th></tr></thead>
+<tbody>
+<tr><td>Reusable TMP117 sensor and reusable DAQ</td><td>Approximately USD 20–35</td><td>Approximately USD 1–3 per disposable patch</td><td>Preferred for repeated monitoring because the sensor electronics are reused.</td></tr>
+<tr><td>Fully disposable TMP117 patch</td><td>No separate reusable sensor cost</td><td>Approximately USD 22–39 per patch</td><td>Direct thermal coupling, but unsuitable for regular replacement because of recurring cost.</td></tr>
+</tbody>
+</table></div>
+<p class="source-note">These are prototype estimates. Final cost depends on supplier, quantity, PCB fabrication, shipping, taxes and assembly method.</p>
+<h3>Orders placed during Week 9</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Ordered item</th><th>Order detail</th><th>Purpose in the project</th></tr></thead>
+<tbody>
+<tr><td>TMP117AIDRVR temperature-sensor ICs</td><td>Five devices ordered on 5 July 2026.</td><td>Prototype testing of the four-region temperature architecture and one spare device.</td></tr>
+<tr><td>Silicone-gel sheet / patch material</td><td>Prototype material order placed during Week 9.</td><td>Study of soft insulation, sealing and thermal-interface arrangements.</td></tr>
+</tbody>
+</table></div>
+<div class="note"><strong>Privacy correction:</strong> personal shipping, payment and account details are not included in the public portfolio. Only the technical order summary is recorded.</div>
+<div class="doc-list">
+<a class="doc" href="documents/week9/TMP117_temperature_method_comparison.pdf"><span class="doc-icon">PDF</span><span><strong>Temperature method comparison</strong><small>Direct patch, small reusable PCB and remote thermal-path methods</small></span></a>
+<a class="doc" href="documents/week9/TMP117_two_PCB_sterilizable.pdf"><span class="doc-icon">PDF</span><span><strong>Two-PCB reusable concept</strong><small>Protection, cleaning and sensor-module architecture</small></span></a>
+<a class="doc" href="documents/week9/Risk_assessment_form.docx"><span class="doc-icon">DOC</span><span><strong>Risk-assessment form</strong><small>Laboratory and prototype safety documentation</small></span></a>
+<a class="doc" href="documents/week9/Temperature_transfer_design.pdf"><span class="doc-icon">PDF</span><span><strong>Temperature-transfer design</strong><small>Thermal connection from disposable patch to reusable TMP117</small></span></a>
+</div>
+</div>
+</details>
+
+<details class="week" id="week10" open="">
+<summary><span class="week-no">10</span><span class="week-title"><strong>Revised Reusable-Sensor Design &amp; Materials Preparation</strong><span>New thermal-transfer concept, received components and Faculty of Science chemical coordination</span></span></summary>
+<div class="week-body">
+<div class="kicker">Design refinement</div>
+<h3>New temperature-measurement concept</h3>
+<p class="lead">The temperature design was revised so the TMP117 is not permanently fixed inside the disposable wound-contact plaster. A thin insulated copper thermal path transfers heat from the patch window to a reusable, sealed TMP117 sensing area located close to the patch.</p>
+<div class="grid-3">
+<article class="card"><h4>Disposable wound-contact strip</h4><p>Contains the pH and moisture sensing areas together with a thin protected thermal-contact region. It is replaced during dressing changes.</p></article>
+<article class="card"><h4>Reusable TMP117 sensing island</h4><p>A small sealed PCB or flex section holds the TMP117 close to the thermal path while keeping the IC away from wound exudate.</p></article>
+<article class="card"><h4>Reusable DAQ module</h4><p>The ESP32, ADC, signal-conditioning circuits, battery and wireless interface remain in the reusable module.</p></article>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Design feature</th><th>Reason</th><th>Required validation</th></tr></thead>
+<tbody>
+<tr><td>Insulated copper thermal path</td><td>Transfers heat without exposing an electrical conductor to wound fluid.</td><td>Measure thermal delay and heat loss for different lengths and thicknesses.</td></tr>
+<tr><td>Separated TMP117 sensing area</td><td>Allows reuse and reduces the recurring cost of the disposable patch.</td><td>Confirm sealing, cleaning compatibility and sensor accuracy after repeated use.</td></tr>
+<tr><td>Short connection between patch and sensor</td><td>Reduces ambient-temperature influence and response delay.</td><td>Calibrate against a reference thermometer under simulated wound conditions.</td></tr>
+</tbody>
+</table></div>
+<h3>Week 9 order received</h3>
+<p>The TMP117 devices ordered during Week 9 were received for prototype circuit development. The devices will be inspected, soldered onto a test PCB and verified through I²C communication before integration with the complete sensing system.</p>
+<h3>Faculty of Science Chemistry Department coordination</h3>
+<p>The Faculty of Science Chemistry Department was contacted through Mr. Vishwa and the laboratory network. Aniline monomer, ammonium persulfate and silver-chloride-related material were reported as available for inspection and supervised laboratory use. Exact quantity, purity, storage condition and permitted handling procedure must be confirmed with laboratory staff before fabrication begins.</p>
+<div class="grid-2">
+<article class="card"><h4>Planned PANI development</h4><ul class="clean-list"><li>Prepare small PANI/carbon sensing batches under supervision.</li><li>Coat approximately ten test electrodes.</li><li>Calibrate using pH 4–10 buffer solutions.</li><li>Evaluate sensitivity, response time, repeatability and drift.</li><li>Record both electrical response and visible colour variation where useful.</li></ul></article>
+<article class="card"><h4>Safety and project limits</h4><ul class="clean-list"><li>Use approved PPE, ventilation and chemical risk assessment.</li><li>Handle aniline, acids and ammonium persulfate only under laboratory supervision.</li><li>Do not apply the prototype to patients before biocompatibility, sterilization and ethical approval.</li><li>Initial testing must use calibration solutions and simulated wound exudate.</li></ul></article>
+</div>
+<div class="doc-list">
+<a class="doc" href="documents/week10/PANI_preparation_full_idea.docx"><span class="doc-icon">DOC</span><span><strong>PANI preparation plan</strong><small>Materials, workflow, test-pad preparation and calibration plan</small></span></a>
+<a class="doc" href="documents/week9/Temperature_transfer_design.pdf"><span class="doc-icon">PDF</span><span><strong>Hand-drawn thermal-transfer design</strong><small>Original Week 10 design evidence retained as a document</small></span></a>
+</div>
+<div class="callout"><h4>Week 10 outcome</h4><p>The revised architecture uses a disposable wound-contact strip, a reusable sealed TMP117 sensing island and a reusable wireless DAQ module. This reduces recurring cost and contamination risk while keeping the temperature sensor close enough for calibrated trend monitoring.</p></div>
+</div>
+</details>
 <!-- DRIVE LINKS -->
 <section id="drive-links" class="py-5" style="background:#f8faff;">
     <div class="container py-3">
