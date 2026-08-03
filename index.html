@@ -1620,7 +1620,6 @@
 </section>
 
 <!-- ======================================================= -->
-<!-- ======================================================= -->
 <!-- WEEK 11 -->
 <!-- ======================================================= -->
 <section id="week11" class="py-5 bg-white">
@@ -1721,14 +1720,14 @@
     <div class="container py-4">
         <div class="text-center mb-5">
             <div class="sec-tag">Week 12</div>
-            <div class="sec-title">TMP117 Procurement, Transmission Lines 101, Screen Printing and STM32CubeMX Practice</div>
-            <p class="text-muted mt-2" style="max-width:920px;margin:auto;">Week 12 combined hardware procurement with electronics and sensor-fabrication learning. Five additional TMP117AIDRVR temperature sensors were ordered, the Transmission Lines 101 course was followed to improve PCB signal-integrity knowledge, the construction sequence of screen-printed electrodes was studied, and STM32CubeMX was used to practise microcontroller pin assignment and peripheral planning for future sensor integration.</p>
+            <div class="sec-title">TMP117 Procurement, Transmission Lines 101 and Screen-Printing Study</div>
+            <p class="text-muted mt-2" style="max-width:920px;margin:auto;">Week 12 combined hardware procurement with signal-integrity and sensor-fabrication learning. Five additional TMP117AIDRVR temperature sensors were ordered, the Transmission Lines 101 course was followed to improve PCB signal-integrity knowledge, and the construction sequence of screen-printed electrodes was studied for the proposed pH and moisture sensor strip.</p>
         </div>
 
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 12</h5>
-                <p>Five TMP117AIDRVR digital temperature sensors were ordered to support repeated experiments, calibration, PCB assembly and backup during soldering. In parallel, I studied how digital signals behave on PCB interconnections, reviewed the fabrication sequence of screen-printed electrodes for the pH and moisture sensor strip, and developed introductory STM32 configuration skills needed for the future wound-monitoring electronics.</p>
+                <p>Five TMP117AIDRVR digital temperature sensors were ordered to support repeated experiments, calibration, PCB assembly and backup during soldering. In parallel, I studied how digital signals behave on PCB interconnections and reviewed the fabrication sequence of screen-printed electrodes for the pH and moisture sensor strip.</p>
                 <ul class="mb-0">
                     <li>Ordered five additional TMP117AIDRVR temperature sensors.</li>
                     <li>Followed Professor Eric Bogatin's <em>Transmission Lines 101</em> course.</li>
@@ -1738,9 +1737,6 @@
                     <li>Studied the construction sequence of screen-printed electrodes using a mask, substrate, conductive ink and insulating layer.</li>
                     <li>Reviewed important printing variables including ink viscosity, screen alignment, squeegee pressure, coating thickness, curing and track insulation.</li>
                     <li>Planned to print carbon-ink conductive tracks on PET, leave defined sensing windows exposed and later apply the PANI-sensitive coating to the working electrode.</li>
-                    <li>Opened an STM32F401-series device in STM32CubeMX and inspected its package pinout.</li>
-                    <li>Practised GPIO selection, alternate-function assignment, signal labels and pin-conflict checking.</li>
-                    <li>Reviewed UART, SPI, clock configuration, project generation and future I²C interfacing for TMP117.</li>
                 </ul>
             </div>
             <details class="week-readmore mt-3">
@@ -1753,8 +1749,6 @@
                     <p><strong>Screen-printing study:</strong> I reviewed the basic construction process of a screen-printed electrode. The sequence begins by selecting and cleaning the flexible substrate, aligning a mask or patterned screen, adding conductive ink and transferring the ink through the open regions of the pattern. After the conductive design is printed, it must be dried or cured under conditions that do not deform the PET substrate.</p>
                     <p>An insulating or dielectric material is then printed over the long conductive tracks while the contact pads and active electrode windows remain exposed. This step defines the working area, prevents accidental electrical contact with wound fluid and reduces short circuits between adjacent tracks. For the proposed plaster, the planned sequence is to print the carbon tracks and electrode pattern first, apply the insulating layer second, and then deposit the PANI pH-sensitive material only on the defined working-electrode area.</p>
                     <p>The study also highlighted the importance of screen alignment, ink viscosity, mesh or stencil opening, squeegee angle, pressure and speed, printed-layer thickness, curing time and substrate cleanliness. These parameters affect line width, continuity, adhesion, resistance and repeatability. Printed samples will need visual inspection, resistance measurement, adhesion testing, bending tests and checks for pinholes, open tracks or unwanted electrical bridging.</p>
-                    <p><strong>STM32 work:</strong> STM32CubeMX was used to learn the graphical configuration workflow for an STM32F401-series device. I inspected the pinout, selected pins for communication and control functions, used user labels to organize signals and checked how the software displays pin availability and conflicts.</p>
-                    <p>The Pinout &amp; Configuration, Clock Configuration and Project Manager tabs were reviewed. UART pins were considered for debugging and serial monitoring, SPI functions were explored for future modules, and I²C was identified as the required interface for the TMP117. The work was an introductory configuration exercise and did not yet represent the completed wound-monitoring firmware.</p>
                 </div>
             </details>
         </div>
@@ -1852,46 +1846,7 @@
             </div>
         </div>
 
-        <div class="paper-card">
-            <div class="paper-card-header">
-                <div class="paper-num">Embedded-System Preparation · Week 12</div>
-                <h3>STM32CubeMX Pinout and Peripheral Configuration Practice</h3>
-                <div class="authors"><i class="fas fa-microchip me-2"></i>STM32F401 · GPIO · alternate functions · UART · SPI · I²C planning · clocks</div>
-            </div>
-            <div class="paper-card-body">
-                <div class="row g-3 mb-4 justify-content-center">
-                    <div class="col-md-10"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img large-evidence-img" src="img/papers/week12_stm32_cubemx_basics.png" alt="STM32CubeMX pinout configuration practice"><div class="fig-caption"><strong>Fig. 4</strong> — STM32CubeMX pinout and peripheral-configuration practice using an STM32F401-series device.</div></div></div>
-                </div>
 
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-search text-primary me-2"></i>Device and Package Selection</h6><p>Selected the STM32F401CCUx device and inspected its power, debug, communication and general-purpose pins in the package view.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-toggle-on text-primary me-2"></i>GPIO Configuration</h6><p>Practised choosing input, output and alternate-function roles and observed how CubeMX identifies assigned and unused GPIO pins.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-tags text-primary me-2"></i>User Labels</h6><p>Applied descriptive labels to signals so that sensor, multiplexer, communication and control connections can be understood more easily.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-exclamation-triangle text-primary me-2"></i>Pin-Conflict Checking</h6><p>Observed how assigning one peripheral function affects the remaining alternate functions and prevents invalid duplicate use of a pin.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-comments text-primary me-2"></i>UART and Debugging</h6><p>Reviewed USART RX and TX mapping as a future method for printing debug messages and observing sensor data during development.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-exchange-alt text-primary me-2"></i>SPI and Other Interfaces</h6><p>Practised assigning clock, data and chip-select signals for potential external modules while learning the alternate-function workflow.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-thermometer-half text-primary me-2"></i>I²C for TMP117</h6><p>Identified I²C as the digital interface required for configuring the TMP117 and reading its temperature register.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-clock text-primary me-2"></i>Clock Configuration</h6><p>Reviewed the clock-configuration stage and the need to provide valid processor and peripheral clocks before code generation.</p></div></div>
-                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-code text-primary me-2"></i>Project Generation Workflow</h6><p>Reviewed the Project Manager settings and how CubeMX generates initialization structures for the selected pins and peripherals.</p></div></div>
-                </div>
-
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered align-middle">
-                        <thead><tr><th>STM32 area</th><th>Week 12 work</th><th>Planned application in the project</th></tr></thead>
-                        <tbody>
-                            <tr><td>GPIO</td><td>Pin selection, modes, labels and availability checking</td><td>Status signals, control outputs and interrupts</td></tr>
-                            <tr><td>I²C</td><td>Future interface planning</td><td>TMP117 register configuration and temperature reading</td></tr>
-                            <tr><td>UART</td><td>RX/TX alternate-function mapping</td><td>Debug output and serial sensor-data monitoring</td></tr>
-                            <tr><td>SPI</td><td>Clock, data and chip-select assignment practice</td><td>Potential external modules or converters</td></tr>
-                            <tr><td>Clock tree</td><td>Initial review of system and peripheral clocks</td><td>Reliable timing for communication and acquisition</td></tr>
-                            <tr><td>Project generation</td><td>Review of CubeMX project workflow</td><td>Starting structure for future STM32 firmware</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="relevance-box"><strong><i class="fas fa-link me-2"></i>Week 12 Outcome</strong><p>Week 12 prepared the project for both sensor fabrication and embedded implementation. The additional TMP117 sensors support upcoming hardware tests, the transmission-line course improves future PCB-routing decisions, the screen-printing study defines a repeatable method for fabricating the carbon-electrode strip, and the STM32CubeMX practice provides the foundation for configuring sensor interfaces and generating the first firmware project.</p></div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -1903,14 +1858,14 @@
     <div class="container py-4">
         <div class="text-center mb-5">
             <div class="sec-tag">Week 13</div>
-            <div class="sec-title">Budget Update, PANI Polymerization Study and Ammonium Persulfate Procurement</div>
-            <p class="text-muted mt-2" style="max-width:850px;margin:auto;">Week 13 updated the project expenditure, studied the oxidative polymerization and principal forms of polyaniline, and ordered analytical-reagent-grade ammonium persulfate for the planned PANI laboratory work.</p>
+            <div class="sec-title">Budget Update, PANI Polymerization, APS Procurement and STM32 Configuration</div>
+            <p class="text-muted mt-2" style="max-width:850px;margin:auto;">Week 13 updated the project expenditure, studied the oxidative polymerization and principal forms of polyaniline, ordered analytical-reagent-grade ammonium persulfate, and carried out introductory STM32CubeMX configuration work for the future wound-monitoring electronics.</p>
         </div>
 
         <div class="paper-card weekly-work-card mb-4">
             <div class="paper-card-body">
                 <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 13</h5>
-                <p>The project budget was updated to LKR 10,360 using the recorded costs for carbon powder, ammonium persulfate, silicone plasters, copper strip, temperature sensors and solder paste. The week also focused on understanding PANI synthesis before beginning laboratory preparation.</p>
+                <p>The project budget was updated to LKR 10,360 using the recorded costs for carbon powder, ammonium persulfate, silicone plasters, copper strip, temperature sensors and solder paste. The week also focused on understanding PANI synthesis before laboratory preparation and learning the STM32CubeMX workflow required for later sensor integration.</p>
                 <ul class="mb-0">
                     <li>Updated the total recorded project expenditure to LKR 10,360.</li>
                     <li>Studied oxidative polymerization of aniline in an acidic medium using ammonium persulfate as the oxidizing agent.</li>
@@ -1918,6 +1873,9 @@
                     <li>Identified emeraldine salt as the conductive form most relevant to the planned pH-sensitive layer.</li>
                     <li>Obtained a quotation and ordered 500 g of ammonium persulfate from Organic Trading (Pvt) Ltd.</li>
                     <li>Used two online videos to study the PANI preparation, filtration, washing and drying sequence.</li>
+                    <li>Opened the STM32F401CCUx device in STM32CubeMX and inspected its package pinout.</li>
+                    <li>Practised GPIO modes, alternate-function assignment, descriptive signal labels and pin-conflict checking.</li>
+                    <li>Reviewed UART, SPI, system clocks, code generation and the planned I²C interface for the TMP117 temperature sensor.</li>
                 </ul>
             </div>
         </div>
@@ -1950,8 +1908,52 @@
                 <div class="relevance-box"><strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong><p>Week 13 completed the planning required before PANI fabrication by updating the available budget, studying the polymerization and oxidation-state theory, and securing the oxidizing reagent needed for the planned pH-sensitive electrode work.</p></div>
             </div>
         </div>
+
+        <div class="paper-card mt-4">
+            <div class="paper-card-header">
+                <div class="paper-num">Embedded-System Preparation · Week 13</div>
+                <h3>STM32CubeMX Pinout and Peripheral Configuration Practice</h3>
+                <div class="authors"><i class="fas fa-microchip me-2"></i>STM32F401 · GPIO · alternate functions · UART · SPI · I²C planning · clocks</div>
+            </div>
+            <div class="paper-card-body">
+                <p>During Week 13, I studied the basic STM32 development workflow using an STM32F401-series device in STM32CubeMX. This work was completed as preparation for integrating the TMP117 temperature sensor and other sensing modules with the reusable electronics section of the wound-monitoring plaster.</p>
+
+                <div class="row g-3 mb-4 justify-content-center">
+                    <div class="col-md-10"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img large-evidence-img" src="img/papers/week13_stm32_cubemx_basics.png" alt="STM32CubeMX pinout configuration practice completed in Week 13"><div class="fig-caption"><strong>Fig. 6</strong> — STM32CubeMX pinout and peripheral-configuration practice using an STM32F401-series device during Week 13.</div></div></div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-search text-primary me-2"></i>Device and Package Selection</h6><p>Selected the STM32F401CCUx device and inspected its power, debug, communication and general-purpose pins in the package view.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-toggle-on text-primary me-2"></i>GPIO Configuration</h6><p>Practised selecting input, output and alternate-function roles and observed how CubeMX identifies assigned and unused GPIO pins.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-tags text-primary me-2"></i>User Signal Labels</h6><p>Applied descriptive labels to sensor, multiplexer, communication and control signals to make the planned circuit connections easier to understand.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-exclamation-triangle text-primary me-2"></i>Pin-Conflict Checking</h6><p>Observed how assigning a peripheral function changes the available alternate functions and helps prevent invalid duplicate use of a pin.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-comments text-primary me-2"></i>UART and Debugging</h6><p>Reviewed USART RX and TX mapping as a future method for displaying debug messages and observing sensor readings during development.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-exchange-alt text-primary me-2"></i>SPI and Other Interfaces</h6><p>Practised assigning clock, data and chip-select signals for potential external modules while learning the alternate-function workflow.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-thermometer-half text-primary me-2"></i>I²C for TMP117</h6><p>Identified I²C as the digital interface required to configure the TMP117 and read its temperature register.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-clock text-primary me-2"></i>Clock Configuration</h6><p>Reviewed the clock-configuration stage and the need to provide valid processor and peripheral clocks before generating firmware.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-code text-primary me-2"></i>Project Generation</h6><p>Reviewed Project Manager settings and how CubeMX generates initialization structures for the selected pins, clocks and peripherals.</p></div></div>
+                </div>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered align-middle">
+                        <thead><tr><th>STM32 area</th><th>Week 13 work</th><th>Planned application in the project</th></tr></thead>
+                        <tbody>
+                            <tr><td>GPIO</td><td>Pin selection, modes, labels and availability checking</td><td>Status signals, control outputs and interrupts</td></tr>
+                            <tr><td>I²C</td><td>Interface planning for the temperature sensor</td><td>TMP117 register configuration and temperature reading</td></tr>
+                            <tr><td>UART</td><td>RX/TX alternate-function mapping</td><td>Debug output and serial sensor-data monitoring</td></tr>
+                            <tr><td>SPI</td><td>Clock, data and chip-select assignment practice</td><td>Potential external modules or converters</td></tr>
+                            <tr><td>Clock tree</td><td>Initial review of system and peripheral clocks</td><td>Reliable timing for communication and data acquisition</td></tr>
+                            <tr><td>Project generation</td><td>Review of the CubeMX project workflow</td><td>Starting structure for future STM32 firmware</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="relevance-box"><strong><i class="fas fa-link me-2"></i>Week 13 Outcome</strong><p>Week 13 combined chemical-sensor preparation with embedded-system planning. The PANI and APS study prepared the pH-sensing layer, while the STM32CubeMX work established the initial pinout and communication plan for reading the TMP117 and integrating the future sensing modules. This was an introductory configuration exercise and did not yet represent completed firmware.</p></div>
+            </div>
+        </div>
     </div>
 </section>
+
 <!-- DRIVE LINKS -->
 <section id="drive-links" class="py-5" style="background:#f8faff;">
     <div class="container py-3">
