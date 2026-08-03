@@ -184,6 +184,9 @@
                     <a href="#week8" class="nav-link">Week 8</a>
                     <a href="#week9" class="nav-link">Week 9</a>
                     <a href="#week10" class="nav-link">Week 10</a>
+                    <a href="#week11" class="nav-link">Week 11</a>
+                    <a href="#week12" class="nav-link">Week 12</a>
+                    <a href="#week13" class="nav-link">Week 13</a>
                     <a href="#drive-links" class="nav-link">Drive Links</a>
                     <a href="team.html" class="nav-link">Team</a>
                 </div>
@@ -210,7 +213,7 @@
                     <div class="col-6"><div class="stat-card"><div class="num">93%</div><div class="label">Limb Salvage Rate (Paper 1)</div></div></div>
                     <div class="col-6"><div class="stat-card"><div class="num">33°C</div><div class="label">Critical Healing Threshold</div></div></div>
                     <div class="col-6"><div class="stat-card"><div class="num">±0.1°C</div><div class="label">TMP117 Sensor Accuracy</div></div></div>
-                    <div class="col-6"><div class="stat-card"><div class="num">10</div><div class="label">Weeks of Research Completed</div></div></div>
+                    <div class="col-6"><div class="stat-card"><div class="num">13</div><div class="label">Weeks of Research Completed</div></div></div>
                 </div>
             </div>
         </div>
@@ -328,6 +331,9 @@
         <a href="#week8" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 8 — Statistical Analysis</a>
         <a href="#week9" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 9 — Full Circuit & Orders</a>
         <a href="#week10" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 10 — PANI Design & Chemicals</a>
+        <a href="#week11" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 11 — Adhesives & Carbon Ink</a>
+        <a href="#week12" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 12 — TMP117 & STM32 Learning</a>
+        <a href="#week13" class="week-tab text-decoration-none"><i class="fas fa-check-circle text-success me-2"></i>Week 13 — PANI Study & APS Order</a>
     </div>
 </div>
 
@@ -1613,6 +1619,178 @@
     </div>
 </section>
 
+<!-- ======================================================= -->
+<!-- WEEK 11 -->
+<!-- ======================================================= -->
+<section id="week11" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Week 11</div>
+            <div class="sec-title">Biocompatible Adhesives, Carbon-Electrode Binder Selection and Budget Plaster Design</div>
+            <p class="text-muted mt-2" style="max-width:850px;margin:auto;">Week 11 focused on selecting suitable materials for the reusable electronics, flexible transition, disposable sensing strip and wound-interface region. The work also examined a low-cost carbon-powder/PVA ink for laboratory prototyping and finalized commercial conductive carbon ink as the preferred electrode material for the final design.</p>
+        </div>
+
+        <div class="paper-card weekly-work-card mb-4">
+            <div class="paper-card-body">
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 11</h5>
+                <p>Medical-grade epoxy, platinum-cured silicone and chitosan-alginate hydrogel were compared according to rigidity, flexibility, fluid transport, carbon-filler compatibility and intended location within the plaster. The final design decision was to use each material only for the function it performs best rather than using one adhesive throughout the device.</p>
+                <ul class="mb-0">
+                    <li>Restricted medical-device epoxy to rigid component fixation and solder-joint protection inside the reusable electronics section.</li>
+                    <li>Selected silicone only for flexible sealing or strain relief where required.</li>
+                    <li>Selected a hydrogel or porous interface for the active wound-fluid sensing window.</li>
+                    <li>Selected medical acrylic or soft-silicone pressure-sensitive adhesive only around the intact-skin perimeter.</li>
+                    <li>Selected commercial conductive carbon ink on PET as the preferred final carbon-electrode approach.</li>
+                    <li>Prepared a carbon-powder/PVA formulation only as a low-cost laboratory prototype option.</li>
+                </ul>
+            </div>
+            <details class="week-readmore mt-3">
+                <summary><i class="fas fa-book-open me-2"></i>Read more details for Week 11</summary>
+                <div class="week-readmore-body">
+                    <p>Epoxy was not selected as the skin adhesive, wound-contact layer or coating over the pH and moisture electrodes because it is rigid and can restrict fluid and ion transport. Medical acrylic adhesive was kept separate from the carbon electrode and reserved for attaching the plaster perimeter to intact skin.</p>
+                    <p>For the conductive tracks and electrodes, a flexible carbon ink compatible with PET was identified as the preferred final option. A commercial ink already contains dispersed carbon particles, a binder and a solvent system, giving more consistent adhesion and electrical performance than manually mixing loose powder.</p>
+                    <p>Because only carbon powder was initially available, a laboratory-only carbon/PVA ink was also studied. A 10% PVA solution can be prepared using 1 g PVA and 9 g distilled water. Carbon-to-dry-PVA ratios of 2:1, 3:1 and 4:1 were proposed, with 3:1 selected as the starting trial. The coating must be rejected if it peels, cracks, softens or releases black particles during saline testing. This homemade formulation is not intended for direct use on a real wound.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Material Selection · Week 11</div>
+                <h3>Functional Separation of Adhesives and Sensor Materials</h3>
+                <div class="authors"><i class="fas fa-layer-group me-2"></i>Reusable electronics · flexible transition · PET carbon electrode · hydrogel sensing window · skin-adhesive perimeter</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-microchip text-primary me-2"></i>Reusable Module</h6><p>Use a small amount of documented medical-device epoxy only for rigid component fixation, protected connectors and solder-joint encapsulation.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-pen-nib text-primary me-2"></i>Carbon Electrode</h6><p>Print flexible conductive carbon ink on PET, insulate the long tracks and leave only the designed sensing window exposed.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-tint text-primary me-2"></i>Wound Interface</h6><p>Use a thin hydrogel or controlled membrane over the active sensing area, with medical skin adhesive only around the surrounding intact skin.</p></div></div>
+                </div>
+
+                <div class="row g-3 mb-4 week-evidence-grid">
+                    <div class="col-md-6"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week11_material_comparison.png" alt="Comparison of epoxy silicone and hydrogel materials"><div class="fig-caption"><strong>Fig. 1</strong> — Comparison of medical-device epoxy, platinum-cured silicone and chitosan-alginate hydrogel for the wound-monitoring plaster.</div></div></div>
+                    <div class="col-md-6"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week11_multilayer_architecture.png" alt="Proposed multilayer plaster architecture"><div class="fig-caption"><strong>Fig. 2</strong> — Proposed multilayer architecture separating the reusable electronics, flexible sensor strip and wound-interface layers.</div></div></div>
+                </div>
+                <div class="row g-3 mb-4 justify-content-center">
+                    <div class="col-md-8"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img large-evidence-img" src="img/papers/week11_epoxy_design_decision.png" alt="Week 11 epoxy and budget design decision"><div class="fig-caption"><strong>Fig. 3</strong> — Final budget decision showing where epoxy can and cannot be used in the plaster.</div></div></div>
+                </div>
+
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-flask me-2 text-primary"></i>Laboratory Carbon-PVA Trial</h5>
+                <div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>Trial</th><th>Carbon powder</th><th>10% PVA solution</th><th>Dry carbon:PVA ratio</th><th>Purpose</th></tr></thead><tbody><tr><td>A</td><td>0.50 g</td><td>2.50 g</td><td>2:1</td><td>Stronger bonding</td></tr><tr><td>B</td><td>0.50 g</td><td>1.67 g</td><td>3:1</td><td>Recommended starting trial</td></tr><tr><td>C</td><td>0.50 g</td><td>1.25 g</td><td>4:1</td><td>Higher carbon loading</td></tr></tbody></table></div>
+
+                <div class="relevance-box"><strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong><p>Week 11 converted the material investigation into a practical and lower-cost plaster architecture. It established that the skin adhesive, carbon-electrode binder, wound interface and reusable electronics encapsulant must remain separate material systems.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================= -->
+<!-- WEEK 12 -->
+<!-- ======================================================= -->
+<section id="week12" class="py-5" style="background:#f8faff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Week 12</div>
+            <div class="sec-title">TMP117 Procurement, Transmission-Line Learning and STM32 Fundamentals</div>
+            <p class="text-muted mt-2" style="max-width:850px;margin:auto;">Week 12 continued the temperature-sensing and embedded-system work by ordering additional TMP117 sensors, studying transmission-line fundamentals and practising STM32 pin and peripheral configuration using STM32CubeMX.</p>
+        </div>
+
+        <div class="paper-card weekly-work-card mb-4">
+            <div class="paper-card-body">
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 12</h5>
+                <p>Five additional TMP117AIDRVR digital temperature sensors were ordered for prototype assembly, repeated testing and backup during soldering or PCB development. The week also included independent study of transmission-line fundamentals and introductory STM32 microcontroller configuration.</p>
+                <ul class="mb-0">
+                    <li>Ordered five TMP117AIDRVR temperature sensors for upcoming prototype work.</li>
+                    <li>Followed the “Transmission Lines 101” online course by Professor Eric Bogatin.</li>
+                    <li>Studied basic signal-integrity concepts including interconnections, impedance, reflections and PCB-routing awareness.</li>
+                    <li>Practised STM32 microcontroller pinout and peripheral configuration using STM32CubeMX.</li>
+                    <li>Reviewed how temperature and other sensor interfaces can be assigned to the STM32 controller.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">Embedded Preparation · Week 12</div>
+                <h3>Preparing for Sensor Interfacing and PCB Development</h3>
+                <div class="authors"><i class="fas fa-thermometer-half me-2"></i>TMP117 procurement · signal integrity · STM32CubeMX · GPIO and peripheral mapping</div>
+            </div>
+            <div class="paper-card-body">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-shopping-cart text-primary me-2"></i>Sensor Procurement</h6><p>Additional TMP117 devices support repeated experiments and reduce delays if a sensor is damaged during assembly.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-wave-square text-primary me-2"></i>Transmission Lines</h6><p>The course improved understanding of how electrical signals behave through PCB traces and interconnections.</p></div></div>
+                    <div class="col-md-4"><div class="info-box h-100"><h6><i class="fas fa-code text-primary me-2"></i>STM32 Basics</h6><p>STM32CubeMX was used to inspect the pinout, assign GPIO functions and become familiar with basic project configuration.</p></div></div>
+                </div>
+
+                <div class="row g-3 mb-4 week-evidence-grid">
+                    <div class="col-md-4"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week12_tmp117_order.png" alt="TMP117 sensor order evidence"><div class="fig-caption"><strong>Fig. 1</strong> — Order evidence for five additional TMP117AIDRVR temperature sensors.</div></div></div>
+                    <div class="col-md-4"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week12_transmission_lines_course.png" alt="Transmission Lines 101 online course"><div class="fig-caption"><strong>Fig. 2</strong> — Transmission Lines 101 learning resource used to improve signal-integrity knowledge.</div></div></div>
+                    <div class="col-md-4"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week12_stm32_cubemx_basics.png" alt="STM32CubeMX pinout configuration practice"><div class="fig-caption"><strong>Fig. 3</strong> — STM32CubeMX pinout and peripheral-configuration practice using an STM32F401-series device.</div></div></div>
+                </div>
+
+                <div class="relevance-box"><strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong><p>Week 12 prepared the project for the embedded implementation stage by securing additional temperature sensors and building the PCB, signal-integrity and STM32 configuration knowledge needed for reliable sensor interfacing.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================= -->
+<!-- WEEK 13 -->
+<!-- ======================================================= -->
+<section id="week13" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <div class="sec-tag">Week 13</div>
+            <div class="sec-title">Budget Update, PANI Polymerization Study and Ammonium Persulfate Procurement</div>
+            <p class="text-muted mt-2" style="max-width:850px;margin:auto;">Week 13 updated the project expenditure, studied the oxidative polymerization and principal forms of polyaniline, and ordered analytical-reagent-grade ammonium persulfate for the planned PANI laboratory work.</p>
+        </div>
+
+        <div class="paper-card weekly-work-card mb-4">
+            <div class="paper-card-body">
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-clipboard-check me-2 text-primary"></i>Full Work Done in Week 13</h5>
+                <p>The project budget was updated to LKR 10,360 using the recorded costs for carbon powder, ammonium persulfate, silicone plasters, copper strip, temperature sensors and solder paste. The week also focused on understanding PANI synthesis before beginning laboratory preparation.</p>
+                <ul class="mb-0">
+                    <li>Updated the total recorded project expenditure to LKR 10,360.</li>
+                    <li>Studied oxidative polymerization of aniline in an acidic medium using ammonium persulfate as the oxidizing agent.</li>
+                    <li>Reviewed leucoemeraldine, emeraldine base, emeraldine salt and pernigraniline forms of PANI.</li>
+                    <li>Identified emeraldine salt as the conductive form most relevant to the planned pH-sensitive layer.</li>
+                    <li>Obtained a quotation and ordered 500 g of ammonium persulfate from Organic Trading (Pvt) Ltd.</li>
+                    <li>Used two online videos to study the PANI preparation, filtration, washing and drying sequence.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-card-header">
+                <div class="paper-num">PANI Preparation · Week 13</div>
+                <h3>Polymerization Theory, Reagent Planning and Updated Expenditure</h3>
+                <div class="authors"><i class="fas fa-vial me-2"></i>PANI oxidation states · APS oxidant · low-temperature reaction · filtration and washing · budget control</div>
+            </div>
+            <div class="paper-card-body">
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-coins me-2 text-primary"></i>Updated Budget</h5>
+                <div class="table-responsive mb-4"><table class="table table-bordered align-middle"><thead><tr><th>Item</th><th>Price (LKR)</th></tr></thead><tbody><tr><td>Carbon powder</td><td>900</td></tr><tr><td>Ammonium persulfate</td><td>2,950</td></tr><tr><td>Silicone plasters</td><td>804</td></tr><tr><td>Copper strip</td><td>1,050</td></tr><tr><td>Temperature sensors</td><td>3,856</td></tr><tr><td>Solder paste</td><td>800</td></tr><tr><th>Total</th><th>10,360</th></tr></tbody></table></div>
+
+                <div class="row g-3 mb-4 week-evidence-grid">
+                    <div class="col-md-6"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week13_budget_update.png" alt="Week 13 updated project budget"><div class="fig-caption"><strong>Fig. 1</strong> — Updated expenditure for chemicals, sensor materials and electronic components.</div></div></div>
+                    <div class="col-md-6"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week13_aps_quotation.png" alt="Ammonium persulfate supplier quotation"><div class="fig-caption"><strong>Fig. 2</strong> — Quotation for 500 g of analytical-reagent-grade ammonium persulfate.</div></div></div>
+                </div>
+
+                <h5 class="fw-bold mb-3" style="color:var(--dark-blue)"><i class="fas fa-atom me-2 text-primary"></i>PANI Polymerization Study</h5>
+                <p>Polyaniline is prepared through oxidative polymerization of aniline in an acidic medium. Ammonium persulfate supplies the oxidizing action required for polymer-chain formation. The study also emphasized controlled addition, stirring, low-temperature reaction conditions, filtration, repeated washing and complete drying before the material is applied to an electrode.</p>
+                <div class="row g-3 mb-4 week-evidence-grid">
+                    <div class="col-md-4"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week13_pani_polymerization.png" alt="Polyaniline polymerization reaction"><div class="fig-caption"><strong>Fig. 3</strong> — Oxidative polymerization reaction of aniline using ammonium persulfate.</div></div></div>
+                    <div class="col-md-4"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week13_pani_forms.png" alt="Different oxidation forms of polyaniline"><div class="fig-caption"><strong>Fig. 4</strong> — Principal PANI oxidation states and their conductivity-related behaviour.</div></div></div>
+                    <div class="col-md-4"><div class="fig-box clean-fig-box"><img class="portfolio-evidence-img" src="img/papers/week13_pani_synthesis_workflow.png" alt="PANI synthesis filtration washing and drying workflow"><div class="fig-caption"><strong>Fig. 5</strong> — PANI synthesis workflow including oxidant addition, filtration, washing and drying.</div></div></div>
+                </div>
+
+                <div class="info-box mb-4"><h6><i class="fab fa-youtube text-danger me-2"></i>Online Resources Used</h6><p class="mb-2"><a href="https://youtu.be/Pc3AqwOQAHY" target="_blank" rel="noopener">Synthesis of Polyaniline - Step by Step Procedure</a></p><p class="mb-0"><a href="https://youtu.be/RNGv35cVVk0" target="_blank" rel="noopener">How to prepare Polyaniline (PANI) in lab | complete experiment</a></p></div>
+
+                <div class="relevance-box"><strong><i class="fas fa-link me-2"></i>Relevance to IWMTAS</strong><p>Week 13 completed the planning required before PANI fabrication by updating the available budget, studying the polymerization and oxidation-state theory, and securing the oxidizing reagent needed for the planned pH-sensitive electrode work.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- DRIVE LINKS -->
 <section id="drive-links" class="py-5" style="background:#f8faff;">
     <div class="container py-3">
@@ -1642,13 +1820,13 @@
         <div class="text-center mb-5">
             <div class="sec-tag">Up Next</div>
             <div class="sec-title" style="font-size:1.6rem;">Upcoming Weeks</div>
-            <p class="text-muted mt-2">Completed Week 6 to Week 10 progress is documented below. The next stage focuses on fabrication, calibration and validation.</p>
+            <p class="text-muted mt-2">Completed Week 1 to Week 13 progress is documented below. The next stage focuses on fabrication, calibration and validation.</p>
         </div>
         <div class="row g-4">
             <div class="col-md-3 col-sm-6"><div class="coming-card"><i class="fas fa-check-circle text-success"></i><h5>Weeks 6-8</h5><p class="mb-2">Circuit direction, cost planning, statistical review and journal-support work</p><span style="font-size:0.75rem;background:#d1fae5;color:#065f46;padding:3px 10px;border-radius:10px;font-weight:600;">Completed</span></div></div>
             <div class="col-md-3 col-sm-6"><div class="coming-card"><i class="fas fa-check-circle text-success"></i><h5>Weeks 9-10</h5><p class="mb-2">Full circuit integration, order details, PANI plan and chemical coordination</p><span style="font-size:0.75rem;background:#d1fae5;color:#065f46;padding:3px 10px;border-radius:10px;font-weight:600;">Completed</span></div></div>
-            <div class="col-md-3 col-sm-6"><div class="coming-card"><i class="fas fa-chart-line"></i><h5>Weeks 11-12</h5><p class="mb-2">Data analysis, calibration and monitoring algorithm refinement</p><span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">Planned</span></div></div>
-            <div class="col-md-3 col-sm-6"><div class="coming-card"><i class="fas fa-clipboard-check"></i><h5>Weeks 13-14</h5><p class="mb-2">Final validation, documentation and presentation preparation</p><span style="font-size:0.75rem;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:10px;font-weight:600;">Planned</span></div></div>
+            <div class="col-md-3 col-sm-6"><div class="coming-card"><i class="fas fa-check-circle text-success"></i><h5>Weeks 11-12</h5><p class="mb-2">Material selection, carbon-electrode planning, TMP117 procurement and STM32 learning</p><span style="font-size:0.75rem;background:#d1fae5;color:#065f46;padding:3px 10px;border-radius:10px;font-weight:600;">Completed</span></div></div>
+            <div class="col-md-3 col-sm-6"><div class="coming-card"><i class="fas fa-check-circle text-success"></i><h5>Week 13</h5><p class="mb-2">Budget update, PANI polymerization study and ammonium persulfate procurement</p><span style="font-size:0.75rem;background:#d1fae5;color:#065f46;padding:3px 10px;border-radius:10px;font-weight:600;">Completed</span></div></div>
         </div>
     </div>
 </section>
@@ -1674,6 +1852,9 @@
                 <a href="#week8">Week 8 - Statistical Analysis</a>
                 <a href="#week9">Week 9 - Full Circuit &amp; Orders</a>
                 <a href="#week10">Week 10 - PANI Design &amp; Chemicals</a>
+                <a href="#week11">Week 11 - Adhesives &amp; Carbon Ink</a>
+                <a href="#week12">Week 12 - TMP117 &amp; STM32 Learning</a>
+                <a href="#week13">Week 13 - PANI Study &amp; APS Order</a>
                 <a href="team.html" style="margin-top:8px;color:#ade8f4;">Meet the Team →</a>
             </div>
             <div class="col-md-4">
@@ -1710,7 +1891,7 @@
         });
     });
     // Week tab active state on scroll
-    const sections = ['week1','week2','week3','week4','week5','week6','week7','week8','week9','week10'];
+    const sections = ['week1','week2','week3','week4','week5','week6','week7','week8','week9','week10','week11','week12','week13'];
     window.addEventListener('scroll', () => {
         sections.forEach(id => {
             const el = document.getElementById(id);
